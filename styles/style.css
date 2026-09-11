@@ -1515,65 +1515,172 @@ body {
 }
 .pantalla-dano-futuro {
   position: relative;
-  width: 100%;
-  min-width: 1440px;
-  height: 838px;
-  min-height: 838px;
-  background-image: url("./img/Pantalla Daño 02.jpg");
-  background-size: cover;
-  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 3rem 5vw 2.5rem 5vw;
+  /* Video de fondo */
 }
-.pantalla-dano-futuro .card-futuro-texto {
+.pantalla-dano-futuro .video-fondo-dano {
   position: absolute;
-  top: 165px;
-  left: 80px;
-  width: 500px;
-  background: rgba(0, 8, 35, 0.75);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+.pantalla-dano-futuro .dano-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 8, 7, 0.25);
+  z-index: 1;
+  pointer-events: none;
+}
+.pantalla-dano-futuro {
+  /* Botón circular de volver arriba a la izquierda */
+}
+.pantalla-dano-futuro .btn-volver-dano {
+  position: absolute;
+  top: 2.5rem;
+  left: 4vw;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.pantalla-dano-futuro .btn-volver-dano .icono-volver {
+  width: 16px;
+  transform: rotate(90deg);
+  filter: brightness(0) invert(1);
+}
+.pantalla-dano-futuro .btn-volver-dano:hover {
+  background: rgba(15, 23, 42, 0.7);
+  transform: scale(1.05);
+}
+.pantalla-dano-futuro {
+  /* Contenedor central que alinea la card a la izquierda y el mundo a la derecha */
+}
+.pantalla-dano-futuro .dano-contenido-distribucion {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0 2vw;
+  box-sizing: border-box;
+  /* Tarjeta azul oscuro translúcida con blur */
+}
+.pantalla-dano-futuro .dano-contenido-distribucion .card-futuro-texto {
+  background: rgba(13, 22, 38, 0.82);
+  border-radius: 22px;
+  padding: 3rem 2.8rem;
+  max-width: 490px;
+  width: 100%;
+  box-sizing: border-box;
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 35px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  z-index: 3;
 }
-.pantalla-dano-futuro .card-futuro-texto .titulo-futuro {
-  margin: 0 0 15px 0;
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: bold;
-  color: #6dfff7;
-  font-size: 38px;
+.pantalla-dano-futuro .dano-contenido-distribucion .card-futuro-texto .titulo-futuro {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #2ce6d6;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.5px;
 }
-.pantalla-dano-futuro .card-futuro-texto .descripcion-futuro {
+.pantalla-dano-futuro .dano-contenido-distribucion .card-futuro-texto .descripcion-futuro {
+  color: #cfd6df;
+  font-size: 1.05rem;
+  line-height: 1.55;
   margin: 0;
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  color: #eaeaea;
-  font-size: 20px;
-  line-height: 1.5;
+}
+.pantalla-dano-futuro .dano-contenido-distribucion {
+  /* Contenedor del ícono del planeta */
+}
+.pantalla-dano-futuro .dano-contenido-distribucion .mundo-interrogacion-box {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 4vw;
+}
+.pantalla-dano-futuro .dano-contenido-distribucion .mundo-interrogacion-box .icono-mundo {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.4));
+}
+.pantalla-dano-futuro {
+  /* Footer inferior */
 }
 .pantalla-dano-futuro .footer-futuro {
-  position: absolute;
-  bottom: 40px;
-  left: 80px;
-  z-index: 10;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .pantalla-dano-futuro .footer-futuro .btn-futuro-cifras {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   background: transparent;
   border: none;
-  cursor: pointer;
-}
-.pantalla-dano-futuro .footer-futuro .btn-futuro-cifras span {
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
 }
-.pantalla-dano-futuro .footer-futuro .btn-futuro-cifras span.flecha-abajo {
-  font-size: 20px;
-  color: #6dfff7;
+.pantalla-dano-futuro .footer-futuro .btn-futuro-cifras .flecha-abajo {
+  font-size: 1rem;
+}
+.pantalla-dano-futuro .footer-futuro .btn-futuro-cifras:hover {
+  opacity: 0.8;
+}
+.pantalla-dano-futuro .footer-futuro {
+  /* Botón circular inferior derecho */
+}
+.pantalla-dano-futuro .footer-futuro .btn-lupa-inferior {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+.pantalla-dano-futuro .footer-futuro .btn-lupa-inferior .icono-lupa {
+  width: 20px;
+  height: auto;
+  filter: brightness(0) invert(1);
 }
 
 .pantalla-torre-eiffel {

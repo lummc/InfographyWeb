@@ -468,7 +468,24 @@
 </section>
 
   <!-- ================= PANTALLA DAÑO FUTURO ================= -->
-  <section class="pantalla-dano-futuro" id="futuro-cifras">
+<section class="pantalla-dano-futuro" id="futuro-cifras">
+
+  <!-- Video de fondo Pantalla Daño 1 -->
+  <video class="video-fondo-dano" autoplay muted loop playsinline>
+    <source src="./img/FondoDaño-P1.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Overlay sutil para mejorar contraste -->
+  <div class="dano-video-overlay"></div>
+
+  <!-- Botón superior para volver atrás -->
+  <button type="button" class="btn-volver-dano" onclick="window.history.back()" aria-label="Volver">
+    <img src="./img/downflecha-icon.svg" alt="" class="icono-volver" />
+  </button>
+
+  <!-- Contenedor principal de la sección -->
+  <div class="dano-contenido-distribucion">
+    <!-- Tarjeta izquierda translúcida -->
     <article class="card-futuro-texto">
       <h1 class="titulo-futuro">¿QUÉ NOS ESPERA?</h1>
       <p class="descripcion-futuro">
@@ -476,13 +493,26 @@
       </p>
     </article>
 
-    <div class="footer-futuro">
-      <button type="button" class="btn-futuro-cifras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-        <span class="flecha-abajo">↓</span>
-        <span>El futuro en cifras</span>
-      </button>
+    <!-- Ilustración derecha del mundo con interrogación -->
+    <div class="mundo-interrogacion-box">
+      <img src="./img/MundoInterrogario-Icon.png" alt="Mundo con signo de interrogación" class="icono-mundo" />
     </div>
-  </section>
+  </div>
+
+  <!-- Footer con navegación y accesos -->
+  <footer class="footer-futuro">
+    <button type="button" class="btn-futuro-cifras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+      <span class="flecha-abajo">↓</span>
+      <span>El futuro en cifras</span>
+    </button>
+
+    <!-- Botón lupa inferior derecho del diseño -->
+    <button type="button" class="btn-lupa-inferior" aria-label="Detalles">
+      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" class="icono-lupa" />
+    </button>
+  </footer>
+
+</section>
 
   <!-- ================= PANTALLA TORRE EIFFEL ================= -->
   <section class="pantalla-torre-eiffel" id="seccionTorreEiffel">
