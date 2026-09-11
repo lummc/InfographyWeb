@@ -1,0 +1,2217 @@
+
+// ==========================================
+// VARIABLES GLOBALES
+// ==========================================
+$font-primary: 'Roboto Condensed', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+$color-primary: #6DFFF8;
+$color-secondary: #ffffff;
+$glass-bg: rgba(255, 255, 255, 0.1);
+$glass-border: rgba(255, 255, 255, 0.2);
+$glass-blur: 10px;
+
+$font-body: 'Inter', sans-serif;
+$font-condensed: 'Roboto Condensed', sans-serif;
+
+$color-primary: #6dfff8; // acento celeste — títulos, textos destacados, botones sólidos
+$color-white: #ffffff;
+$color-black: #000000;
+
+$glass-bg: rgba(255, 255, 255, 0.1);
+$glass-border: rgba(255, 255, 255, 0.2);
+$glass-blur: 12px;
+
+$overlay-from: rgba(0, 0, 0, 0.5);
+$overlay-via: rgba(0, 0, 0, 0.2);
+$overlay-to: rgba(0, 0, 0, 0.6);
+
+$radius-full: 999px;
+$radius-card: 20px;
+
+$breakpoint-sm: 640px;
+$breakpoint-lg: 1024px;
+$max-width-container: 1280px;
+$max-width-col: 592px;
+
+// ============================================
+// MIXIN GLASSMORPHISM (reutilizable en Agua/CO2/Daño)
+// ============================================
+@mixin glassmorphism {
+  background: $glass-bg;
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  border: 1px solid $glass-border;
+  color: $color-white;
+}
+
+// ============================================
+// RESET BÁSICO
+// ============================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-body;
+  color: $color-white;
+  background-color: $color-black;
+}
+// ============================================
+// HERO / LANDING (ACTUALIZADO FIGMA DEV MODE)
+// ============================================
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, $overlay-from, $overlay-via, $overlay-to);
+  }
+
+  &__content {
+    position: relative;
+    max-width: $max-width-container;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem;
+
+    @media (min-width: $breakpoint-lg) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5rem;
+      padding: 5rem 4rem;
+    }
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    max-width: 520px;
+    text-align: left;
+  }
+
+  // Medidas exactas de Figma Dev Mode
+  &__title {
+    align-self: stretch;
+    color: #6DFFF8;
+    font-family: "Roboto Condensed", $font-condensed, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 6.24px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: #eaeaea;
+    font-size: 22px;
+    line-height: normal;
+    margin: 0;
+  }
+
+  // Tarjeta derecha que contiene el PNG exportado
+  &__card {
+    @include glassmorphism;
+    width: 100%;
+    max-width: 520px;
+    height: 420px;
+    border-radius: $radius-card;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+// ============================================
+// BOTÓN DESCÚBRELO
+// ============================================
+.btn-glass {
+  @include glassmorphism;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 210px;
+  border-radius: $radius-full;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+
+  &:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #6DFFF8;
+
+    .btn-glass__label {
+      color: #6DFFF8;
+    }
+  }
+
+  &__label {
+    font-family: 'Inter', $font-condensed, sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $color-white;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+}
+// ==========================================
+// SECCIÓN HOME
+// ==========================================
+
+.home-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  // Reemplazamos la imagen por un degradado azul oscuro
+  background: linear-gradient(135deg, #1e293b, #0f172a); 
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* (el resto de las propiedades quedan igual) */
+}
+  
+  // Fondos
+  .bg-image, .bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .bg-overlay {
+    opacity: 0.5; // Ajusta según necesites mezclar las imágenes
+  }
+
+  .home-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1440px;
+    padding: 2rem;
+  }
+
+  // Textos
+  .text-block {
+    margin-bottom: 2rem;
+    
+    .subtitle {
+      font-family: $font-secondary;
+      font-size: 3rem;
+      color: $color-secondary; // Blanco
+      margin-bottom: 0.5rem;
+    }
+    
+    .title {
+      font-family: $font-primary;
+      font-size: 5rem;
+      font-weight: bold;
+      color: $color-primary; // Tu celeste #6DFFF8
+      line-height: 1;
+    }
+  }
+
+  // Gráfico Central
+  .center-graphic {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    
+    img {
+      max-width: 416px;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Botones Glassmorphism (Reutilizando tu lógica)
+  .buttons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+
+    .glass-btn {
+      width: 215px;
+      height: 215px;
+      border-radius: 50%;
+      background: $glass-bg;
+      backdrop-filter: blur($glass-blur);
+      border: 1px solid $glass-border;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: -6px -6px 12px rgba(255,255,255,0.1), 6px 6px 12px rgba(0,0,0,0.2);
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      img {
+        width: 50%; // Ajusta el tamaño de los iconos
+        height: auto;
+      }
+    }
+  }
+
+// ==========================================
+// PANTALLA AGUA 1 (INTRODUCCIÓN)
+// ==========================================
+.pantalla-agua-1 {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
+  background-image: url('./img/Pantalla Agua PARTE 4.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  // Botón Volver (superior izquierdo con neumorfismo)
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+
+    .btn-back-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .agua-container-1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    // Tarjeta Negra con Textos (Izquierda)
+    .texto-header {
+      position: absolute;
+      top: 135px;
+      left: 118px;
+      width: 610px;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 20px;
+      padding: 55px 45px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 3;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+
+      .titulo-costo {
+        margin: 0;
+        font-family: 'Roboto Condensed', Helvetica, sans-serif;
+        font-weight: 700;
+        color: #6dfff7;
+        font-size: 46px;
+        line-height: 1.15;
+        letter-spacing: 1px;
+      }
+
+      .descripcion-costo {
+        margin: 0;
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 300;
+        color: #eaeaea;
+        font-size: 20px;
+        line-height: 1.5;
+      }
+    }
+
+    // Contenedor de las dos ilustraciones SVG a la derecha
+    .imagenes-decorativas {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 650px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+
+      .icono-grifo {
+        position: absolute;
+        top: 260px;
+        left: 80px;
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .icono-computer {
+        position: absolute;
+        top: 540px;
+        left: 230px;
+        width: 240px;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  }
+
+  // Botón Inferior Izquierdo "Descubrí que hay detrás"
+  .btn-descubri-detras {
+    position: absolute;
+    bottom: 35px;
+    left: 118px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    .icono-downflecha {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    span {
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: normal;
+    }
+  }
+
+  // Botón Lupa Flotante (Inferior derecho)
+  .btn-lupa-circular {
+    position: absolute;
+    bottom: 40px;
+    right: 90px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-lupa-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+
+    .btn-lupa-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+// ==========================================
+// PANTALLA AGUA 2 (Interacción)
+// ==========================================
+.pantalla-agua-2 {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  // Fondo oscuro sólido para que resalten los botones de vidrio
+  background: linear-gradient(135deg, #082f49, #020617);
+  /* (el resto igual) */
+
+  .subtitulo-agua {
+    font-family: $font-primary;
+    color: $color-secondary;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  // Controles
+  .controles-agua {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    .glass-btn-control {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: $color-secondary;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-family: $font-secondary;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover { background: rgba(255, 255, 255, 0.15); }
+      &.active {
+        background: rgba(109, 255, 248, 0.2);
+        border-color: $color-primary;
+        color: $color-primary;
+        font-weight: bold;
+      }
+    }
+  }
+
+  // Tarjetas Interactivas
+  .cards-display { min-height: 350px; }
+
+  .glass-card {
+    display: none; // Ocultas por defecto
+    background: $glass-bg;
+    backdrop-filter: blur($glass-blur);
+    border: 1px solid $glass-border;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    width: 320px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: -6px -6px 12px rgba(255,255,255,0.05), 6px 6px 12px rgba(0,0,0,0.2);
+    animation: fadeIn 0.4s ease forwards;
+
+    &.active { display: flex; }
+    
+    .icon-wrapper img { width: 90px; margin-bottom: 2rem; }
+    .subtitle { font-family: $font-secondary; font-size: 1.2rem; color: $color-secondary; margin-bottom: 0.5rem; }
+    .data { font-family: $font-primary; font-size: 3.5rem; font-weight: bold; color: $color-primary; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}// ==========================================
+// PANTALLA AGUA 1
+// ==========================================
+.pantalla-agua-1 {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  background-color: #000;
+
+  .bg-agua {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  .agua-container-1 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+
+    .texto-header {
+      max-width: 500px;
+      
+      .titulo-costo {
+        font-family: $font-primary;
+        font-size: 4rem;
+        color: $color-primary; // #6DFFF8
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+      .descripcion-costo {
+        font-family: $font-secondary;
+        font-size: 1.3rem;
+        color: $color-secondary;
+        line-height: 1.6;
+      }
+    }
+
+    .imagenes-decorativas {
+      display: flex;
+      gap: 1rem;
+      img { max-width: 250px; height: auto; object-fit: contain; }
+      .img-water { transform: translateY(40px); }
+    }
+  }
+}
+// ==========================================
+// PANTALLA AGUA 2 (Contenedor + Interactivo)
+// ==========================================
+.pantalla-agua-2 {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  background-color: #0b1114; // Fondo oscuro de respaldo
+
+  .bg-agua-2 {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  // Icono superior
+  .icono-alerta-top {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 3;
+
+    .glass-circle {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: $glass-bg;
+      backdrop-filter: blur($glass-blur);
+      border: 1px solid $glass-border;
+      display: flex; align-items: center; justify-content: center;
+      
+      img { width: 40px; transform: rotate(-90deg); }
+    }
+  }
+
+  .agua-container-2 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  // Textos y línea separadora
+  .header-datos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); // La línea del diseño
+    padding-bottom: 2rem;
+
+    .datos-izq {
+      max-width: 650px;
+      
+      .cifra-gigante {
+        font-family: $font-primary;
+        font-size: 3.5rem;
+        color: $color-primary; // Tu #6DFFF8
+        font-weight: bold;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      }
+
+      .texto-consumo {
+        font-family: $font-secondary;
+        font-size: 1.4rem;
+        color: #eaeaea;
+        font-weight: 300;
+      }
+    }
+
+    .datos-der {
+      text-align: right;
+      max-width: 350px;
+
+      .pregunta-agua {
+        font-family: $font-secondary;
+        font-size: 1.1rem;
+        color: #b8cce0;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Componente Interactivo
+  .agua-interactiva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .controles-agua {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+
+      .glass-btn-control {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: $color-secondary;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        font-family: $font-secondary;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover { background: rgba(255, 255, 255, 0.15); }
+        &.active {
+          background: rgba(109, 255, 248, 0.2);
+          border-color: $color-primary;
+          color: $color-primary;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .cards-display { min-height: 350px; display: flex; justify-content: center; }
+
+    .glass-card {
+      display: none; // Ocultas por defecto
+      background: $glass-bg;
+      backdrop-filter: blur($glass-blur);
+      border: 1px solid $glass-border;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      width: 320px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: -6px -6px 12px rgba(255,255,255,0.05), 6px 6px 12px rgba(0,0,0,0.2);
+      animation: fadeIn 0.4s ease forwards;
+
+      &.active { display: flex; }
+      
+      .icon-wrapper img { width: 90px; margin-bottom: 2rem; }
+      .subtitle { font-family: $font-secondary; font-size: 1.2rem; color: $color-secondary; margin-bottom: 0.5rem; }
+      .data { font-family: $font-primary; font-size: 3.5rem; font-weight: bold; color: $color-primary; }
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+// ==========================================
+// PANTALLA CENTRALES DE DATOS
+// ==========================================
+.pantalla-centrales-datos {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  overflow: hidden;
+
+  .icono-alerta-top {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 3;
+
+    .glass-circle {
+      width: 80px; 
+      height: 80px;
+      border-radius: 50%;
+      background: $glass-bg;
+      backdrop-filter: blur($glass-blur);
+      border: 1px solid $glass-border;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      
+      img { 
+        width: 40px; 
+        transform: rotate(-90deg); 
+      }
+    }
+  }
+
+  .centrales-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .header-centrales {
+    text-align: center;
+    max-width: 700px;
+
+    .titulo-centrales {
+      font-family: $font-primary;
+      font-size: 3rem;
+      color: $color-primary;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .descripcion-centrales {
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      color: $color-secondary;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+  }
+
+  .tarjetas-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .componente-frame-3 {
+    width: 100%;
+    max-width: 320px;
+
+    .glass-card-detalles {
+      background: $glass-bg;
+      backdrop-filter: blur($glass-blur);
+      border: 1px solid $glass-border;
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.03), 4px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        border-color: rgba(109, 255, 248, 0.4);
+      }
+
+      .icon-interno {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        img {
+          width: 24px;
+        }
+      }
+
+      .texto-detalle {
+        .titulo-stat {
+          font-family: $font-secondary;
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.6);
+          margin-bottom: 0.2rem;
+        }
+        .valor-stat {
+          font-family: $font-primary;
+          font-size: 1.1rem;
+          color: $color-primary;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .footer-centrales {
+    margin-top: 1rem;
+
+    .glass-btn-circular {
+      width: 90px; 
+      height: 90px;
+      border-radius: 50%;
+      background: $glass-bg;
+      backdrop-filter: blur($glass-blur);
+      border: 1px solid $glass-border;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: -6px -6px 12px rgba(255, 255, 255, 0.05), 6px 6px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+
+      &:hover { 
+        transform: scale(1.05); 
+      }
+      
+      img { 
+        width: 40px; 
+      }
+    }
+  }
+}
+// ==========================================
+// CONTROL DE TARJETAS INTERACTIVAS
+// ==========================================
+.cards-display {
+  .glass-card {
+    display: none; // Ocultas por defecto
+    
+    &.active {
+      display: flex; // Visibles solo cuando tienen la clase active
+    }
+  }
+}
+
+// ==========================================
+// PANTALLA CO2 - CORREGIDA Y LIMPIA
+// ==========================================
+.pantalla-co2 {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 862px;
+  min-height: 862px;
+  background: linear-gradient(135deg, #451a03, #1c1917, #0f172a);
+  overflow: hidden;
+
+  // Botón Volver (superior izquierdo con neumorfismo)
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 22px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+
+    .btn-back-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  // Caja Negra de Texto (Izquierda)
+  .co2-card-negra {
+    position: absolute;
+    top: 135px;
+    left: 226px;
+    width: 600px;
+    height: 455px;
+    background: #000000;
+    border-radius: 20px;
+    padding: 61px 34px 51px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    z-index: 2;
+
+    .titulo-co2 {
+      width: 500px;
+      margin: 0;
+      font-family: 'Roboto Condensed', Helvetica, sans-serif;
+      font-weight: bold;
+      color: #6dfff7;
+      font-size: 50px;
+      line-height: 1.1;
+    }
+
+    .descripcion-co2 {
+      width: 531px;
+      height: 203px;
+      margin: 0;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 200;
+      color: #ffffff;
+      font-size: 24px;
+      line-height: 27.1px;
+    }
+  }
+
+  // Ilustración de la Fábrica (Derecha - Posición exacta)
+  .co2-ilustracion-fabrica {
+    position: absolute;
+    top: 193px;
+    left: 838px;
+    width: 396px;
+    height: 396px;
+    z-index: 2;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // Botón Inferior "¿Cuánto genera?"
+  .btn-cuanto-genera {
+    position: absolute;
+    top: 827px;
+    left: 70px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    z-index: 10;
+
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+    }
+
+    span {
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: normal;
+    }
+  }
+}
+// ==========================================
+// PANTALLA GPT-3 INTERACTIVA
+// ==========================================
+.pantalla-gpt3-interactiva {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
+  background-image: url('./img/image-29.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  // Botón Volver Circular
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+    .btn-back-icon {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
+    }
+  }
+
+  // Estado 1: Texto inicial
+  .gpt3-estado-texto {
+    position: absolute;
+    top: 80px;
+    left: 137px;
+    width: 491px;
+    transition: opacity 0.4s ease;
+
+    .titulo-gpt3 {
+      margin: 0 0 1rem 0;
+      font-family: 'Roboto', Helvetica, sans-serif;
+      font-weight: bold;
+      color: #6dfff7;
+      font-size: 40px;
+    }
+    .descripcion-gpt3 {
+      margin: 0;
+      width: 355px;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 300;
+      color: #eaeaea;
+      font-size: 22px;
+    }
+  }
+
+  // Estado 2: Gráfico Interactivo (Oculto de entrada)
+  .gpt3-estado-grafico {
+    position: absolute;
+    top: 71px;
+    left: 97px;
+    width: 1246px;
+    height: 695px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: none; // Se despliega con JS
+    padding: 40px;
+    z-index: 5;
+
+    .grafico-card-contenedor {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      gap: 50px;
+
+      .grafico-panel-izq {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .titulo-opciones {
+          font-family: 'Inter', Helvetica, sans-serif;
+          font-size: 28px;
+          color: #ffae00;
+          font-weight: normal;
+        }
+
+        .opciones-botones {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+
+          .btn-opcion {
+            height: 65px;
+            border: 2px solid #9a9a9a;
+            border-radius: 10px;
+            background: transparent;
+            color: #9a9a9a;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover, &.activo {
+              border-color: #ffae00;
+              color: #ffae00;
+              background: rgba(255, 174, 0, 0.1);
+            }
+          }
+        }
+
+        .instruccion-opcion {
+          font-size: 16px;
+          color: #fff;
+          font-weight: 300;
+        }
+
+        .dato-interactivo-box {
+          margin-top: 10px;
+          h3 { font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 5px; }
+          p, .sub-punto { font-size: 14px; color: #fff; font-weight: 300; }
+        }
+      }
+
+      .grafico-panel-der {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .titulo-pregunta-grafico {
+          font-size: 20px;
+          color: #fff;
+          font-weight: 500;
+          margin-bottom: 30px;
+        }
+
+        .area-plano-cartesiano {
+          position: relative;
+          height: 450px;
+          border-left: 2px solid #6dfff7;
+          border-bottom: 2px solid #6dfff7;
+          margin-left: 40px;
+
+          .eje-y-label {
+            position: absolute;
+            left: -120px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            color: #fff;
+            font-size: 14px;
+            white-space: nowrap;
+          }
+
+          .labels-y {
+            position: absolute;
+            left: -35px;
+            top: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  // Botón Inferior
+  .footer-gpt3-transicion {
+    position: absolute;
+    top: 787px;
+    left: 96px;
+    z-index: 10;
+
+    .btn-detras-numeros {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      img { width: 32px; height: 32px; object-fit: cover; }
+      span { font-family: 'Inter', Helvetica, sans-serif; font-weight: 600; color: #ffffff; font-size: 20px; }
+    }
+  }
+}
+// ==========================================
+// PANTALLA GPT-3 INTERACTIVA - ESTILO PROTOTIPO
+// ==========================================
+.pantalla-gpt3-interactiva {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
+  background-image: url('./img/image-29.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+    .btn-back-icon {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
+    }
+  }
+
+  .gpt3-estado-texto {
+    position: absolute;
+    top: 80px;
+    left: 137px;
+    width: 491px;
+    transition: opacity 0.4s ease;
+
+    .titulo-gpt3 {
+      margin: 0 0 1rem 0;
+      font-family: 'Roboto', Helvetica, sans-serif;
+      font-weight: bold;
+      color: #6dfff7;
+      font-size: 40px;
+    }
+    .descripcion-gpt3 {
+      margin: 0;
+      width: 355px;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 300;
+      color: #eaeaea;
+      font-size: 22px;
+    }
+  }
+
+  .gpt3-estado-grafico {
+    position: absolute;
+    top: 71px;
+    left: 97px;
+    width: 1246px;
+    height: 695px;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    display: none; 
+    padding: 50px 40px;
+    z-index: 5;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    .grafico-card-contenedor {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      gap: 40px;
+
+      .grafico-panel-izq {
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        .titulo-opciones {
+          font-family: 'Inter', Helvetica, sans-serif;
+          font-size: 26px;
+          color: #ffae00;
+          font-weight: bold;
+        }
+
+        .opciones-botones {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+
+          .btn-opcion {
+            height: 75px;
+            border: 2px solid #666;
+            border-radius: 12px;
+            background: transparent;
+            color: #aaa;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
+
+            small { font-size: 13px; display: block; opacity: 0.8; }
+
+            &:hover, &.active {
+              border-color: #ffae00;
+              color: #ffae00;
+              background: rgba(255, 174, 0, 0.08);
+              box-shadow: 0 0 15px rgba(255, 174, 0, 0.2);
+            }
+          }
+        }
+
+        .instruccion-opcion {
+          font-size: 14px;
+          color: #ccc;
+          font-weight: 300;
+        }
+
+        .dato-interactivo-box {
+          margin-top: auto;
+          h3 { font-size: 15px; color: #fff; font-weight: bold; margin-bottom: 4px; }
+          p { font-size: 13px; color: #ccc; font-weight: 300; }
+        }
+      }
+
+      .grafico-panel-der {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .titulo-pregunta-grafico {
+          font-size: 22px;
+          color: #fff;
+          font-weight: bold;
+          margin-bottom: 25px;
+          font-family: 'Inter', Helvetica, sans-serif;
+        }
+
+        .area-plano-cartesiano {
+          position: relative;
+          height: 440px;
+          border-left: 2px solid #6dfff7;
+          border-bottom: 2px solid #6dfff7;
+          margin-left: 50px;
+          margin-right: 20px;
+          background-image: 
+            linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px);
+          background-size: 25% 25%;
+
+          .eje-y-label {
+            position: absolute;
+            left: -140px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            color: #fff;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+          }
+
+          .labels-y {
+            position: absolute;
+            left: -35px;
+            top: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 13px;
+          }
+
+          .eje-x-label {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+          }
+
+          // Estilo de los círculos orgánicos del gráfico
+          .nube-puntos-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+
+            .punto {
+              position: absolute;
+              width: 18px;
+              height: 18px;
+              border-radius: 50%;
+              transform: translate(-50%, 50%);
+              box-shadow: 0 0 10px rgba(0,0,0,0.5);
+              transition: transform 0.3s ease;
+
+              &:hover { transform: translate(-50%, 50%) scale(1.3); z-index: 10; }
+
+              &.celeste {
+                background: #00f0ff;
+                box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+              }
+              &.naranja {
+                background: #ff8c00;
+                box-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
+                width: 22px; height: 22px;
+              }
+              &.gris {
+                background: #888;
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+
+        .grafico-leyenda {
+          display: flex;
+          gap: 30px;
+          margin-top: 45px;
+          margin-left: 50px;
+
+          .item-leyenda {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 14px;
+
+            .bullet {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              &.celeste { background: #00f0ff; }
+              &.naranja { background: #ff8c00; }
+              &.gris { background: #888; }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-gpt3-transicion {
+    position: absolute;
+    top: 787px;
+    left: 96px;
+    z-index: 10;
+
+    .btn-detras-numeros {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      img { width: 32px; height: 32px; object-fit: cover; }
+      span { font-family: 'Inter', Helvetica, sans-serif; font-weight: 600; color: #ffffff; font-size: 20px; }
+    }
+  }
+}
+// ==========================================
+// ESTILOS DINÁMICOS DE PUNTOS INTERACTIVOS
+// ==========================================
+.nube-puntos-container {
+  .punto {
+    transition: all 0.4s ease;
+    
+    &.activo-naranja {
+      background: #ff7700 !important;
+      box-shadow: 0 0 14px rgba(255, 119, 0, 0.9) !important;
+      transform: translate(-50%, 50%) scale(1.4);
+    }
+
+    &.activo-amarillo {
+      background: #ffcc00 !important;
+      box-shadow: 0 0 14px rgba(255, 204, 0, 0.9) !important;
+      transform: translate(-50%, 50%) scale(1.3);
+    }
+
+    &.activo-celeste {
+      background: #00f0ff !important;
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.9) !important;
+      transform: translate(-50%, 50%) scale(1.2);
+    }
+  }
+}
+// ==========================================
+// PANTALLA BALLENAS - QUIZ INTERACTIVO
+// ==========================================
+.pantalla-ballenas {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
+  background-image: url('./img/image-30.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  // Botón Volver (superior izquierdo)
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+    .btn-back-icon {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
+    }
+  }
+
+  // Títulos superiores principales
+  .header-ballenas {
+    position: absolute;
+    top: 86px;
+    left: 118px;
+    width: 500px;
+    z-index: 3;
+
+    .titulo-ballenas {
+      margin: 0 0 10px 0;
+      font-family: 'Roboto', Helvetica, sans-serif;
+      font-weight: bold;
+      color: #6dfff7;
+      font-size: 40px;
+    }
+
+    .subtitulo-ballenas {
+      margin: 0;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 300;
+      color: #eaeaea;
+      font-size: 22px;
+      line-height: normal;
+    }
+  }
+
+  // Tarjeta Azul Oscuro del Quiz
+  .quiz-card-ballenas {
+    position: absolute;
+    top: 276px;
+    left: 118px;
+    width: 1204px;
+    height: 409px;
+    background: #000823;
+    border-radius: 20px;
+    padding: 24px 30px;
+    z-index: 4;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+
+    .quiz-header {
+      width: 100%;
+      
+      .quiz-main-title {
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 600;
+        color: #eaeaea;
+        font-size: 22px;
+        margin: 0 0 8px 0;
+      }
+
+      .quiz-sub-text {
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 300;
+        color: #eaeaea;
+        font-size: 22px;
+        margin: 0;
+      }
+    }
+
+    // Área donde se acomodan las 3 opciones de ballenas
+    .quiz-content-area {
+      position: relative;
+      height: 280px;
+      width: 100%;
+      margin-top: 10px;
+
+      // Estilo base de cada columna de opción
+      .opcion-ballena-item {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          height: 85px;
+          object-fit: contain;
+          margin-bottom: 5px;
+        }
+
+        .opcion-texto {
+          font-family: 'Inter', Helvetica, sans-serif;
+          font-weight: 300;
+          color: #6dfff7;
+          font-size: 18px;
+          text-align: center;
+          margin: 0 0 10px 0;
+          line-height: 1.2;
+        }
+
+        .btn-radio-quiz {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          border: 2px solid #6dfff7;
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(109, 255, 247, 0.2);
+            transform: scale(1.1);
+          }
+        }
+
+        // Posicionamiento preciso de las 3 opciones según el diseño original
+        &.col-1 {
+          top: 35px;
+          left: 5%;
+          width: 28%;
+        }
+        &.col-2 {
+          top: 40px;
+          left: 41%;
+          width: 22%;
+        }
+        &.col-3 {
+          top: 40px;
+          left: 77%;
+          width: 18%;
+        }
+      }
+
+      // Estado final al acertar (Fábrica = Ballenas)
+      .estado-exito-final {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        height: 100%;
+        width: 100%;
+
+        .exito-bloque {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          img {
+            max-height: 140px;
+            object-fit: contain;
+          }
+
+          span {
+            margin-top: 15px;
+            color: #eaeaea;
+            font-size: 16px;
+            font-family: 'Inter', Helvetica, sans-serif;
+          }
+
+          .texto-celeste {
+            color: #6dfff7;
+            font-weight: 600;
+          }
+        }
+
+        .signo-igual {
+          font-size: 40px;
+          color: #ffffff;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  // Botón de alerta inferior central
+  .btn-alerta-inferior {
+    position: absolute;
+    top: 710px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(127, 174, 221, 0.15);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    z-index: 10;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+  }
+}
+// ==========================================
+// PANTALLA DAÑO AMBIENTAL - ¿QUÉ NOS ESPERA?
+// ==========================================
+.pantalla-dano-futuro {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
+  background-image: url('./img/Pantalla Daño 02.jpg'); // Asegurate de nombrar o ubicar esta imagen en tu carpeta img
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  // Botón Volver
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+    .btn-back-icon {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
+    }
+  }
+
+  // Tarjeta Oscura con el Título y Descripción
+  .card-futuro-texto {
+    position: absolute;
+    top: 165px;
+    left: 80px;
+    width: 500px;
+    background: rgba(0, 8, 35, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 3;
+
+    .titulo-futuro {
+      margin: 0 0 15px 0;
+      font-family: 'Roboto', Helvetica, sans-serif;
+      font-weight: bold;
+      color: #6dfff7;
+      font-size: 38px;
+    }
+
+    .descripcion-futuro {
+      margin: 0;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 300;
+      color: #eaeaea;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  }
+
+  // Botón Inferior "El futuro en cifras"
+  .footer-futuro {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    z-index: 10;
+
+    .btn-futuro-cifras {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      
+      span {
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 18px;
+
+        &.flecha-abajo {
+          font-size: 20px;
+          color: #6dfff7;
+        }
+      }
+    }
+  }
+}
+.pantalla-torre-eiffel {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 861px;
+  min-height: 861px;
+  background-image: url('./img/image-33.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  .btn-volver-circular {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    z-index: 10;
+
+    .btn-back-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    }
+    .btn-back-icon {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
+    }
+  }
+
+  .header-torre {
+    position: absolute;
+    top: 90px;
+    left: 118px;
+    width: 600px;
+    z-index: 3;
+
+    .titulo-torre {
+      margin: 0 0 10px 0;
+      font-family: 'Roboto Condensed', Helvetica, sans-serif;
+      font-weight: bold;
+      color: #8bffff;
+      font-size: 40px;
+    }
+    .subtitulo-torre {
+      margin: 0;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 300;
+      color: #eaeaea;
+      font-size: 22px;
+      line-height: normal;
+    }
+  }
+
+  .quiz-torre-card {
+    position: absolute;
+    top: 272px;
+    left: 118px;
+    width: 628px;
+    height: 459px;
+    background: #000823;
+    border-radius: 20px;
+    padding: 40px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+
+    .estado-quiz {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+
+      .texto-invitacion {
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 500;
+        color: #ffffff;
+        font-size: 24px;
+        margin-bottom: 25px;
+      }
+
+      .btn-iniciar-quiz {
+        width: 148px;
+        height: 44px;
+        border-radius: 10px;
+        background: #8bffff;
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 500;
+        color: #000000;
+        font-size: 22px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover { transform: scale(1.05); }
+      }
+
+      .pregunta-titulo {
+        font-family: 'Inter', Helvetica, sans-serif;
+        font-weight: 600;
+        color: #eaeaea;
+        font-size: 24px;
+        margin-bottom: 40px;
+      }
+
+      .opciones-grid {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        .opcion-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          cursor: pointer;
+
+          span {
+            font-family: 'Inter', Helvetica, sans-serif;
+            color: #eaeaea;
+            font-size: 22px;
+          }
+
+          .radio-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #8bffff;
+            background: transparent;
+            cursor: pointer;
+          }
+
+          &:hover .radio-btn {
+            background: rgba(139, 255, 255, 0.3);
+          }
+        }
+      }
+
+      .mensaje-error {
+        color: #ff6b6b;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+
+      .grilla-torres-mini {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+        max-height: 350px;
+        overflow-y: auto;
+        padding: 10px;
+
+        img { width: 25px; height: auto; object-fit: contain; }
+      }
+    }
+  }
+
+  .resultado-derecha-container {
+    position: absolute;
+    top: 271px;
+    left: 786px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    z-index: 5;
+
+    .img-torre-grande {
+      width: 264px;
+      height: 264px;
+      object-fit: contain;
+    }
+
+    .resultado-texto-bloque {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .icono-igual {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      .numero-texto-grupo {
+        display: flex;
+        flex-direction: column;
+
+        .numero-gigante {
+          font-family: 'Inter', Helvetica, sans-serif;
+          font-weight: normal;
+          color: #6dfff7;
+          font-size: 64px;
+          line-height: 1;
+        }
+
+        .texto-cada-anio {
+          font-family: 'Inter', Helvetica, sans-serif;
+          font-weight: 300;
+          color: #eaeaea;
+          font-size: 22px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .sugerencia-onu {
+      position: absolute;
+      bottom: -45px;
+      left: 188px;
+      font-family: 'Inter', Helvetica, sans-serif;
+      font-weight: 300;
+      color: #eaeaea;
+      font-size: 20px;
+    }
+  }
+
+  .footer-escala-global {
+    position: absolute;
+    bottom: 24px;
+    left: 99px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+
+    img { width: 32px; height: 32px; object-fit: cover; }
+    span { font-family: 'Inter', Helvetica, sans-serif; font-weight: 600; color: #ffffff; font-size: 20px; }
+  }
+
+  .btn-lupa-flotante {
+    position: absolute;
+    bottom: 50px;
+    right: 138px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(127, 174, 221, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    z-index: 10;
+
+    img { width: 76px; height: 63px; object-fit: contain; }
+  }
+}
