@@ -16,667 +16,688 @@
   <link rel="stylesheet" href="./styles/style.css"/>
 </head>
 <body>
-  
- <section class="hero" id="inicio">
-  <div class="hero__content">
-    <div class="hero__intro">
-      <h1 class="hero__title">
-        DETRÁS DE UN<br />
-        VIDEO DIGITAL HAY<br />
-        UNA<br />
-        INFRAESTRUCTURA<br />
-        FÍSICA.
-      </h1>
-      <p class="hero__subtitle">
-        ¿Qué costo tiene generar todo esto?
-      </p>
-      <button type="button" class="btn-glass" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-        <span class="btn-glass__label">DESCUBRELO</span>
-      </button>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="inicio">
+    <video class="hero__video-bg" autoplay muted loop playsinline>
+      <source src="./img/WaterFondo.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <div class="hero__intro">
+        <h1 class="hero__title">
+          DETRÁS DE UN<br />
+          VIDEO DIGITAL HAY<br />
+          UNA<br />
+          INFRAESTRUCTURA<br />
+          FÍSICA.
+        </h1>
+        <p class="hero__subtitle">
+          ¿Qué costo tiene generar todo esto?
+        </p>
+        <button type="button" class="btn-glass" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+          <span class="btn-glass__label">DESCUBRELO</span>
+        </button>
+      </div>
+
+      <div class="hero__card">
+        <img src="./img/grafico-gastoagua.png" alt="Esquema infraestructura, gasto de agua y CO2" class="hero__card-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOME / MENÚ PRINCIPAL ================= -->
+  <section class="pantalla-home" id="home">
+    <video class="home__video-bg" autoplay muted loop playsinline>
+      <source src="./img/WaterFondo.mp4" type="video/mp4" />
+    </video>
+    <div class="home__overlay"></div>
+
+    <div class="home__content">
+      <header class="home__header">
+        <span class="home__pretitle">IA:</span>
+        <h1 class="home__title">
+          EL<br />
+          PRECIO<br />
+          DE CREAR
+        </h1>
+      </header>
+
+      <div class="home__center-graphic">
+        <img src="./img/WorldFondo.png" alt="Esfera del planeta Tierra flotando en agua" />
+      </div>
+
+      <nav class="home__buttons" aria-label="Secciones principales">
+        <a href="#agua-intro" class="glass-btn-circle glass-btn-circle--left" aria-label="Ir a agua">
+          <img src="./img/icono-gota.svg" alt="Icono gota de agua" class="glass-btn-circle__icon" />
+        </a>
+        <a href="#seccionBallenas" class="glass-btn-circle glass-btn-circle--right" aria-label="Ir a CO2">
+          <img src="./img/icono-nube.svg" alt="Icono nube de CO2" class="glass-btn-circle__icon" />
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ================= PANTALLA AGUA 1 (Introducción) ================= -->
+  <section class="pantalla-agua-1" id="agua-intro">
+    <video class="agua-video-bg" autoplay muted loop playsinline>
+      <source src="./img/WaterFondo2.mp4" type="video/mp4" />
+    </video>
+    <div class="agua-video-overlay"></div>
+
+    <div class="agua-container-1">
+      <div class="texto-header">
+        <h1 class="titulo-costo">¿CUÁL ES<br>EL COSTO AMBIENTAL?</h1>
+        <p class="descripcion-costo">
+          La producción de videos con IA genera una importante huella hídrica debido al agua utilizada en las centrales eléctricas para generar y refrigerar la energía.
+        </p>
+      </div>
+      
+      <div class="imagenes-decorativas">
+        <img src="./img/grifo-icon.svg" alt="Grifo goteando agua" class="icono-grifo" />
+        <img src="./img/computer-icon.svg" alt="Servidores centrales de datos" class="icono-computer" />
+      </div>
     </div>
 
-    <div class="hero__card">
-      <img src="./img/grafico-gastoagua.png" alt="Esquema infraestructura, gasto de agua y CO2" />
+    <button type="button" class="btn-descubri-detras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+      <img src="./img/downflecha-icon.svg" alt="" class="icono-downflecha" />
+      <span>Descubrí que hay detrás</span>
+    </button>
+
+    <a class="btn-lupa-circular" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer" aria-label="Ver fuente y artículo de la ONU">
+      <span class="btn-lupa-bg"></span>
+      <span class="btn-lupa-icon">
+        <img src="./img/lupa-icon.svg" alt="Lupa" />
+      </span>
+    </a>
+  </section>
+
+  <!-- ================= PANTALLA AGUA 2 (Carrusel Interactivo) ================= -->
+  <section class="pantalla-agua-2" id="agua-carrusel">
+    <video class="agua-video-bg" autoplay muted loop playsinline>
+      <source src="./img/WaterFondo2.mp4" type="video/mp4" />
+    </video>
+    <div class="agua-video-overlay"></div>
+
+    <div class="agua-container-2">
+      <header class="header-datos">
+        <h2 class="cifra-gigante">220.000 MILLONES DE<br />LITROS DE AGUA</h2>
+        <p class="texto-consumo">Fueron consumidos<br />para la generación en data centers</p>
+      </header>
+
+      <aside class="datos-laterales">
+        <p class="pregunta-agua">¿CUÁNTOS LITROS DE AGUA<br />SE CONSUMEN<br />CON GEN IA?</p>
+        <div class="divisor-vertical"></div>
+      </aside>
+
+      <div class="carrusel-agua-wrapper">
+        <button type="button" class="btn-carrusel-nav prev" onclick="moverCarrusel(-1)" aria-label="Anterior">
+          <span class="flecha">←</span>
+        </button>
+
+        <div class="carrusel-columna-central">
+          <div class="carrusel-marco" onclick="alternarSubEstado()" title="Hacé clic para interactuar">
+            <img id="carruselImg" src="./img/Estado1-Texto.png" alt="Generación interactiva" class="img-carrusel" />
+          </div>
+          <p class="hint-interaccion">Hacé clic en la imagen para interactuar</p>
+        </div>
+
+        <button type="button" class="btn-carrusel-nav next" onclick="moverCarrusel(1)" aria-label="Siguiente">
+          <span class="flecha">→</span>
+        </button>
+      </div>
+    </div>
+
+    <button type="button" class="btn-conoce-impacto" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+      <span class="flecha-abajo">↓</span>
+      <span>Conoce el impacto</span>
+    </button>
+
+    <a class="btn-lupa-circular" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer" aria-label="Ver fuente y artículo de la ONU">
+      <span class="btn-lupa-bg"></span>
+      <span class="btn-lupa-icon">
+        <img src="./img/lupa-icon.svg" alt="Lupa" />
+      </span>
+    </a>
+  </section>
+
+  <!-- ================= PANTALLA CENTRALES DE DATOS ================= -->
+<!-- ================= PANTALLA 3: CENTRALES DE DATOS ================= -->
+<section class="pantalla-centrales-datos" id="centrales-datos">
+  <!-- Video de fondo en loop -->
+  <video class="centrales-video-bg" autoplay muted loop playsinline>
+    <source src="./img/WaterFondo2.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Filtro para contraste del video -->
+  <div class="centrales-video-overlay"></div>
+
+  <!-- Encabezado Superior Izquierdo -->
+  <header class="header-centrales">
+    <h1 class="titulo-centrales">CENTRALES DE DATOS<br />DE IA</h1>
+    <p class="descripcion-centrales">
+      Los centros de datos necesitan sistemas de refrigeración los cuales utilizan agua para mantener sus servidores funcionando correctamente.
+    </p>
+  </header>
+
+  <!-- Contenedor Horizontal de las 3 Tarjetas -->
+  <div class="centrales-grid-hover">
+    <!-- Tarjeta 1: Agua oculta -->
+    <div class="card-hover-item">
+      <img src="./img/CDD01-Estado1.png" alt="Agua oculta resumen" class="cdd-img estado-compacto" />
+      <img src="./img/CDD01-Estado2.png" alt="Agua oculta detalle" class="cdd-img estado-desplegado" />
+    </div>
+
+    <!-- Tarjeta 2: Una demanda que crece -->
+    <div class="card-hover-item">
+      <img src="./img/CDD02-Estado1.png" alt="Una demanda que crece resumen" class="cdd-img estado-compacto" />
+      <img src="./img/CDD02-Estado2.png" alt="Una demanda que crece detalle" class="cdd-img estado-desplegado" />
+    </div>
+
+    <!-- Tarjeta 3: Agua donde ya falta -->
+    <div class="card-hover-item">
+      <img src="./img/CDD03-Estado1.png" alt="Agua donde ya falta resumen" class="cdd-img estado-compacto" />
+      <img src="./img/CDD03-Estado2.png" alt="Agua donde ya falta detalle" class="cdd-img estado-desplegado" />
     </div>
   </div>
-</section>
 
-  <!-- ================= SECCIÓN HOME ================= -->
-  <section class="home-section">
-  <div class="home-container">
-    <!-- Textos Principales -->
-    <div class="text-block">
-      <p class="subtitle">IA:</p>
-      <h1 class="title">EL PRECIO<br>DE CREAR</h1>
-    </div>
-
-    <!-- Imagen Central -->
-    <div class="center-graphic">
-      <img src="./img/grafico-gastoagua.png" alt="Gráfico central">
-    </div>
-
-    <!-- Botones Glassmorphism -->
-    <div class="buttons-container">
-      <button class="glass-btn">
-        <img src="./img/icono-gota.svg" alt="Icono gota de agua">
-      </button>
-      <button class="glass-btn">
-        <img src="./img/icono-nube.svg" alt="Icono nube de CO2">
-      </button>
-    </div>
-  </div>
-</section>
-<!-- ================= PANTALLA AGUA 1 (Introducción) ================= -->
-<section class="pantalla-agua-1" id="agua-intro">
-  <!-- Botón Volver superior izquierdo -->
-  <button type="button" class="btn-volver-circular" onclick="window.history.back()" aria-label="Volver">
-    <span class="btn-back-bg"></span>
-    <span class="btn-back-icon">
-      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
+  <!-- Botón Circular Alerta Inferior Central -->
+  <button type="button" class="btn-alerta-central" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })" aria-label="Siguiente sección">
+    <span class="btn-alerta-bg"></span>
+    <span class="btn-alerta-icon">
+      <img src="./img/danger-icon.svg" alt="Continuar" />
     </span>
   </button>
-
-  <div class="agua-container-1">
-    <div class="texto-header">
-      <h1 class="titulo-costo">¿CUÁL ES<br>EL COSTO AMBIENTAL?</h1>
-      <p class="descripcion-costo">
-        La producción de videos con IA genera una importante huella hídrica debido al agua utilizada en las centrales eléctricas para generar y refrigerar la energía.
-      </p>
-    </div>
-    
-    <div class="imagenes-decorativas">
-      <img src="./img/grifo-icon.svg" alt="Grifo goteando agua" class="icono-grifo" />
-      <img src="./img/computer-icon.svg" alt="Servidores centrales de datos" class="icono-computer" />
-    </div>
-  </div>
-
-  <!-- Botón Inferior "Descubrí que hay detrás" -->
-  <button type="button" class="btn-descubri-detras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-    <img src="./img/downflecha-icon.svg" alt="" class="icono-downflecha" />
-    <span>Descubrí que hay detrás</span>
-  </button>
-
-  <!-- Botón Circular Lupa (Inferior derecho) -->
-  <a class="btn-lupa-circular" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer" aria-label="Ver fuente y artículo de la ONU">
-    <span class="btn-lupa-bg"></span>
-    <span class="btn-lupa-icon">
-      <img src="./img/lupa-icon.svg" alt="Lupa" />
-    </span>
-  </a>
 </section>
-
-
-<!-- ================= PANTALLA AGUA 2 (Componente Interactivo) ================= -->
-<section class="pantalla-agua-2">
-  <!-- Fondo (Comentado para usar degradado azul) -->
-  <!-- <img class="bg-agua-2" src="./img/fondo-agua-2.png" alt="Fondo textura"> -->
-
-  <!-- Icono de alerta superior izquierdo -->
-  <div class="icono-alerta-top">
-    <div class="glass-circle">
-       <img src="./img/icono-alerta.png" alt="Alerta">
-    </div>
-  </div>
-
-  <div class="agua-container-2">
-    <!-- Encabezado con los datos impactantes -->
-    <div class="header-datos">
-      <div class="datos-izq">
-        <h2 class="cifra-gigante">220.000 MILLONES<br>DE LITROS DE AGUA</h2>
-        <p class="texto-consumo">Fueron consumidos <br>para la generación en data centers</p>
-      </div>
-      <div class="datos-der">
-        <p class="pregunta-agua">¿CUÁNTOS LITROS DE AGUA SE CONSUMEN<br>CON GEN IA?</p>
-      </div>
-    </div>
-
-    <!-- Componente Interactivo -->
-    <div class="agua-interactiva">
-      <!-- Botonera -->
-      <div class="controles-agua">
-        <button class="glass-btn-control active" onclick="mostrarDato('dato-imagen')">Generar Imagen</button>
-        <button class="glass-btn-control" onclick="mostrarDato('dato-respuesta')">Generar Respuesta</button>
-        <button class="glass-btn-control" onclick="mostrarDato('dato-video')">Generar Video</button>
-      </div>
-
-      <!-- Tarjetas Ocultas/Visibles -->
-      <div class="cards-display">
-        <div id="dato-imagen" class="glass-card active">
-          <div class="icon-wrapper"><img src="./img/icono-alerta.png" alt="Precaución"></div>
-          <div class="card-content">
-            <p class="subtitle">Esta imagen costó:</p>
-            <p class="data">1,73 L</p>
-          </div>
-        </div>
-
-        <div id="dato-respuesta" class="glass-card">
-          <div class="icon-wrapper"><img src="./img/icono-alerta.png" alt="Precaución"></div>
-          <div class="card-content">
-            <p class="subtitle">Esta respuesta costó:</p>
-            <p class="data">519 ML</p>
-          </div>
-        </div>
-
-        <div id="dato-video" class="glass-card">
-          <div class="icon-wrapper"><img src="./img/icono-alerta.png" alt="Precaución"></div>
-          <div class="card-content">
-            <p class="subtitle">Este video costó:</p>
-            <p class="data">4,1 L</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Script de los botones -->
-<script>
-  function mostrarDato(idTarjeta) {
-    document.querySelectorAll('.glass-card').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.glass-btn-control').forEach(b => b.classList.remove('active'));
-    document.getElementById(idTarjeta).classList.add('active');
-    event.currentTarget.classList.add('active');
-  }
-</script>
-
-<!-- ================= PANTALLA CENTRALES DE DATOS ================= -->
-<section class="pantalla-centrales-datos">
-  <!-- Icono superior izquierdo (Glassmorphism) -->
-  <div class="icono-alerta-top">
-    <div class="glass-circle">
-       <img src="./img/icono-alerta.png" alt="Alerta">
-    </div>
-  </div>
-
-  <div class="centrales-container">
-    <!-- Título y Texto Descriptivo -->
-    <div class="header-centrales">
-      <h2 class="titulo-centrales">CENTRALES DE DATOS DE IA</h2>
-      <p class="descripcion-centrales">
-        Los centros de datos necesitan sistemas de refrigeración los cuales utilizan agua para mantener sus servidores funcionando correctamente.
-      </p>
-    </div>
-
-    <!-- Tarjetas / Componentes integrados -->
-    <div class="tarjetas-grid">
-      <div class="componente-frame-3">
-        <div class="glass-card-detalles">
-          <div class="icon-interno">
-            <img src="./img/icono-alerta.png" alt="Detalle" />
-          </div>
-          <div class="texto-detalle">
-            <p class="titulo-stat">Refrigeración Activa</p>
-            <p class="valor-stat">Alta demanda</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="componente-frame-3">
-        <div class="glass-card-detalles">
-          <div class="icon-interno">
-            <img src="./img/icono-alerta.png" alt="Detalle" />
-          </div>
-          <div class="texto-detalle">
-            <p class="titulo-stat">Consumo Hídrico</p>
-            <p class="valor-stat">Crítico</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="componente-frame-3">
-        <div class="glass-card-detalles">
-          <div class="icon-interno">
-            <img src="./img/icono-alerta.png" alt="Detalle" />
-          </div>
-          <div class="texto-detalle">
-            <p class="titulo-stat">Infraestructura</p>
-            <p class="valor-stat">Servidores 24/7</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botón inferior central -->
-    <div class="footer-centrales">
-      <button class="glass-btn-circular">
-        <img src="./img/icono-alerta.png" alt="Continuar">
-      </button>
-    </div>
-  </div>
-</section>
-<section class="pantalla-co2" id="carbon-footprint-details">
-  <!-- Botón Volver (arriba a la izquierda) -->
-  <button type="button" class="btn-volver-circular" onclick="window.history.back()" aria-label="Volver a la página anterior">
-    <span class="btn-back-bg"></span>
-    <span class="btn-back-icon">
-      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
-    </span>
-  </button>
+  <!-- ================= PANTALLA CO2 ================= -->
+   <section class="pantalla-co2" id="carbon-footprint-details">
+  <!-- Video de fondo -->
+  <video class="video-fondo-co2" autoplay muted loop playsinline>
+    <source src="./img/FondoC2-P1.mp4" type="video/mp4" />
+  </video>
 
   <div class="co2-contenido-absoluto">
-    <!-- Caja Negra de Información -->
     <article class="co2-card-negra">
       <h1 class="titulo-co2">
-        CUAL ES<br />
-        EL COSTO AMBIENTAL?
+        CUAL ES
+        <span class="resaltado">EL COSTO AMBIENTAL?</span>
       </h1>
       <p class="descripcion-co2">
-        la huella de carbono de la ia se compone de dos partes principales: las emisiones "incorporadas", derivadas de la fabricación de equipos informáticos y la construcción de centros de datos, y las emisiones "operacionales", derivadas del consumo eléctrico de los chips informáticos al realizar cálculos relacionados con la ia.
+        la generación de videos con ia genera emisiones de carbono debido a la energía necesaria para entrenar y ejecutar sus modelos en centros de datos.
       </p>
     </article>
 
-    <!-- Ilustración de la fábrica / elemento central -->
     <div class="co2-ilustracion-fabrica">
-      <img src="./img/03d9cef8-16ac-49f4-96e2-ff593f591293-1.png" alt="Ilustración de una fábrica con emisiones" />
+      <img src="./img/icono-datacenters.png" alt="Ilustración de una fábrica con emisiones" />
     </div>
 
-    <!-- Botón inferior izquierdo "¿Cuánto genera?" -->
-    <button type="button" class="btn-cuanto-genera" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })" aria-label="Ver más información sobre cuánto genera la inteligencia artificial">
-      <img src="./img/PNG-PSD-pngtree-photoroom-4.png" alt="" />
+    <button type="button" class="btn-cuanto-genera" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })" aria-label="Ver más información">
+      <img src="./img/downflecha-icon.svg" alt="" />
       <span>¿Cuánto genera?</span>
     </button>
   </div>
 </section>
+ <!-- ================= PANTALLA GPT3 INTERACTIVA ================= -->
+<!-- ================= PANTALLA GPT3 INTERACTIVA ================= -->
 <section class="pantalla-gpt3-interactiva" id="gpt3-seccion">
-  <!-- Botón Volver (arriba a la izquierda) -->
-  <button type="button" class="btn-volver-circular" onclick="window.history.back()" aria-label="Volver">
-    <span class="btn-back-bg"></span>
-    <span class="btn-back-icon">
-      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
-    </span>
-  </button>
 
-  <!-- ESTADO 1: Texto inicial descriptivo -->
-  <div class="gpt3-estado-texto" id="estadoTexto">
-    <header class="gpt3-header-info">
-      <h1 class="titulo-gpt3">
-        GPT-3 GENERÓ UNAS 500 TONELADAS MÉTRICAS DE CO2
-      </h1>
-      <p class="descripcion-gpt3">
-        Se utilizan cientos toneladas de Co2 para entrenar grandes modelos de lenguaje
-      </p>
-    </header>
-  </div>
+  <!-- Video de fondo Pantalla 2/3 -->
+  <video class="video-fondo-gpt3" autoplay muted loop playsinline>
+    <source src="./img/FondoC2-P2.mp4" type="video/mp4" />
+  </video>
 
-  <!-- ESTADO 2: Tarjeta del Gráfico Interactivo -->
-  <div class="gpt3-estado-grafico" id="estadoGrafico">
-    <div class="grafico-card-contenedor">
+  <div class="gpt3-video-overlay"></div>
+  
+  <!-- Header superior izquierdo -->
+  <header class="gpt3-header-info">
+    <h1 class="titulo-gpt3">
+      GPT-3 GENERÓ UNAS 500<br>TONELADAS MÉTRICAS DE CO2
+    </h1>
+    <p class="descripcion-gpt3">
+      Se utilizan cientos toneladas de Co2 para entrenar grandes modelos de lenguaje
+    </p>
+  </header>
+
+  <!-- Tarjeta interactiva central -->
+  <div class="grafico-card-contenedor">
+    
+    <!-- Panel Izquierdo: Controles -->
+    <div class="grafico-panel-izq">
+      <h2 class="titulo-opciones">¿QUÉ DESEA<br>GENERAR?</h2>
       
-      <!-- Panel Izquierdo: Opciones -->
-      <div class="grafico-panel-izq">
-        <h2 class="titulo-opciones">¿QUÉ DESEA GENERAR?</h2>
-        
-        <div class="opciones-botones">
-          <button type="button" class="btn-opcion active" onclick="filtrarPuntos('texto', event)">
-            <span>[TEXTO]<br><small>0.6g</small></span>
-          </button>
-          <button type="button" class="btn-opcion" onclick="filtrarPuntos('imagen', event)">
-            <span>[IMAGEN]<br><small>100g</small></span>
-          </button>
-          <button type="button" class="btn-opcion" onclick="filtrarPuntos('video', event)">
-            <span>[VIDEO]<br><small>466g</small></span>
-          </button>
-        </div>
-
-        <p class="instruccion-opcion">Selecciona una opción para ver el impacto</p>
-
-        <div class="dato-interactivo-box">
-          <h3>DATO INTERACTIVO:</h3>
-          <p>1 Punto = 1 Árbol necesario por año.</p>
-        </div>
+      <div class="opciones-botones">
+        <button type="button" class="btn-opcion" onclick="filtrarImpacto('texto', this)">
+          <span>[TEXTO]<br><small>0.6g</small></span>
+        </button>
+        <button type="button" class="btn-opcion" onclick="filtrarImpacto('imagen', this)">
+          <span>[IMAGEN]<br><small>100g</small></span>
+        </button>
+        <button type="button" class="btn-opcion" onclick="filtrarImpacto('video', this)">
+          <span>[VIDEO]<br><small>466g</small></span>
+        </button>
       </div>
 
-      <!-- Panel Derecho: Gráfico y Nube de Puntos -->
-      <div class="grafico-panel-der">
-        <h3 class="titulo-pregunta-grafico">HUELLA DE CO2: EQUIVALENCIA EN ÁRBOLES</h3>
-        
-        <div class="area-plano-cartesiano">
+      <p class="instruccion-opcion">Selecciona una opción para ver el impacto</p>
+
+      <div class="dato-interactivo-box">
+        <h3>DATO INTERACTIVO:</h3>
+        <p>1 Punto = 1 Árbol necesario por año.</p>
+      </div>
+    </div>
+
+    <div class="grafico-divisor"></div>
+
+    <!-- Panel Derecho: Gráfico Cartesiano Dinámico -->
+    <div class="grafico-panel-der">
+      <h3 class="titulo-pregunta-grafico">
+        HUELLA DE CO2: EQUIVALENCIA EN ÁRBOLES
+      </h3>
+      
+      <div class="area-plano-cartesiano">
+        <div class="eje-y-container">
           <span class="eje-y-label">IMPACTO RELATIVO: ÁRBOLES NECESARIOS (por año)</span>
-          
-          <div class="ejes-lineas">
-            <div class="labels-y">
-              <span>20</span><span>15</span><span>10</span><span>5</span><span>0</span>
-            </div>
-            <!-- Contenedor de la nube de puntos orgánica (Total: 33 puntos) -->
-            <div class="nube-puntos-container" id="nubePuntos">
-              <!-- Se generan exactamente 33 puntos con clases de control -->
-              <span class="punto celeste" data-index="1" style="bottom: 12%; left: 8%;"></span>
-              <span class="punto celeste" data-index="2" style="bottom: 18%; left: 14%;"></span>
-              <span class="punto celeste" data-index="3" style="bottom: 25%; left: 20%;"></span>
-              <span class="punto celeste" data-index="4" style="bottom: 30%; left: 26%;"></span>
-              <span class="punto celeste" data-index="5" style="bottom: 38%; left: 32%;"></span>
-              <span class="punto celeste" data-index="6" style="bottom: 44%; left: 38%;"></span>
-              <span class="punto celeste" data-index="7" style="bottom: 50%; left: 44%;"></span>
-              <span class="punto celeste" data-index="8" style="bottom: 58%; left: 50%;"></span>
-              <span class="punto celeste" data-index="9" style="bottom: 64%; left: 56%;"></span>
-              <span class="punto celeste" data-index="10" style="bottom: 72%; left: 62%;"></span>
-              <span class="punto celeste" data-index="11" style="bottom: 78%; left: 68%;"></span>
-              <span class="punto celeste" data-index="12" style="bottom: 84%; left: 74%;"></span>
-              <span class="punto celeste" data-index="13" style="bottom: 35%; left: 28%;"></span>
-              <span class="punto celeste" data-index="14" style="bottom: 42%; left: 34%;"></span>
-              <span class="punto celeste" data-index="15" style="bottom: 48%; left: 40%;"></span>
-              <span class="punto celeste" data-index="16" style="bottom: 55%; left: 46%;"></span>
-              <span class="punto celeste" data-index="17" style="bottom: 61%; left: 52%;"></span>
-              <span class="punto celeste" data-index="18" style="bottom: 68%; left: 58%;"></span>
-              <span class="punto celeste" data-index="19" style="bottom: 75%; left: 64%;"></span>
-              <span class="punto celeste" data-index="20" style="bottom: 22%; left: 42%;"></span>
-              <span class="punto celeste" data-index="21" style="bottom: 28%; left: 48%;"></span>
-              <span class="punto celeste" data-index="22" style="bottom: 34%; left: 54%;"></span>
-              <span class="punto celeste" data-index="23" style="bottom: 40%; left: 60%;"></span>
-              <span class="punto celeste" data-index="24" style="bottom: 46%; left: 66%;"></span>
-              <span class="punto celeste" data-index="25" style="bottom: 52%; left: 72%;"></span>
-              <span class="punto celeste" data-index="26" style="bottom: 59%; left: 78%;"></span>
-              <span class="punto celeste" data-index="27" style="bottom: 65%; left: 84%;"></span>
-              <span class="punto celeste" data-index="28" style="bottom: 71%; left: 90%;"></span>
-              <span class="punto celeste" data-index="29" style="bottom: 80%; left: 80%;"></span>
-              <span class="punto celeste" data-index="30" style="bottom: 86%; left: 86%;"></span>
-              <span class="punto celeste" data-index="31" style="bottom: 20%; left: 70%;"></span>
-              <span class="punto celeste" data-index="32" style="bottom: 26%; left: 76%;"></span>
-              <span class="punto celeste" data-index="33" style="bottom: 32%; left: 82%;"></span>
-            </div>
+          <div class="labels-y">
+            <span>20</span>
+            <span>15</span>
+            <span>10</span>
+            <span>5</span>
+            <span>0</span>
           </div>
-          
-          <div class="eje-x-label">CONSULTAS DE USUARIO (x1000)</div>
         </div>
 
-        <!-- Leyenda inferior -->
-        <div class="grafico-leyenda">
-          <div class="item-leyenda"><span class="bullet celeste"></span> Entrenamiento GPT-3</div>
-          <div class="item-leyenda"><span class="bullet naranja"></span> Generación de Video</div>
-          <div class="item-leyenda"><span class="bullet gris"></span> Generación de Texto</div>
+        <div class="lienzo-grafico-grilla">
+          <div class="eje-linea-y"></div>
+          <div class="eje-linea-x"></div>
+
+          <!-- Líneas de fondo cartesianas -->
+          <div class="grilla-cuadricula">
+            <div class="fila-grilla"></div>
+            <div class="fila-grilla"></div>
+            <div class="fila-grilla"></div>
+            <div class="fila-grilla"></div>
+          </div>
+
+          <!-- Dispersión de puntos original interactiva -->
+          <div class="nube-puntos-container" id="nubePuntos">
+            <span class="punto" style="bottom: 12%; left: 8%;"></span>
+            <span class="punto" style="bottom: 18%; left: 14%;"></span>
+            <span class="punto" style="bottom: 25%; left: 20%;"></span>
+            <span class="punto" style="bottom: 30%; left: 26%;"></span>
+            <span class="punto" style="bottom: 38%; left: 32%;"></span>
+            <span class="punto" style="bottom: 44%; left: 38%;"></span>
+            <span class="punto" style="bottom: 50%; left: 44%;"></span>
+            <span class="punto" style="bottom: 58%; left: 50%;"></span>
+            <span class="punto" style="bottom: 64%; left: 56%;"></span>
+            <span class="punto" style="bottom: 72%; left: 62%;"></span>
+            <span class="punto" style="bottom: 78%; left: 68%;"></span>
+            <span class="punto" style="bottom: 84%; left: 74%;"></span>
+            <span class="punto" style="bottom: 35%; left: 28%;"></span>
+            <span class="punto" style="bottom: 42%; left: 34%;"></span>
+            <span class="punto" style="bottom: 48%; left: 40%;"></span>
+            <span class="punto" style="bottom: 55%; left: 46%;"></span>
+            <span class="punto" style="bottom: 61%; left: 52%;"></span>
+            <span class="punto" style="bottom: 68%; left: 58%;"></span>
+            <span class="punto" style="bottom: 75%; left: 64%;"></span>
+            <span class="punto" style="bottom: 22%; left: 42%;"></span>
+            <span class="punto" style="bottom: 28%; left: 48%;"></span>
+            <span class="punto" style="bottom: 34%; left: 54%;"></span>
+            <span class="punto" style="bottom: 40%; left: 60%;"></span>
+            <span class="punto" style="bottom: 46%; left: 66%;"></span>
+            <span class="punto" style="bottom: 52%; left: 72%;"></span>
+            <span class="punto" style="bottom: 59%; left: 78%;"></span>
+            <span class="punto" style="bottom: 65%; left: 84%;"></span>
+            <span class="punto" style="bottom: 71%; left: 90%;"></span>
+            <span class="punto" style="bottom: 80%; left: 80%;"></span>
+            <span class="punto" style="bottom: 86%; left: 86%;"></span>
+            <span class="punto" style="bottom: 20%; left: 70%;"></span>
+            <span class="punto" style="bottom: 26%; left: 76%;"></span>
+            <span class="punto" style="bottom: 32%; left: 82%;"></span>
+          </div>
         </div>
       </div>
 
+      <!-- Leyenda inferior con colores sincronizados -->
+      <div class="grafico-leyenda">
+        <div class="item-leyenda"><span class="bullet celeste"></span> Texto (0.6g)</div>
+        <div class="item-leyenda"><span class="bullet amarillo"></span> Imagen (100g)</div>
+        <div class="item-leyenda"><span class="bullet naranja"></span> Video (466g)</div>
+      </div>
     </div>
   </div>
 
-  <!-- Botón Inferior de Transición -->
-  <div class="footer-gpt3-transicion">
-    <button type="button" class="btn-detras-numeros" onclick="alternarVistaGrafico()">
-      <img src="./img/PNG-PSD-pngtree-photoroom-5.png" alt="" />
-      <span id="textoBotonInferior">Detrás de los números</span>
+  <!-- Botón inferior -->
+  <footer class="footer-gpt3-transicion">
+    <button type="button" class="btn-detras-numeros" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+      <img src="./img/downflecha-icon.svg" alt="" />
+      <span>Detrás de los números</span>
     </button>
-  </div>
+  </footer>
 </section>
-<script>
-  function alternarVistaGrafico() {
-    const estadoTexto = document.getElementById('estadoTexto');
-    const estadoGrafico = document.getElementById('estadoGrafico');
-    const textoBoton = document.getElementById('textoBotonInferior');
 
-    if (estadoGrafico.style.display === 'block') {
-      estadoGrafico.style.display = 'none';
-      estadoTexto.style.opacity = '1';
-      textoBoton.textContent = 'Detrás de los números';
-    } else {
-      estadoTexto.style.opacity = '0';
+  <!-- ================= PANTALLA CENTRALES DE DATOS - BALLENAS ================= -->
+<section class="pantalla-ballenas" id="seccionBallenas">
+
+  <!-- Video de fondo Pantalla 3 -->
+  <video class="video-fondo-ballenas" autoplay muted loop playsinline>
+    <source src="./img/FondoC2-P3.mp4" type="video/mp4" />
+  </video>
+
+  <div class="ballenas-video-overlay"></div>
+
+  <!-- Botón volver superior -->
+  <button type="button" class="btn-volver-pantalla" onclick="window.history.back()" aria-label="Volver">
+    <img src="./img/downflecha-icon.svg" alt="" class="icono-volver" />
+  </button>
+
+  <!-- Encabezado superior izquierdo -->
+  <header class="header-ballenas">
+    <h1 class="titulo-ballenas">
+      CENTRALES DE DATOS<br>DE IA
+    </h1>
+    <p class="subtitulo-ballenas">
+      Los centros de datos requieren grandes cantidades de energía para mantener sus servidores funcionando.
+    </p>
+  </header>
+
+  <!-- Tarjeta interactiva de estados -->
+  <article class="quiz-card-ballenas" id="quizCard">
+    <div class="quiz-header">
+      <h2 id="quizTitulo" class="quiz-main-title">
+        En 2024 los centros de datos emitieron 182 millones de toneladas de CO₂
+      </h2>
+      <p id="quizPregunta" class="quiz-sub-text">
+        Si se pudieran pesar esas emisiones… ¿Cuántas ballenas azules necesitaríamos para alcanzar ese peso?
+      </p>
+    </div>
+
+    <!-- ESTADO 1: Intro (1 Ballena = 150 toneladas) -->
+    <div class="quiz-vista-estado vista-intro activa" id="vistaIntro" onclick="avanzarAQuiz()">
+      <div class="intro-ballena-box">
+        <img src="./img/ballena-icon.svg" alt="Ballena azul" class="ballena-grande-vector" />
+        <p class="intro-pie-texto">1 Ballena azul = 150 toneladas</p>
+      </div>
+      <span class="hint-click">Toca para descubrir la equivalencia</span>
+    </div>
+
+    <!-- ESTADO 2: Quiz (3 Opciones de selección) -->
+    <div class="quiz-vista-estado vista-opciones" id="vistaOpciones">
+      <div class="opcion-ballena-item" onclick="seleccionarOpcion(true, this)">
+        <img src="./img/ballena-icon.svg" alt="1.200.000 Ballenas" />
+        <p class="opcion-texto">1.200.000<br>Ballenas</p>
+        <span class="circulo-radio"></span>
+      </div>
+
+      <div class="opcion-ballena-item" onclick="seleccionarOpcion(false, this)">
+        <img src="./img/ballena-icon.svg" alt="1.000 Ballenas" />
+        <p class="opcion-texto">1.000<br>Ballenas</p>
+        <span class="circulo-radio"></span>
+      </div>
+
+      <div class="opcion-ballena-item" onclick="seleccionarOpcion(false, this)">
+        <img src="./img/ballena-icon.svg" alt="10.000 Ballenas" />
+        <p class="opcion-texto">10.000<br>Ballenas</p>
+        <span class="circulo-radio"></span>
+      </div>
+    </div>
+
+    <!-- ESTADO 3: Resolución (Fábrica = Ballena) -->
+    <div class="quiz-vista-estado vista-resultado" id="vistaResultado">
+      <div class="resultado-comparativa">
+        <div class="lado-fabrica">
+          <img src="./img/icono-datacenters.png" alt="Centro de datos" class="fabrica-icono" />
+          <p class="resultado-pie-texto">Huella de CO₂ en 2024</p>
+        </div>
+
+        <span class="signo-igual">=</span>
+
+        <div class="lado-ballena">
+          <img src="./img/ballena-icon.svg" alt="Ballena Azul" class="ballena-grande-vector" />
+          <p class="resultado-pie-texto">1.200.000 Ballenas azules</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Botones inferiores del prototipo (Alerta y Lupa) -->
+  <footer class="footer-ballenas-controles">
+    <button type="button" class="btn-circular-alerta" aria-label="Alerta informativa">
+      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
+    </button>
+  </footer>
+</section>
+
+  <!-- ================= PANTALLA DAÑO FUTURO ================= -->
+  <section class="pantalla-dano-futuro" id="futuro-cifras">
+    <article class="card-futuro-texto">
+      <h1 class="titulo-futuro">¿QUÉ NOS ESPERA?</h1>
+      <p class="descripcion-futuro">
+        Si el uso de IA para generar videos continúa creciendo, su impacto ambiental podría aumentar considerablemente hacia 2030.
+      </p>
+    </article>
+
+    <div class="footer-futuro">
+      <button type="button" class="btn-futuro-cifras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+        <span class="flecha-abajo">↓</span>
+        <span>El futuro en cifras</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= PANTALLA TORRE EIFFEL ================= -->
+  <section class="pantalla-torre-eiffel" id="seccionTorreEiffel">
+    <header class="header-torre">
+      <h1 class="titulo-torre">UNA PREDICCIÓN PREOCUPANTE</h1>
+      <p class="subtitulo-torre">2,5 millones de toneladas de residuos electrónicos podrían generarse anualmente para 2030.</p>
+    </header>
+
+    <div class="quiz-torre-card" id="quizTorreCard">
+      <div class="estado-quiz" id="estadoInvitacion">
+        <p class="texto-invitacion">Te invitamos a participar de este quiz:</p>
+        <button type="button" class="btn-iniciar-quiz" onclick="cambiarEstadoQuiz('pregunta')">Iniciar</button>
+      </div>
+
+      <div class="estado-quiz" id="estadoPregunta" style="display: none;">
+        <h2 class="pregunta-titulo">¿A cuantas torres Eiffel equivaldria?</h2>
+        <div class="opciones-grid">
+          <div class="opcion-item" onclick="verificarTorre(false)">
+            <span>80</span>
+            <button type="button" class="radio-btn"></button>
+          </div>
+          <div class="opcion-item" onclick="verificarTorre(false)">
+            <span>199</span>
+            <button type="button" class="radio-btn"></button>
+          </div>
+          <div class="opcion-item" onclick="verificarTorre(true)">
+            <span>250</span>
+            <button type="button" class="radio-btn"></button>
+          </div>
+        </div>
+        <p id="mensajeErrorQuiz" class="mensaje-error" style="display: none;">Incorrecto, intenta de nuevo.</p>
+      </div>
+
+      <div class="estado-quiz" id="estadoResultado" style="display: none;">
+        <div class="grilla-torres-mini">
+          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+        </div>
+      </div>
+    </div>
+
+    <div class="resultado-derecha-container" id="resultadoDerecha" style="display: none;">
+      <img src="./img/torreeiffel-icon.svg" alt="Torre Eiffel Grande" class="img-torre-grande" />
+      <div class="resultado-texto-bloque">
+        <img src="./img/igual-icon.svg" alt="Igual" class="icono-igual" />
+        <div class="numero-texto-grupo">
+          <span class="numero-gigante">250</span>
+          <span class="texto-cada-anio">CADA AÑO</span>
+        </div>
+      </div>
+      <span class="sugerencia-onu">Según la ONU</span>
+    </div>
+
+    <div class="footer-escala-global">
+      <img src="./img/PNG-PSD-pngtree-photoroom-5.png" alt="" />
+      <span>A escala global</span>
+    </div>
+
+    <a class="btn-lupa-flotante" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer">
+      <img src="./img/lupa-icon.svg" alt="Lupa" />
+    </a>
+  </section>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Carrusel Pantalla Agua 2
+    const diapositivasAgua = [
+      { estado1: './img/Estado1-Texto.png', estado2: './img/Estado2-Texto.svg' },
+      { estado1: './img/Estado1-Imagen.png', estado2: './img/Estado2-Imagen.png' },
+      { estado1: './img/Estado1-Video.png', estado2: './img/Estado2-Video.png' }
+    ];
+
+    let indiceActual = 0;
+    let enSegundoEstado = false;
+
+    function actualizarVistaCarrusel() {
+      const imgElement = document.getElementById('carruselImg');
+      if (!imgElement) return;
+      imgElement.style.opacity = '0';
       setTimeout(() => {
-        estadoGrafico.style.display = 'block';
-        textoBoton.textContent = 'Volver al resumen';
-        
-        // Al abrir la pantalla, ningún botón está activo y los 33 puntos arrancan apagados (grises/blancos)
-        document.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('active'));
-        apagarTodosLosPuntos();
-      }, 300);
-    }
-  }
-
-  function apagarTodosLosPuntos() {
-    const puntos = document.querySelectorAll('.nube-puntos-container .punto');
-    puntos.forEach(p => {
-      p.classList.remove('activo-naranja', 'activo-amarillo', 'activo-celeste');
-      // Estado apagado: color gris/blanco tenue
-      p.style.background = 'rgba(255, 255, 255, 0.25)';
-      p.style.boxShadow = 'none';
-      p.style.opacity = '0.4';
-      p.style.transform = 'translate(-50%, 50%) scale(1)';
-    });
-  }
-
-  function filtrarPuntos(tipo, event) {
-    // Marcamos el botón seleccionado y desmarcamos los demás
-    document.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('active'));
-    if (event) {
-      event.currentTarget.classList.add('active');
+        const diapositiva = diapositivasAgua[indiceActual];
+        imgElement.src = enSegundoEstado ? diapositiva.estado2 : diapositiva.estado1;
+        imgElement.style.opacity = '1';
+      }, 150);
     }
 
-    const puntos = document.querySelectorAll('.nube-puntos-container .punto');
-    
-    // Primero apagamos todos para limpiar la selección anterior
-    apagarTodosLosPuntos();
+    function moverCarrusel(direccion) {
+      indiceActual = (indiceActual + direccion + diapositivasAgua.length) % diapositivasAgua.length;
+      enSegundoEstado = false;
+      actualizarVistaCarrusel();
+    }
 
-    // Luego encendemos exactamente la cantidad y color que corresponden
+    function alternarSubEstado() {
+      enSegundoEstado = !enSegundoEstado;
+      actualizarVistaCarrusel();
+    }
+
+    // Pantalla GPT3
+    function alternarVistaGrafico() {
+      const estadoTexto = document.getElementById('estadoTexto');
+      const estadoGrafico = document.getElementById('estadoGrafico');
+      const textoBoton = document.getElementById('textoBotonInferior');
+
+      if (estadoGrafico.style.display === 'block') {
+        estadoGrafico.style.display = 'none';
+        estadoTexto.style.opacity = '1';
+        textoBoton.textContent = 'Detrás de los números';
+      } else {
+        estadoTexto.style.opacity = '0';
+        setTimeout(() => {
+          estadoGrafico.style.display = 'block';
+          textoBoton.textContent = 'Volver al resumen';
+          document.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('active'));
+          apagarTodosLosPuntos();
+        }, 300);
+      }
+    }
+
+    function apagarTodosLosPuntos() {
+      const puntos = document.querySelectorAll('.nube-puntos-container .punto');
+      puntos.forEach(p => {
+        p.classList.remove('activo-naranja', 'activo-amarillo', 'activo-celeste');
+        p.style.background = 'rgba(255, 255, 255, 0.25)';
+        p.style.boxShadow = 'none';
+        p.style.opacity = '0.4';
+        p.style.transform = 'translate(-50%, 50%) scale(1)';
+      });
+    }
+
+    function filtrarImpacto(tipo, boton) {
+  // 1. Manejo del botón activo en el menú lateral
+  document.querySelectorAll('.btn-opcion').forEach(b => b.classList.remove('active'));
+  boton.classList.add('active');
+
+  // 2. Apagar todos los puntos primero (vuelven a gris apagado)
+  const puntos = document.querySelectorAll('#nubePuntos .punto');
+  puntos.forEach(p => {
+    p.classList.remove('activo-naranja', 'activo-amarillo', 'activo-celeste');
+  });
+
+  // 3. Encendido según la selección
+  if (tipo === 'texto') {
+    // Activa solo un punto en color naranja
+    if (puntos[0]) puntos[0].classList.add('activo-naranja');
+
+  } else if (tipo === 'imagen') {
+    // Activa un grupo representativo en amarillo
     puntos.forEach((p, index) => {
-      if (tipo === 'texto') {
-        // Enciende 1 solo punto en color naranja
-        if (index === 0) {
-          p.style.opacity = '1';
-          p.classList.add('activo-naranja');
-        }
-      } else if (tipo === 'imagen') {
-        // Enciende 7 puntos en color amarillo
-        if (index < 7) {
-          p.style.opacity = '1';
-          p.classList.add('activo-amarillo');
-        }
-      } else if (tipo === 'video') {
-        // Enciende los 33 puntos en color celeste
-        p.style.opacity = '1';
+      if (index < 12) p.classList.add('activo-amarillo');
+    });
+
+  } else if (tipo === 'video') {
+    // Prende las 3 variantes de color a lo largo de toda la nube
+    puntos.forEach((p, index) => {
+      if (index < 10) {
         p.classList.add('activo-celeste');
+      } else if (index < 22) {
+        p.classList.add('activo-amarillo');
+      } else {
+        p.classList.add('activo-naranja');
       }
     });
   }
-</script>
-<section class="pantalla-ballenas" id="seccionBallenas">
-  <!-- Botón Volver superior izquierdo -->
-  <button type="button" class="btn-volver-circular" onclick="window.history.back()" aria-label="Volver">
-    <span class="btn-back-bg"></span>
-    <span class="btn-back-icon">
-      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
-    </span>
-  </button>
+}
 
-  <header class="header-ballenas">
-    <h1 class="titulo-ballenas">CENTRALES DE DATOS DE IA</h1>
-    <p class="subtitulo-ballenas">Los centros de datos requieren grandes cantidades de energía para mantener sus servidores funcionando.</p>
-  </header>
+    // Pantalla Ballenas
+    // 1. Pasa del Estado 1 (Intro) al Estado 2 (Quiz de opciones)
+function avanzarAQuiz() {
+  document.getElementById('vistaIntro').classList.remove('activa');
+  document.getElementById('vistaOpciones').classList.add('activa');
+}
 
-  <!-- Tarjeta Interactiva del Quiz -->
-  <article class="quiz-card-ballenas" id="quizCard">
-    <div class="quiz-header">
-      <h2 id="quizTitulo" class="quiz-main-title">En 2024 los centros de datos emitieron 182 millones de toneladas de CO₂</h2>
-      <p id="quizPregunta" class="quiz-sub-text">Si se pudieran pesar esas emisiones… ¿Cuántas ballenas azules necesitaríamos para alcanzar ese peso?</p>
-    </div>
+// 2. Comprueba la opción elegida
+function seleccionarOpcion(esCorrecta, elemento) {
+  if (esCorrecta) {
+    // Éxito: pasar al Estado 3
+    document.getElementById('vistaOpciones').classList.remove('activa');
+    document.getElementById('vistaResultado').classList.add('activa');
 
-    <!-- Contenedor dinámico (cambia entre las opciones y el estado de éxito) -->
-    <div class="quiz-content-area" id="quizContentArea">
-      <!-- OPCIÓN 1 (1.200.000 - Correcta) -->
-      <div class="opcion-ballena-item col-1">
-        <img src="./img/chatgpt-image-8-sept-2026-16-47-36-1.png" alt="1.200.000 Ballenas" />
-        <p class="opcion-texto">1.200.000<br>Ballenas</p>
-        <button type="button" class="btn-radio-quiz" onclick="verificarRespuesta(true)"></button>
-      </div>
-
-      <!-- OPCIÓN 2 (1.000 - Incorrecta) -->
-      <div class="opcion-ballena-item col-2">
-        <img src="./img/chatgpt-image-8-sept-2026-16-47-36-2.png" alt="1.000 Ballenas" />
-        <p class="opcion-texto">1.000<br>Ballenas</p>
-        <button type="button" class="btn-radio-quiz" onclick="verificarRespuesta(false)"></button>
-      </div>
-
-      <!-- OPCIÓN 3 (10.000 - Incorrecta) -->
-      <div class="opcion-ballena-item col-3">
-        <img src="./img/chatgpt-image-8-sept-2026-16-47-36-3.png" alt="10.000 Ballenas" />
-        <p class="opcion-texto">10.000<br>Ballenas</p>
-        <button type="button" class="btn-radio-quiz" onclick="verificarRespuesta(false)"></button>
-      </div>
-    </div>
-  </article>
-
-  <!-- Botón de alerta / información inferior -->
-  <button type="button" class="btn-alerta-inferior" onclick="alert('Los centros de datos emitieron 182 millones de toneladas de CO₂ en 2024.')" aria-label="Alerta">
-    <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
-  </button>
-</section>
-<script>
-  function verificarRespuesta(esCorrecta) {
-    const titulo = document.getElementById('quizTitulo');
-    const pregunta = document.getElementById('quizPregunta');
-    const areaContenido = document.getElementById('quizContentArea');
-
-    if (esCorrecta) {
-      // Cambia los textos de la cabecera de la tarjeta
-      titulo.textContent = "En 2024 los centros de datos emitieron 182 millones de toneladas de CO₂";
-      pregunta.textContent = "¡Es correcto! La huella de CO₂ equivale, en masa, a más de un millón de ballenas azules.";
-      
-      // Transiciona a la vista de éxito con la fábrica y la ballena (tal cual tu prototipo final)
-      areaContenido.innerHTML = `
-        <div class="estado-exito-final">
-          <div class="exito-bloque">
-            <img src="./img/03d9cef8-16ac-49f4-96e2-ff593f591293-1.png" alt="Fábrica" />
-            <span>Huella de CO₂ en 2024</span>
-          </div>
-          <span class="signo-igual">=</span>
-          <div class="exito-bloque">
-            <img src="./img/chatgpt-image-8-sept-2026-16-47-36-1.png" alt="Ballena azul" />
-            <span class="texto-celeste">1.200.000 Ballenas azules</span>
-          </div>
-        </div>
-      `;
-    } else {
-      // Mensaje si le erra
-      pregunta.textContent = "Mmm... Inténtalo de nuevo, prueba con otra cantidad.";
-    }
+    // Actualizar el subtítulo de la tarjeta
+    document.getElementById('quizPregunta').textContent = 
+      "¡Es correcto! La huella de CO₂ equivale, en masa, a más de un millón de ballenas azules.";
+  } else {
+    // Opción incorrecta: feedback visual (sacudida roja)
+    elemento.classList.add('error');
+    setTimeout(() => {
+      elemento.classList.remove('error');
+    }, 600);
   }
-</script>
-<section class="pantalla-dano-futuro" id="futuro-cifras">
-  <!-- Botón Volver superior izquierdo -->
-  <button type="button" class="btn-volver-circular" onclick="window.history.back()" aria-label="Volver">
-    <span class="btn-back-bg"></span>
-    <span class="btn-back-icon">
-      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
-    </span>
-  </button>
+}
 
-  <!-- Tarjeta de Texto Principal -->
-  <article class="card-futuro-texto">
-    <h1 class="titulo-futuro">¿QUÉ NOS ESPERA?</h1>
-    <p class="descripcion-futuro">
-      Si el uso de IA para generar videos continúa creciendo, su impacto ambiental podría aumentar considerablemente hacia 2030.
-    </p>
-  </article>
-
-  <!-- Botón Inferior "El futuro en cifras" -->
-  <div class="footer-futuro">
-    <button type="button" class="btn-futuro-cifras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-      <span class="flecha-abajo">↓</span>
-      <span>El futuro en cifras</span>
-    </button>
-  </div>
-</section>
-<section class="pantalla-torre-eiffel" id="seccionTorreEiffel">
-  <!-- Botón Volver (superior izquierdo) -->
-  <button type="button" class="btn-volver-circular" onclick="window.history.back()" aria-label="Volver">
-    <span class="btn-back-bg"></span>
-    <span class="btn-back-icon">
-      <img src="./img/PNG-warning-caution-triangle-mark-white-icon-photoroom-1.png" alt="" />
-    </span>
-  </button>
-
-  <!-- Encabezado Fijo -->
-  <header class="header-torre">
-    <h1 class="titulo-torre">UNA PREDICCIÓN PREOCUPANTE</h1>
-    <p class="subtitulo-torre">2,5 millones de toneladas de residuos electrónicos podrían generarse anualmente para 2030.</p>
-  </header>
-
-  <!-- Contenedor Interactivo Principal -->
-  <div class="quiz-torre-card" id="quizTorreCard">
-    <!-- Estado 1: Invitación -->
-    <div class="estado-quiz" id="estadoInvitacion">
-      <p class="texto-invitacion">Te invitamos a participar de este quiz:</p>
-      <button type="button" class="btn-iniciar-quiz" onclick="cambiarEstadoQuiz('pregunta')">Iniciar</button>
-    </div>
-
-    <!-- Estado 2: Pregunta del Quiz -->
-    <div class="estado-quiz" id="estadoPregunta" style="display: none;">
-      <h2 class="pregunta-titulo">¿A cuantas torres Eiffel equivaldria?</h2>
-      <div class="opciones-grid">
-        <div class="opcion-item" onclick="verificarTorre(false)">
-          <span>80</span>
-          <button type="button" class="radio-btn"></button>
-        </div>
-        <div class="opcion-item" onclick="verificarTorre(false)">
-          <span>199</span>
-          <button type="button" class="radio-btn"></button>
-        </div>
-        <div class="opcion-item" onclick="verificarTorre(true)">
-          <span>250</span>
-          <button type="button" class="radio-btn"></button>
-        </div>
-      </div>
-      <p id="mensajeErrorQuiz" class="mensaje-error" style="display: none;">Incorrecto, intenta de nuevo.</p>
-    </div>
-
-    <!-- Estado 3: Resultado Animado -->
-    <div class="estado-quiz" id="estadoResultado" style="display: none;">
-      <div class="grilla-torres-mini">
-        <!-- Renderizado de las mini torres para el bloque izquierdo -->
-        <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-        <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-        <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-        <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-        <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-        <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-      </div>
-    </div>
-  </div>
-
-  <!-- Contenedor Derecho del Resultado Final (Aparece al acertar) -->
-  <div class="resultado-derecha-container" id="resultadoDerecha" style="display: none;">
-    <img src="./img/torreeiffel-icon.svg" alt="Torre Eiffel Grande" class="img-torre-grande" />
-    <div class="resultado-texto-bloque">
-      <img src="./img/igual-icon.svg" alt="Igual" class="icono-igual" />
-      <div class="numero-texto-grupo">
-        <span class="numero-gigante">250</span>
-        <span class="texto-cada-anio">CADA AÑO</span>
-      </div>
-    </div>
-    <span class="sugerencia-onu">Según la ONU</span>
-  </div>
-
-  <!-- Botón Inferior "A escala global" -->
-  <div class="footer-escala-global">
-    <img src="./img/PNG-PSD-pngtree-photoroom-5.png" alt="" />
-    <span>A escala global</span>
-  </div>
-
-  <!-- Botón Externo / Lupa inferior derecha -->
-  <a class="btn-lupa-flotante" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer">
-    <img src="./img/lupa-icon.svg" alt="Lupa" />
-  </a>
-</section>
-<script>
-  function cambiarEstadoQuiz(estado) {
-    document.getElementById('estadoInvitacion').style.display = 'none';
-    if (estado === 'pregunta') {
-      document.getElementById('estadoPregunta').style.display = 'flex';
+    // Pantalla Torre Eiffel
+    function cambiarEstadoQuiz(estado) {
+      document.getElementById('estadoInvitacion').style.display = 'none';
+      if (estado === 'pregunta') {
+        document.getElementById('estadoPregunta').style.display = 'flex';
+      }
     }
-  }
 
-  function verificarTorre(esCorrecta) {
-    if (esCorrecta) {
-      // Oculta la pregunta del quiz
-      document.getElementById('estadoPregunta').style.display = 'none';
-      // Muestra la grilla de torres dentro de la tarjeta izquierda
-      document.getElementById('estadoResultado').style.display = 'flex';
-      // Hace aparecer el bloque derecho con la torre grande, el igual y el "250 CADA AÑO"
-      document.getElementById('resultadoDerecha').style.display = 'flex';
-    } else {
-      const errorMsg = document.getElementById('mensajeErrorQuiz');
-      errorMsg.style.display = 'block';
-      setTimeout(() => { errorMsg.style.display = 'none'; }, 2500);
+    function verificarTorre(esCorrecta) {
+      if (esCorrecta) {
+        document.getElementById('estadoPregunta').style.display = 'none';
+        document.getElementById('estadoResultado').style.display = 'flex';
+        document.getElementById('resultadoDerecha').style.display = 'flex';
+      } else {
+        const errorMsg = document.getElementById('mensajeErrorQuiz');
+        errorMsg.style.display = 'block';
+        setTimeout(() => { errorMsg.style.display = 'none'; }, 2500);
+      }
     }
-  }
-</script>
+  </script>
+  
 </body>
 </html>

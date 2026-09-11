@@ -1,4 +1,3 @@
-
 // ==========================================
 // VARIABLES GLOBALES
 // ==========================================
@@ -6,47 +5,14 @@ $font-primary: 'Roboto Condensed', sans-serif;
 $font-secondary: 'Inter', sans-serif;
 $color-primary: #6DFFF8;
 $color-secondary: #ffffff;
-$glass-bg: rgba(255, 255, 255, 0.1);
-$glass-border: rgba(255, 255, 255, 0.2);
-$glass-blur: 10px;
-
-$font-body: 'Inter', sans-serif;
-$font-condensed: 'Roboto Condensed', sans-serif;
-
-$color-primary: #6dfff8; // acento celeste — títulos, textos destacados, botones sólidos
-$color-white: #ffffff;
-$color-black: #000000;
-
+$color-cyan: #8BFFFF;
 $glass-bg: rgba(255, 255, 255, 0.1);
 $glass-border: rgba(255, 255, 255, 0.2);
 $glass-blur: 12px;
 
-$overlay-from: rgba(0, 0, 0, 0.5);
-$overlay-via: rgba(0, 0, 0, 0.2);
-$overlay-to: rgba(0, 0, 0, 0.6);
-
-$radius-full: 999px;
-$radius-card: 20px;
-
-$breakpoint-sm: 640px;
-$breakpoint-lg: 1024px;
-$max-width-container: 1280px;
-$max-width-col: 592px;
-
-// ============================================
-// MIXIN GLASSMORPHISM (reutilizable en Agua/CO2/Daño)
-// ============================================
-@mixin glassmorphism {
-  background: $glass-bg;
-  backdrop-filter: blur($glass-blur);
-  -webkit-backdrop-filter: blur($glass-blur);
-  border: 1px solid $glass-border;
-  color: $color-white;
-}
-
-// ============================================
+// ==========================================
 // RESET BÁSICO
-// ============================================
+// ==========================================
 * {
   margin: 0;
   padding: 0;
@@ -54,253 +20,301 @@ $max-width-col: 592px;
 }
 
 body {
-  font-family: $font-body;
-  color: $color-white;
-  background-color: $color-black;
+  font-family: $font-secondary;
+  color: #ffffff;
+  background-color: #000000;
+  overflow-x: hidden;
 }
-// ============================================
-// HERO / LANDING (ACTUALIZADO FIGMA DEV MODE)
-// ============================================
+
+// ==========================================
+// HERO / LANDING
+// ==========================================
 .hero {
   position: relative;
-  min-height: 100vh;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  &__bg {
+  &__video-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
   }
 
   &__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, $overlay-from, $overlay-via, $overlay-to);
+    background: rgba(0, 8, 25, 0.45);
+    backdrop-filter: blur(1px);
+    z-index: 2;
   }
 
   &__content {
     position: relative;
-    max-width: $max-width-container;
+    z-index: 3;
     width: 100%;
+    height: 100%;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3.5rem;
-
-    @media (min-width: $breakpoint-lg) {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 5rem;
-      padding: 5rem 4rem;
-    }
   }
 
   &__intro {
+    position: absolute;
+    top: 130px;
+    left: 118px;
+    width: 543px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
-    width: 100%;
-    max-width: 520px;
-    text-align: left;
   }
 
-  // Medidas exactas de Figma Dev Mode
   &__title {
-    align-self: stretch;
     color: #6DFFF8;
-    font-family: "Roboto Condensed", $font-condensed, sans-serif;
+    font-family: $font-primary;
     font-size: 48px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    line-height: 1.15;
     letter-spacing: 6.24px;
     text-transform: uppercase;
-    margin: 0;
+    margin: 0 0 24px 0;
   }
 
   &__subtitle {
-    font-family: 'Inter', sans-serif;
+    width: 543px;
+    color: #FFFFFF;
+    font-family: $font-secondary;
+    font-size: 38px;
     font-weight: 300;
-    color: #eaeaea;
-    font-size: 22px;
-    line-height: normal;
-    margin: 0;
+    line-height: 1.25;
+    margin: 0 0 35px 0;
   }
 
-  // Tarjeta derecha que contiene el PNG exportado
+  .btn-glass {
+    display: inline-flex;
+    width: 284px;
+    height: 100px;
+    padding: 16.5px 18px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgba(127, 174, 221, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+
+    &:hover {
+      transform: scale(1.04);
+      background: rgba(127, 174, 221, 0.22);
+      border-color: #6DFFF8;
+
+      .btn-glass__label {
+        color: #6DFFF8;
+      }
+    }
+
+    &__label {
+      font-family: $font-primary;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #FFFFFF;
+      font-size: 24px;
+      pointer-events: none;
+      transition: color 0.3s ease;
+    }
+  }
+
   &__card {
-    @include glassmorphism;
-    width: 100%;
-    max-width: 520px;
-    height: 420px;
-    border-radius: $radius-card;
+    position: absolute;
+    top: 140px;
+    right: 118px;
+    width: 560px;
+    height: 440px;
+    background: rgba(13, 17, 23, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 
-    img {
+    &-img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      display: block;
     }
   }
 }
 
-// ============================================
-// BOTÓN DESCÚBRELO
-// ============================================
-.btn-glass {
-  @include glassmorphism;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  width: 210px;
-  border-radius: $radius-full;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-
-  &:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #6DFFF8;
-
-    .btn-glass__label {
-      color: #6DFFF8;
-    }
-  }
-
-  &__label {
-    font-family: 'Inter', $font-condensed, sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: $color-white;
-    font-size: 16px;
-    transition: color 0.3s ease;
-  }
-}
 // ==========================================
-// SECCIÓN HOME
+// HOME - EL PRECIO DE CREAR
 // ==========================================
-
-.home-section {
+.pantalla-home {
   position: relative;
-  min-height: 100vh;
   width: 100%;
-  // Reemplazamos la imagen por un degradado azul oscuro
-  background: linear-gradient(135deg, #1e293b, #0f172a); 
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* (el resto de las propiedades quedan igual) */
-}
-  
-  // Fondos
-  .bg-image, .bg-overlay {
+
+  .home__video-bg {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 1;
-  }
-  
-  .bg-overlay {
-    opacity: 0.5; // Ajusta según necesites mezclar las imágenes
+    pointer-events: none;
   }
 
-  .home-container {
-    position: relative;
+  .home__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 40%, rgba(0, 8, 25, 0.2) 0%, rgba(0, 8, 25, 0.65) 100%);
+    backdrop-filter: blur(1px);
     z-index: 2;
+  }
+
+  .home__content {
+    position: relative;
+    z-index: 3;
     width: 100%;
+    height: 100%;
     max-width: 1440px;
-    padding: 2rem;
+    margin: 0 auto;
   }
 
-  // Textos
-  .text-block {
-    margin-bottom: 2rem;
-    
-    .subtitle {
-      font-family: $font-secondary;
-      font-size: 3rem;
-      color: $color-secondary; // Blanco
-      margin-bottom: 0.5rem;
-    }
-    
-    .title {
-      font-family: $font-primary;
-      font-size: 5rem;
-      font-weight: bold;
-      color: $color-primary; // Tu celeste #6DFFF8
-      line-height: 1;
-    }
-  }
-
-  // Gráfico Central
-  .center-graphic {
+  .home__header {
+    position: absolute;
+    top: 90px;
+    left: 80px;
+    width: 343.38px;
     display: flex;
-    justify-content: center;
-    margin: 3rem 0;
-    
-    img {
-      max-width: 416px;
-      width: 100%;
-      height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .home__pretitle {
+      font-family: $font-primary;
+      font-weight: 500;
+      color: #eaeaea;
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      background: none !important;
+      border: none !important;
+    }
+
+    .home__title {
+      margin: 0;
+      width: 343.38px;
+      color: #8BFFFF;
+      font-family: $font-primary;
+      font-size: 84px;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
     }
   }
 
-  // Botones Glassmorphism (Reutilizando tu lógica)
-  .buttons-container {
+  .home__center-graphic {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  .home__buttons {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    margin-top: 2rem;
+    padding: 0 160px;
+    box-sizing: border-box;
 
-    .glass-btn {
+    .glass-btn-circle {
+      position: relative;
       width: 215px;
       height: 215px;
       border-radius: 50%;
-      background: $glass-bg;
-      backdrop-filter: blur($glass-blur);
-      border: 1px solid $glass-border;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-sizing: border-box;
+      text-decoration: none;
+      background: rgba(127, 174, 221, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      box-shadow: -1.5px -1.5px 2px #b7cce0, 
+                  -0.75px -0.75px 0px #ffffff, 
+                  inset -1.5px -1.5px 2px #b8cce0, 
+                  inset -0.75px -0.75px 0px #ffffff,
+                  0 15px 35px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       cursor: pointer;
-      transition: transform 0.3s ease;
-      box-shadow: -6px -6px 12px rgba(255,255,255,0.1), 6px 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
-      &:hover {
-        transform: scale(1.05);
+      &--left {
+        width: 213px;
+        height: 213px;
       }
 
-      img {
-        width: 50%; // Ajusta el tamaño de los iconos
-        height: auto;
+      &--right {
+        width: 215px;
+        height: 215px;
+      }
+
+      &__icon {
+        width: 85px;
+        height: 85px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        transform: scale(1.06) translateY(-4px);
+        border-color: #8BFFFF;
+        box-shadow: 0 20px 45px rgba(139, 255, 255, 0.35);
+
+        .glass-btn-circle__icon {
+          transform: scale(1.08);
+        }
+      }
+
+      &:active {
+        transform: scale(0.98) translateY(0);
       }
     }
   }
+}
 
 // ==========================================
 // PANTALLA AGUA 1 (INTRODUCCIÓN)
@@ -311,60 +325,32 @@ body {
   min-width: 1440px;
   height: 838px;
   min-height: 838px;
-  background-image: url('./img/Pantalla Agua PARTE 4.jpg');
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
 
-  // Botón Volver (superior izquierdo con neumorfismo)
-  .btn-volver-circular {
+  .agua-video-bg {
     position: absolute;
-    top: 28px;
-    left: 20px;
-    width: 96px;
-    height: 96px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    z-index: 10;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
 
-    .btn-back-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(127, 174, 221, 0.15);
-      border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    }
-
-    .btn-back-icon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-        transform: rotate(90deg);
-      }
-    }
+  .agua-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 8, 25, 0.4);
+    backdrop-filter: blur(1px);
+    z-index: 2;
   }
 
   .agua-container-1 {
     width: 100%;
     height: 100%;
     position: relative;
+    z-index: 3;
 
-    // Tarjeta Negra con Textos (Izquierda)
     .texto-header {
       position: absolute;
       top: 135px;
@@ -381,9 +367,9 @@ body {
 
       .titulo-costo {
         margin: 0;
-        font-family: 'Roboto Condensed', Helvetica, sans-serif;
+        font-family: $font-primary;
         font-weight: 700;
-        color: #6dfff7;
+        color: #6DFFF8;
         font-size: 46px;
         line-height: 1.15;
         letter-spacing: 1px;
@@ -391,7 +377,7 @@ body {
 
       .descripcion-costo {
         margin: 0;
-        font-family: 'Inter', Helvetica, sans-serif;
+        font-family: $font-secondary;
         font-weight: 300;
         color: #eaeaea;
         font-size: 20px;
@@ -399,7 +385,6 @@ body {
       }
     }
 
-    // Contenedor de las dos ilustraciones SVG a la derecha
     .imagenes-decorativas {
       position: absolute;
       top: 0;
@@ -429,7 +414,6 @@ body {
     }
   }
 
-  // Botón Inferior Izquierdo "Descubrí que hay detrás"
   .btn-descubri-detras {
     position: absolute;
     bottom: 35px;
@@ -455,7 +439,7 @@ body {
     }
 
     span {
-      font-family: 'Inter', Helvetica, sans-serif;
+      font-family: $font-secondary;
       font-weight: 600;
       color: #ffffff;
       font-size: 20px;
@@ -463,7 +447,6 @@ body {
     }
   }
 
-  // Botón Lupa Flotante (Inferior derecho)
   .btn-lupa-circular {
     position: absolute;
     bottom: 40px;
@@ -512,498 +495,230 @@ body {
 }
 
 // ==========================================
-// PANTALLA AGUA 2 (Interacción)
+// | 2 (CARRUSEL INTERACTIVO)
 // ==========================================
 .pantalla-agua-2 {
   position: relative;
-  min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
   overflow: hidden;
-  // Fondo oscuro sólido para que resalten los botones de vidrio
-  background: linear-gradient(135deg, #082f49, #020617);
-  /* (el resto igual) */
 
-  .subtitulo-agua {
-    font-family: $font-primary;
-    color: $color-secondary;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  // Controles
-  .controles-agua {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
-
-    .glass-btn-control {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: $color-secondary;
-      padding: 1rem 2rem;
-      border-radius: 30px;
-      font-family: $font-secondary;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover { background: rgba(255, 255, 255, 0.15); }
-      &.active {
-        background: rgba(109, 255, 248, 0.2);
-        border-color: $color-primary;
-        color: $color-primary;
-        font-weight: bold;
-      }
-    }
-  }
-
-  // Tarjetas Interactivas
-  .cards-display { min-height: 350px; }
-
-  .glass-card {
-    display: none; // Ocultas por defecto
-    background: $glass-bg;
-    backdrop-filter: blur($glass-blur);
-    border: 1px solid $glass-border;
-    border-radius: 20px;
-    padding: 3rem 2rem;
-    width: 320px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: -6px -6px 12px rgba(255,255,255,0.05), 6px 6px 12px rgba(0,0,0,0.2);
-    animation: fadeIn 0.4s ease forwards;
-
-    &.active { display: flex; }
-    
-    .icon-wrapper img { width: 90px; margin-bottom: 2rem; }
-    .subtitle { font-family: $font-secondary; font-size: 1.2rem; color: $color-secondary; margin-bottom: 0.5rem; }
-    .data { font-family: $font-primary; font-size: 3.5rem; font-weight: bold; color: $color-primary; }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-}// ==========================================
-// PANTALLA AGUA 1
-// ==========================================
-.pantalla-agua-1 {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  overflow: hidden;
-  background-color: #000;
-
-  .bg-agua {
+  .agua-video-bg {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    opacity: 0.6;
-  }
-
-  .agua-container-1 {
-    position: relative;
-    z-index: 2;
+    inset: 0;
     width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 4rem;
-
-    .texto-header {
-      max-width: 500px;
-      
-      .titulo-costo {
-        font-family: $font-primary;
-        font-size: 4rem;
-        color: $color-primary; // #6DFFF8
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-      }
-      .descripcion-costo {
-        font-family: $font-secondary;
-        font-size: 1.3rem;
-        color: $color-secondary;
-        line-height: 1.6;
-      }
-    }
-
-    .imagenes-decorativas {
-      display: flex;
-      gap: 1rem;
-      img { max-width: 250px; height: auto; object-fit: contain; }
-      .img-water { transform: translateY(40px); }
-    }
-  }
-}
-// ==========================================
-// PANTALLA AGUA 2 (Contenedor + Interactivo)
-// ==========================================
-.pantalla-agua-2 {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  overflow: hidden;
-  background-color: #0b1114; // Fondo oscuro de respaldo
-
-  .bg-agua-2 {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: 1;
-    opacity: 0.6;
+    pointer-events: none;
   }
 
-  // Icono superior
-  .icono-alerta-top {
+  .agua-video-overlay {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
-    z-index: 3;
-
-    .glass-circle {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      background: $glass-bg;
-      backdrop-filter: blur($glass-blur);
-      border: 1px solid $glass-border;
-      display: flex; align-items: center; justify-content: center;
-      
-      img { width: 40px; transform: rotate(-90deg); }
-    }
+    inset: 0;
+    background: rgba(0, 8, 25, 0.45);
+    backdrop-filter: blur(1px);
+    z-index: 2;
   }
 
   .agua-container-2 {
     position: relative;
-    z-index: 2;
     width: 100%;
-    max-width: 1100px;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
+    height: 100%;
+    z-index: 3;
 
-  // Textos y línea separadora
-  .header-datos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); // La línea del diseño
-    padding-bottom: 2rem;
+    .header-datos {
+      position: absolute;
+      top: 120px;
+      left: 138px;
+      z-index: 3;
 
-    .datos-izq {
-      max-width: 650px;
-      
       .cifra-gigante {
+        width: 384px;
+        height: 84px;
+        margin: 0 0 10px 0;
+        color: #8BFFFF;
         font-family: $font-primary;
-        font-size: 3.5rem;
-        color: $color-primary; // Tu #6DFFF8
-        font-weight: bold;
-        line-height: 1.1;
-        margin-bottom: 0.5rem;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
       }
 
       .texto-consumo {
+        width: 365px;
+        height: 80px;
+        margin: 0;
+        color: #EAEAEA;
         font-family: $font-secondary;
-        font-size: 1.4rem;
-        color: #eaeaea;
+        font-size: 28px;
         font-weight: 300;
+        line-height: normal;
       }
     }
 
-    .datos-der {
-      text-align: right;
-      max-width: 350px;
+    .datos-laterales {
+      position: absolute;
+      top: 50%;
+      left: 500px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 3;
 
       .pregunta-agua {
+        margin: 0;
         font-family: $font-secondary;
-        font-size: 1.1rem;
-        color: #b8cce0;
+        font-weight: 300;
+        color: #eaeaea;
+        font-size: 20px;
         line-height: 1.4;
+        text-align: right;
+        letter-spacing: 0.5px;
+      }
+
+      .divisor-vertical {
+        width: 3px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.4);
       }
     }
-  }
 
-  // Componente Interactivo
-  .agua-interactiva {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .controles-agua {
+    .carrusel-agua-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 62%;
+      transform: translate(-50%, -50%);
       display: flex;
-      gap: 1rem;
-      margin-bottom: 3rem;
-
-      .glass-btn-control {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: $color-secondary;
-        padding: 1rem 2rem;
-        border-radius: 30px;
-        font-family: $font-secondary;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover { background: rgba(255, 255, 255, 0.15); }
-        &.active {
-          background: rgba(109, 255, 248, 0.2);
-          border-color: $color-primary;
-          color: $color-primary;
-          font-weight: bold;
-        }
-      }
-    }
-
-    .cards-display { min-height: 350px; display: flex; justify-content: center; }
-
-    .glass-card {
-      display: none; // Ocultas por defecto
-      background: $glass-bg;
-      backdrop-filter: blur($glass-blur);
-      border: 1px solid $glass-border;
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      width: 320px;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      box-shadow: -6px -6px 12px rgba(255,255,255,0.05), 6px 6px 12px rgba(0,0,0,0.2);
-      animation: fadeIn 0.4s ease forwards;
-
-      &.active { display: flex; }
-      
-      .icon-wrapper img { width: 90px; margin-bottom: 2rem; }
-      .subtitle { font-family: $font-secondary; font-size: 1.2rem; color: $color-secondary; margin-bottom: 0.5rem; }
-      .data { font-family: $font-primary; font-size: 3.5rem; font-weight: bold; color: $color-primary; }
-    }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-}
-// ==========================================
-// PANTALLA CENTRALES DE DATOS
-// ==========================================
-.pantalla-centrales-datos {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #0f172a, #020617);
-  overflow: hidden;
-
-  .icono-alerta-top {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    z-index: 3;
-
-    .glass-circle {
-      width: 80px; 
-      height: 80px;
-      border-radius: 50%;
-      background: $glass-bg;
-      backdrop-filter: blur($glass-blur);
-      border: 1px solid $glass-border;
-      display: flex; 
-      align-items: center; 
       justify-content: center;
-      
-      img { 
-        width: 40px; 
-        transform: rotate(-90deg); 
-      }
-    }
-  }
-
-  .centrales-container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-  }
-
-  .header-centrales {
-    text-align: center;
-    max-width: 700px;
-
-    .titulo-centrales {
-      font-family: $font-primary;
-      font-size: 3rem;
-      color: $color-primary;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    .descripcion-centrales {
-      font-family: $font-secondary;
-      font-size: 1.2rem;
-      color: $color-secondary;
-      font-weight: 300;
-      line-height: 1.5;
-    }
-  }
-
-  .tarjetas-grid {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .componente-frame-3 {
-    width: 100%;
-    max-width: 320px;
-
-    .glass-card-detalles {
-      background: $glass-bg;
-      backdrop-filter: blur($glass-blur);
-      border: 1px solid $glass-border;
-      border-radius: 16px;
-      padding: 1.5rem;
-      display: flex;
       align-items: center;
-      gap: 1.2rem;
-      box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.03), 4px 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
+      gap: 20px;
+      z-index: 4;
 
-      &:hover {
-        transform: translateY(-5px);
-        border-color: rgba(109, 255, 248, 0.4);
-      }
-
-      .icon-interno {
-        width: 50px;
-        height: 50px;
+      .btn-carrusel-nav {
+        width: 72px;
+        height: 72px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(127, 174, 221, 0.15);
+        border: none;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+        transition: transform 0.2s ease, background 0.2s ease;
 
-        img {
-          width: 24px;
+        &:hover {
+          transform: scale(1.08);
+          background: rgba(127, 174, 221, 0.28);
+        }
+
+        .flecha {
+          color: #ffffff;
+          font-size: 28px;
+          line-height: 1;
         }
       }
 
-      .texto-detalle {
-        .titulo-stat {
+      .carrusel-columna-central {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        .carrusel-marco {
+          display: flex;
+          width: 608px;
+          height: 410px;
+          justify-content: center;
+          align-items: center;
+          gap: 3px;
+          background: #000000;
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+          cursor: pointer;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.01);
+          }
+
+          .img-carrusel {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.2s ease;
+          }
+        }
+
+        .hint-interaccion {
+          margin: 0;
           font-family: $font-secondary;
-          font-size: 0.85rem;
-          color: rgba(255, 255, 255, 0.6);
-          margin-bottom: 0.2rem;
-        }
-        .valor-stat {
-          font-family: $font-primary;
-          font-size: 1.1rem;
-          color: $color-primary;
-          font-weight: bold;
+          font-weight: 400;
+          font-size: 13px;
+          color: #8BFFFF;
+          letter-spacing: 0.8px;
+          opacity: 0.9;
+          text-align: center;
         }
       }
     }
   }
 
-  .footer-centrales {
-    margin-top: 1rem;
-
-    .glass-btn-circular {
-      width: 90px; 
-      height: 90px;
-      border-radius: 50%;
-      background: $glass-bg;
-      backdrop-filter: blur($glass-blur);
-      border: 1px solid $glass-border;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: -6px -6px 12px rgba(255, 255, 255, 0.05), 6px 6px 12px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-
-      &:hover { 
-        transform: scale(1.05); 
-      }
-      
-      img { 
-        width: 40px; 
-      }
-    }
-  }
-}
-// ==========================================
-// CONTROL DE TARJETAS INTERACTIVAS
-// ==========================================
-.cards-display {
-  .glass-card {
-    display: none; // Ocultas por defecto
-    
-    &.active {
-      display: flex; // Visibles solo cuando tienen la clase active
-    }
-  }
-}
-
-// ==========================================
-// PANTALLA CO2 - CORREGIDA Y LIMPIA
-// ==========================================
-.pantalla-co2 {
-  position: relative;
-  width: 100%;
-  min-width: 1440px;
-  height: 862px;
-  min-height: 862px;
-  background: linear-gradient(135deg, #451a03, #1c1917, #0f172a);
-  overflow: hidden;
-
-  // Botón Volver (superior izquierdo con neumorfismo)
-  .btn-volver-circular {
+  .btn-conoce-impacto {
     position: absolute;
-    top: 28px;
-    left: 22px;
+    bottom: 35px;
+    left: 118px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    .flecha-abajo {
+      font-size: 20px;
+      color: #8BFFFF;
+    }
+
+    span {
+      font-family: $font-secondary;
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 18px;
+    }
+  }
+
+  .btn-lupa-circular {
+    position: absolute;
+    bottom: 40px;
+    right: 90px;
     width: 96px;
     height: 96px;
     background: transparent;
     border: none;
+    display: block;
     cursor: pointer;
-    transform: rotate(-90deg);
     z-index: 10;
+    transition: transform 0.2s ease;
 
-    .btn-back-bg {
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-lupa-bg {
       position: absolute;
       top: 0;
       left: 0;
@@ -1014,7 +729,7 @@ body {
       box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
     }
 
-    .btn-back-icon {
+    .btn-lupa-icon {
       position: absolute;
       top: 0;
       left: 0;
@@ -1025,552 +740,606 @@ body {
       justify-content: center;
 
       img {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         object-fit: contain;
-        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+// ==========================================
+// PANTALLA CENTRALES DE DATOS
+// ==========================================
+// ==========================================
+// PANTALLA 3: CENTRALES DE DATOS
+// ==========================================
+.pantalla-centrales-datos {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 940px;       // Lienzo ampliado para dar espacio al hover
+  min-height: 940px;
+  overflow: visible;
+
+  // Video de fondo a pantalla completa
+  .centrales-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  // Capa oscura para contraste idéntica a pantallas 1 y 2
+  .centrales-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 8, 25, 0.45);
+    backdrop-filter: blur(1px);
+    z-index: 2;
+  }
+
+  // Header superior izquierdo
+  .header-centrales {
+    position: absolute;
+    top: 75px;
+    left: 118px;
+    width: 490px;
+    z-index: 3;
+
+    .titulo-centrales {
+      margin: 0 0 10px 0;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      color: #8BFFFF;
+      font-size: 40px;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .descripcion-centrales {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: #EAEAEA;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  }
+
+  // Fila horizontal centrada con margen vertical
+  .centrales-grid-hover {
+    position: absolute;
+    top: 47%;          // Subido ligeramente para dar holgura al despliegue hacia abajo
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1220px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 25px;
+    z-index: 4;
+
+    .card-hover-item {
+      position: relative;
+      width: 360px;
+      height: 130px;
+      cursor: pointer;
+
+      .cdd-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+
+      // Estado 1: Compacto
+      .estado-compacto {
+        width: 360px;
+        height: auto;
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
+      }
+
+      // Estado 2: Desplegado
+      .estado-desplegado {
+        width: 360px;
+        height: auto;
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+        border-radius: 18px;
+      }
+
+      // Hover
+      &:hover {
+        z-index: 10;
+
+        .estado-compacto {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .estado-desplegado {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(-4px) scale(1.02);
+        }
       }
     }
   }
 
-  // Caja Negra de Texto (Izquierda)
-  .co2-card-negra {
+  // Botón Inferior Central con margen seguro
+  .btn-alerta-central {
     position: absolute;
-    top: 135px;
-    left: 226px;
-    width: 600px;
-    height: 455px;
-    background: #000000;
-    border-radius: 20px;
-    padding: 61px 34px 51px 35px;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    z-index: 2;
-
-    .titulo-co2 {
-      width: 500px;
-      margin: 0;
-      font-family: 'Roboto Condensed', Helvetica, sans-serif;
-      font-weight: bold;
-      color: #6dfff7;
-      font-size: 50px;
-      line-height: 1.1;
-    }
-
-    .descripcion-co2 {
-      width: 531px;
-      height: 203px;
-      margin: 0;
-      font-family: 'Inter', Helvetica, sans-serif;
-      font-weight: 200;
-      color: #ffffff;
-      font-size: 24px;
-      line-height: 27.1px;
-    }
-  }
-
-  // Ilustración de la Fábrica (Derecha - Posición exacta)
-  .co2-ilustracion-fabrica {
-    position: absolute;
-    top: 193px;
-    left: 838px;
-    width: 396px;
-    height: 396px;
-    z-index: 2;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-
-  // Botón Inferior "¿Cuánto genera?"
-  .btn-cuanto-genera {
-    position: absolute;
-    top: 827px;
-    left: 70px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86px;
+    height: 86px;
     background: transparent;
     border: none;
     cursor: pointer;
-    text-align: left;
-    z-index: 10;
+    z-index: 5;
+    transition: transform 0.2s ease;
 
-    img {
-      width: 32px;
-      height: 32px;
-      object-fit: cover;
+    &:hover {
+      transform: translateX(-50%) scale(1.06);
     }
 
-    span {
-      font-family: 'Inter', Helvetica, sans-serif;
-      font-weight: 600;
-      color: #ffffff;
-      font-size: 20px;
-      line-height: normal;
+    .btn-alerta-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(127, 174, 221, 0.15);
+      border-radius: 50%;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0, 
+                  -0.75px -0.75px 0px #ffffff, 
+                  inset -1.5px -1.5px 1.5px #b8cce0, 
+                  inset -0.75px -0.75px 0px #ffffff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .btn-alerta-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
     }
   }
+}
+
+// ==========================================
+// PANTALLA CO2
+// ==========================================
+/* 1. Contenedor de la pantalla completa */
+.pantalla-co2 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 2. Video de fondo que llena la pantalla */
+.video-fondo-co2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 3. Contenedor principal que distribuye tarjeta, fábrica y botón */
+.co2-contenido-absoluto {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 6vw 3rem 6vw;
+  box-sizing: border-box;
+}
+
+/* 4. Tarjeta negra redondeada */
+.co2-card-negra {
+  background: rgba(10, 10, 10, 0.92);
+  border-radius: 24px;
+  padding: 2.8rem 2.4rem;
+  max-width: 480px;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+}
+
+.titulo-co2 {
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1.5rem 0;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* Color cian/turquesa del prototipo */
+.titulo-co2 .resaltado {
+  color: #2ce6d6; 
+  display: block;
+}
+
+.descripcion-co2 {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 5. Ilustración de la fábrica a la derecha */
+.co2-ilustracion-fabrica {
+  flex-shrink: 0;
+}
+
+.co2-ilustracion-fabrica img {
+  max-width: 240px;
+  height: auto;
+  display: block;
+}
+
+/* 6. Botón inferior "¿Cuánto genera?" */
+.btn-cuanto-genera {
+  position: absolute;
+  bottom: 2rem;
+  left: 6vw;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-cuanto-genera img {
+  width: 14px;
+  height: auto;
 }
 // ==========================================
 // PANTALLA GPT-3 INTERACTIVA
 // ==========================================
 .pantalla-gpt3-interactiva {
   position: relative;
-  width: 100%;
-  min-width: 1440px;
-  height: 838px;
-  min-height: 838px;
-  background-image: url('./img/image-29.png');
-  background-size: cover;
-  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  box-sizing: border-box;
 
-  // Botón Volver Circular
-  .btn-volver-circular {
+  .video-fondo-gpt3 {
     position: absolute;
-    top: 28px;
-    left: 20px;
-    width: 96px;
-    height: 96px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    z-index: 10;
-
-    .btn-back-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(127, 174, 221, 0.15);
-      border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    }
-    .btn-back-icon {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
-    }
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  // Estado 1: Texto inicial
-  .gpt3-estado-texto {
+  .gpt3-video-overlay {
     position: absolute;
-    top: 80px;
-    left: 137px;
-    width: 491px;
-    transition: opacity 0.4s ease;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 8, 7, 0.45);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .gpt3-header-info {
+    position: absolute;
+    top: 3.5rem;
+    left: 5vw;
+    z-index: 5;
+    max-width: 480px;
 
     .titulo-gpt3 {
-      margin: 0 0 1rem 0;
-      font-family: 'Roboto', Helvetica, sans-serif;
-      font-weight: bold;
-      color: #6dfff7;
-      font-size: 40px;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #2ce6d6;
+      line-height: 1.15;
+      margin: 0 0 0.6rem 0;
+      text-transform: uppercase;
     }
+
     .descripcion-gpt3 {
+      color: #e5e0dc;
+      font-size: 0.85rem;
+      line-height: 1.4;
       margin: 0;
-      width: 355px;
-      font-family: 'Inter', Helvetica, sans-serif;
-      font-weight: 300;
-      color: #eaeaea;
-      font-size: 22px;
     }
   }
 
-  // Estado 2: Gráfico Interactivo (Oculto de entrada)
-  .gpt3-estado-grafico {
-    position: absolute;
-    top: 71px;
-    left: 97px;
-    width: 1246px;
-    height: 695px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    display: none; // Se despliega con JS
-    padding: 40px;
-    z-index: 5;
-
-    .grafico-card-contenedor {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      gap: 50px;
-
-      .grafico-panel-izq {
-        width: 320px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-        .titulo-opciones {
-          font-family: 'Inter', Helvetica, sans-serif;
-          font-size: 28px;
-          color: #ffae00;
-          font-weight: normal;
-        }
-
-        .opciones-botones {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-
-          .btn-opcion {
-            height: 65px;
-            border: 2px solid #9a9a9a;
-            border-radius: 10px;
-            background: transparent;
-            color: #9a9a9a;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-
-            &:hover, &.activo {
-              border-color: #ffae00;
-              color: #ffae00;
-              background: rgba(255, 174, 0, 0.1);
-            }
-          }
-        }
-
-        .instruccion-opcion {
-          font-size: 16px;
-          color: #fff;
-          font-weight: 300;
-        }
-
-        .dato-interactivo-box {
-          margin-top: 10px;
-          h3 { font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 5px; }
-          p, .sub-punto { font-size: 14px; color: #fff; font-weight: 300; }
-        }
-      }
-
-      .grafico-panel-der {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-
-        .titulo-pregunta-grafico {
-          font-size: 20px;
-          color: #fff;
-          font-weight: 500;
-          margin-bottom: 30px;
-        }
-
-        .area-plano-cartesiano {
-          position: relative;
-          height: 450px;
-          border-left: 2px solid #6dfff7;
-          border-bottom: 2px solid #6dfff7;
-          margin-left: 40px;
-
-          .eje-y-label {
-            position: absolute;
-            left: -120px;
-            top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
-            color: #fff;
-            font-size: 14px;
-            white-space: nowrap;
-          }
-
-          .labels-y {
-            position: absolute;
-            left: -35px;
-            top: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            color: #fff;
-            font-size: 14px;
-          }
-        }
-      }
-    }
-  }
-
-  // Botón Inferior
-  .footer-gpt3-transicion {
-    position: absolute;
-    top: 787px;
-    left: 96px;
-    z-index: 10;
-
-    .btn-detras-numeros {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      img { width: 32px; height: 32px; object-fit: cover; }
-      span { font-family: 'Inter', Helvetica, sans-serif; font-weight: 600; color: #ffffff; font-size: 20px; }
-    }
-  }
-}
-// ==========================================
-// PANTALLA GPT-3 INTERACTIVA - ESTILO PROTOTIPO
-// ==========================================
-.pantalla-gpt3-interactiva {
-  position: relative;
-  width: 100%;
-  min-width: 1440px;
-  height: 838px;
-  min-height: 838px;
-  background-image: url('./img/image-29.png');
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-
-  .btn-volver-circular {
-    position: absolute;
-    top: 28px;
-    left: 20px;
-    width: 96px;
-    height: 96px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    z-index: 10;
-
-    .btn-back-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(127, 174, 221, 0.15);
-      border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    }
-    .btn-back-icon {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
-    }
-  }
-
-  .gpt3-estado-texto {
-    position: absolute;
-    top: 80px;
-    left: 137px;
-    width: 491px;
-    transition: opacity 0.4s ease;
-
-    .titulo-gpt3 {
-      margin: 0 0 1rem 0;
-      font-family: 'Roboto', Helvetica, sans-serif;
-      font-weight: bold;
-      color: #6dfff7;
-      font-size: 40px;
-    }
-    .descripcion-gpt3 {
-      margin: 0;
-      width: 355px;
-      font-family: 'Inter', Helvetica, sans-serif;
-      font-weight: 300;
-      color: #eaeaea;
-      font-size: 22px;
-    }
-  }
-
-  .gpt3-estado-grafico {
-    position: absolute;
-    top: 71px;
-    left: 97px;
-    width: 1246px;
-    height: 695px;
-    background: rgba(0, 0, 0, 0.82);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    display: none; 
-    padding: 50px 40px;
-    z-index: 5;
+  .grafico-card-contenedor {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 90vw;
+    max-width: 1100px;
+    min-height: 520px;
+    background: rgba(18, 14, 11, 0.92);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
 
-    .grafico-card-contenedor {
+    .grafico-panel-izq {
+      width: 220px;
+      flex-shrink: 0;
       display: flex;
-      width: 100%;
-      height: 100%;
-      gap: 40px;
+      flex-direction: column;
 
-      .grafico-panel-izq {
-        width: 280px;
+      .titulo-opciones {
+        color: #f2a93b;
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .opciones-botones {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
 
-        .titulo-opciones {
-          font-family: 'Inter', Helvetica, sans-serif;
-          font-size: 26px;
-          color: #ffae00;
-          font-weight: bold;
-        }
+        .btn-opcion {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          border-radius: 10px;
+          padding: 0.75rem 1rem;
+          color: #c5bfb9;
+          font-size: 0.85rem;
+          cursor: pointer;
+          text-align: center;
+          transition: all 0.2s ease;
 
-        .opciones-botones {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
+          small {
+            font-size: 0.75rem;
+            color: #8c827a;
+          }
 
-          .btn-opcion {
-            height: 75px;
-            border: 2px solid #666;
-            border-radius: 12px;
-            background: transparent;
-            color: #aaa;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.3s ease;
+          &:hover,
+          &.active {
+            border-color: #2ce6d6;
+            color: #ffffff;
+            background: rgba(44, 230, 214, 0.08);
 
-            small { font-size: 13px; display: block; opacity: 0.8; }
-
-            &:hover, &.active {
-              border-color: #ffae00;
-              color: #ffae00;
-              background: rgba(255, 174, 0, 0.08);
-              box-shadow: 0 0 15px rgba(255, 174, 0, 0.2);
+            small {
+              color: #2ce6d6;
             }
           }
         }
-
-        .instruccion-opcion {
-          font-size: 14px;
-          color: #ccc;
-          font-weight: 300;
-        }
-
-        .dato-interactivo-box {
-          margin-top: auto;
-          h3 { font-size: 15px; color: #fff; font-weight: bold; margin-bottom: 4px; }
-          p { font-size: 13px; color: #ccc; font-weight: 300; }
-        }
       }
 
-      .grafico-panel-der {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        position: relative;
+      .instruccion-opcion {
+        color: #8c827a;
+        font-size: 0.75rem;
+        margin: 0 0 auto 0;
+        line-height: 1.3;
+      }
 
-        .titulo-pregunta-grafico {
-          font-size: 22px;
-          color: #fff;
-          font-weight: bold;
-          margin-bottom: 25px;
-          font-family: 'Inter', Helvetica, sans-serif;
+      .dato-interactivo-box {
+        h3 {
+          color: #ffffff;
+          font-size: 0.8rem;
+          font-weight: 700;
+          margin: 0 0 0.2rem 0;
         }
 
-        .area-plano-cartesiano {
-          position: relative;
-          height: 440px;
-          border-left: 2px solid #6dfff7;
-          border-bottom: 2px solid #6dfff7;
-          margin-left: 50px;
-          margin-right: 20px;
-          background-image: 
-            linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px);
-          background-size: 25% 25%;
+        p {
+          color: #8c827a;
+          font-size: 0.75rem;
+          margin: 0;
+          line-height: 1.3;
+        }
+      }
+    }
+
+    .grafico-divisor {
+      width: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0 2.5rem;
+    }
+
+    .grafico-panel-der {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      .titulo-pregunta-grafico {
+        color: #ffffff;
+        font-size: 1.05rem;
+        font-weight: 500;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .area-plano-cartesiano {
+        display: flex;
+        flex-grow: 1;
+        align-items: stretch;
+        position: relative;
+
+        .eje-y-container {
+          display: flex;
+          align-items: stretch;
+          margin-right: 0.8rem;
 
           .eje-y-label {
-            position: absolute;
-            left: -140px;
-            top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
-            color: #fff;
-            font-size: 13px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 0.7rem;
+            color: #ffffff;
             letter-spacing: 0.5px;
-            white-space: nowrap;
+            text-align: center;
+            margin-right: 0.5rem;
           }
 
           .labels-y {
-            position: absolute;
-            left: -35px;
-            top: 0;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            color: #fff;
-            font-size: 13px;
+            color: #a39b94;
+            font-size: 0.75rem;
+            padding-bottom: 4px;
           }
+        }
 
-          .eje-x-label {
+        .lienzo-grafico-grilla {
+          position: relative;
+          flex-grow: 1;
+          border-bottom: 2px solid #2ce6d6;
+          border-left: 2px solid #2ce6d6;
+
+          .eje-linea-y::before {
+            content: '';
             position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
+            top: -8px;
+            left: -6px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 8px solid #2ce6d6;
           }
 
-          // Estilo de los círculos orgánicos del gráfico
+          .eje-linea-x::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 8px solid #2ce6d6;
+          }
+
+          .grilla-cuadricula {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .fila-grilla {
+              flex: 1;
+              border-top: 1px solid rgba(255, 255, 255, 0.08);
+              display: flex;
+
+              &::before,
+              &::after {
+                content: '';
+                flex: 1;
+                border-right: 1px solid rgba(255, 255, 255, 0.08);
+              }
+            }
+          }
+
+          /* Contenedor y Puntos con jerarquía de color corregida */
           .nube-puntos-container {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
 
             .punto {
               position: absolute;
-              width: 18px;
-              height: 18px;
+              width: 11px;
+              height: 11px;
               border-radius: 50%;
+              background: #555555;
               transform: translate(-50%, 50%);
-              box-shadow: 0 0 10px rgba(0,0,0,0.5);
-              transition: transform 0.3s ease;
+              transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+              opacity: 0.15;
 
-              &:hover { transform: translate(-50%, 50%) scale(1.3); z-index: 10; }
-
-              &.celeste {
+              /* Estados activos con color e iluminación */
+              &.activo-celeste {
+                opacity: 1;
                 background: #00f0ff;
-                box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+                box-shadow: 0 0 10px rgba(0, 240, 255, 0.85);
+                transform: translate(-50%, 50%) scale(1.1);
               }
-              &.naranja {
-                background: #ff8c00;
-                box-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
-                width: 22px; height: 22px;
+
+              &.activo-amarillo {
+                opacity: 1;
+                background: #ffcc00;
+                box-shadow: 0 0 12px rgba(255, 204, 0, 0.9);
+                transform: translate(-50%, 50%) scale(1.2);
               }
-              &.gris {
-                background: #888;
-                opacity: 0.7;
+
+              &.activo-naranja {
+                opacity: 1;
+                background: #ff6600;
+                box-shadow: 0 0 14px rgba(255, 102, 0, 0.95);
+                transform: translate(-50%, 50%) scale(1.35);
               }
             }
           }
         }
+      }
 
-        .grafico-leyenda {
+      /* Leyenda debajo del gráfico */
+      .grafico-leyenda {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1.2rem;
+
+        .item-leyenda {
           display: flex;
-          gap: 30px;
-          margin-top: 45px;
-          margin-left: 50px;
+          align-items: center;
+          gap: 0.4rem;
+          color: #a39b94;
+          font-size: 0.75rem;
 
-          .item-leyenda {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            font-size: 14px;
+          .bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
 
-            .bullet {
-              width: 12px;
-              height: 12px;
-              border-radius: 50%;
-              &.celeste { background: #00f0ff; }
-              &.naranja { background: #ff8c00; }
-              &.gris { background: #888; }
-            }
+            &.celeste { background: #00f0ff; box-shadow: 0 0 6px rgba(0, 240, 255, 0.8); }
+            &.amarillo { background: #ffcc00; box-shadow: 0 0 6px rgba(255, 204, 0, 0.8); }
+            &.naranja { background: #ff6600; box-shadow: 0 0 6px rgba(255, 102, 0, 0.8); }
           }
         }
       }
@@ -1579,283 +1348,342 @@ body {
 
   .footer-gpt3-transicion {
     position: absolute;
-    top: 787px;
-    left: 96px;
-    z-index: 10;
+    bottom: 1.5rem;
+    left: 5vw;
+    z-index: 5;
 
     .btn-detras-numeros {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
       background: transparent;
       border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      img { width: 32px; height: 32px; object-fit: cover; }
-      span { font-family: 'Inter', Helvetica, sans-serif; font-weight: 600; color: #ffffff; font-size: 20px; }
+      padding: 0;
+
+      img {
+        width: 14px;
+      }
     }
   }
 }
-// ==========================================
-// ESTILOS DINÁMICOS DE PUNTOS INTERACTIVOS
-// ==========================================
-.nube-puntos-container {
-  .punto {
-    transition: all 0.4s ease;
-    
-    &.activo-naranja {
-      background: #ff7700 !important;
-      box-shadow: 0 0 14px rgba(255, 119, 0, 0.9) !important;
-      transform: translate(-50%, 50%) scale(1.4);
-    }
 
-    &.activo-amarillo {
-      background: #ffcc00 !important;
-      box-shadow: 0 0 14px rgba(255, 204, 0, 0.9) !important;
-      transform: translate(-50%, 50%) scale(1.3);
-    }
-
-    &.activo-celeste {
-      background: #00f0ff !important;
-      box-shadow: 0 0 14px rgba(0, 240, 255, 0.9) !important;
-      transform: translate(-50%, 50%) scale(1.2);
-    }
-  }
-}
 // ==========================================
 // PANTALLA BALLENAS - QUIZ INTERACTIVO
 // ==========================================
 .pantalla-ballenas {
   position: relative;
-  width: 100%;
-  min-width: 1440px;
-  height: 838px;
-  min-height: 838px;
-  background-image: url('./img/image-30.png');
-  background-size: cover;
-  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  box-sizing: border-box;
 
-  // Botón Volver (superior izquierdo)
-  .btn-volver-circular {
+  /* Fondo de video */
+  .video-fondo-ballenas {
     position: absolute;
-    top: 28px;
-    left: 20px;
-    width: 96px;
-    height: 96px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
 
-    .btn-back-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(127, 174, 221, 0.15);
-      border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    }
-    .btn-back-icon {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
+  .ballenas-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 10, 20, 0.55);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Botón volver flecha redonda */
+  .btn-volver-pantalla {
+    position: absolute;
+    top: 2.5rem;
+    left: 4vw;
+    z-index: 10;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+
+    .icono-volver {
+      width: 16px;
+      transform: rotate(90deg);
+      filter: brightness(0) invert(1);
     }
   }
 
-  // Títulos superiores principales
+  /* Encabezado superior izquierdo */
   .header-ballenas {
     position: absolute;
-    top: 86px;
-    left: 118px;
-    width: 500px;
-    z-index: 3;
+    top: 6.5rem;
+    left: 4vw;
+    z-index: 5;
+    max-width: 440px;
 
     .titulo-ballenas {
-      margin: 0 0 10px 0;
-      font-family: 'Roboto', Helvetica, sans-serif;
-      font-weight: bold;
-      color: #6dfff7;
-      font-size: 40px;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2ce6d6;
+      line-height: 1.15;
+      margin: 0 0 0.8rem 0;
+      text-transform: uppercase;
     }
 
     .subtitulo-ballenas {
+      color: #cfd6df;
+      font-size: 0.9rem;
+      line-height: 1.45;
       margin: 0;
-      font-family: 'Inter', Helvetica, sans-serif;
-      font-weight: 300;
-      color: #eaeaea;
-      font-size: 22px;
-      line-height: normal;
     }
   }
 
-  // Tarjeta Azul Oscuro del Quiz
+  /* Tarjeta Glassmorphism oscura centrada */
   .quiz-card-ballenas {
-    position: absolute;
-    top: 276px;
-    left: 118px;
-    width: 1204px;
-    height: 409px;
-    background: #000823;
+    position: relative;
+    z-index: 2;
+    width: 88vw;
+    max-width: 1050px;
+    min-height: 480px;
+    background: rgba(4, 11, 24, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 24px 30px;
-    z-index: 4;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    padding: 3rem 3.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
 
     .quiz-header {
-      width: 100%;
-      
+      margin-bottom: 2rem;
+
       .quiz-main-title {
-        font-family: 'Inter', Helvetica, sans-serif;
-        font-weight: 600;
-        color: #eaeaea;
-        font-size: 22px;
-        margin: 0 0 8px 0;
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0 0 0.4rem 0;
       }
 
       .quiz-sub-text {
-        font-family: 'Inter', Helvetica, sans-serif;
-        font-weight: 300;
-        color: #eaeaea;
-        font-size: 22px;
+        color: #9cb0c8;
+        font-size: 0.95rem;
         margin: 0;
       }
     }
 
-    // Área donde se acomodan las 3 opciones de ballenas
-    .quiz-content-area {
-      position: relative;
-      height: 280px;
+    /* Manejo de vistas/estados */
+    .quiz-vista-estado {
+      display: none;
+      flex-grow: 1;
       width: 100%;
-      margin-top: 10px;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s ease forwards;
 
-      // Estilo base de cada columna de opción
+      &.activa {
+        display: flex;
+      }
+    }
+
+    /* ESTADO 1: Intro */
+    .vista-intro {
+      flex-direction: column;
+      cursor: pointer;
+
+      .intro-ballena-box {
+        text-align: center;
+
+        .ballena-grande-vector {
+          max-width: 460px;
+          width: 100%;
+          height: auto;
+          filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
+        }
+
+        .intro-pie-texto {
+          color: #cfd8e3;
+          font-size: 0.95rem;
+          margin-top: 1.2rem;
+        }
+      }
+
+      .hint-click {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+        color: #2ce6d6;
+        opacity: 0.7;
+      }
+    }
+
+    /* ESTADO 2: Opciones */
+    .vista-opciones {
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 1rem;
+
+      &.activa {
+        display: flex;
+      }
+
       .opcion-ballena-item {
-        position: absolute;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
 
         img {
-          height: 85px;
-          object-fit: contain;
-          margin-bottom: 5px;
+          max-width: 210px;
+          width: 100%;
+          height: auto;
+          transition: filter 0.2s ease;
         }
 
         .opcion-texto {
-          font-family: 'Inter', Helvetica, sans-serif;
-          font-weight: 300;
-          color: #6dfff7;
-          font-size: 18px;
-          text-align: center;
-          margin: 0 0 10px 0;
-          line-height: 1.2;
+          color: #cfd8e3;
+          font-size: 0.95rem;
+          line-height: 1.3;
+          margin: 1.2rem 0 0.8rem 0;
         }
 
-        .btn-radio-quiz {
-          width: 28px;
-          height: 28px;
+        .circulo-radio {
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
-          border: 2px solid #6dfff7;
-          background: transparent;
-          cursor: pointer;
-          transition: all 0.3s ease;
+          border: 1.5px solid rgba(255, 255, 255, 0.4);
+          display: inline-block;
+          transition: all 0.2s ease;
+        }
 
-          &:hover {
-            background: rgba(109, 255, 247, 0.2);
-            transform: scale(1.1);
+        &:hover {
+          transform: translateY(-4px);
+
+          .circulo-radio {
+            border-color: #2ce6d6;
           }
         }
 
-        // Posicionamiento preciso de las 3 opciones según el diseño original
-        &.col-1 {
-          top: 35px;
-          left: 5%;
-          width: 28%;
-        }
-        &.col-2 {
-          top: 40px;
-          left: 41%;
-          width: 22%;
-        }
-        &.col-3 {
-          top: 40px;
-          left: 77%;
-          width: 18%;
+        &.error {
+          animation: shake 0.3s ease;
+          .circulo-radio {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.2);
+          }
         }
       }
+    }
 
-      // Estado final al acertar (Fábrica = Ballenas)
-      .estado-exito-final {
+    /* ESTADO 3: Comparativa final */
+    .vista-resultado {
+      display: none;
+      justify-content: center;
+      align-items: center;
+
+      &.activa {
+        display: flex;
+      }
+
+      .resultado-comparativa {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 50px;
-        height: 100%;
+        gap: 3.5rem;
         width: 100%;
 
-        .exito-bloque {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+        .lado-fabrica,
+        .lado-ballena {
+          text-align: center;
 
           img {
-            max-height: 140px;
-            object-fit: contain;
+            display: block;
+            margin: 0 auto;
           }
 
-          span {
-            margin-top: 15px;
-            color: #eaeaea;
-            font-size: 16px;
-            font-family: 'Inter', Helvetica, sans-serif;
-          }
-
-          .texto-celeste {
-            color: #6dfff7;
-            font-weight: 600;
+          .resultado-pie-texto {
+            color: #cfd8e3;
+            font-size: 0.95rem;
+            margin-top: 1.2rem;
           }
         }
 
+        .fabrica-icono {
+          max-width: 170px;
+          height: auto;
+        }
+
+        .ballena-grande-vector {
+          max-width: 440px;
+          height: auto;
+        }
+
         .signo-igual {
-          font-size: 40px;
+          font-size: 2.8rem;
           color: #ffffff;
-          font-weight: bold;
+          font-weight: 300;
         }
       }
     }
   }
 
-  // Botón de alerta inferior central
-  .btn-alerta-inferior {
+  /* Footer con botón de alerta */
+  .footer-ballenas-controles {
     position: absolute;
-    top: 710px;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: rgba(127, 174, 221, 0.15);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    z-index: 10;
-    transition: transform 0.3s ease;
+    z-index: 5;
 
-    &:hover {
-      transform: translateX(-50%) scale(1.05);
-    }
+    .btn-circular-alerta {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
 
-    img {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
+      img {
+        width: 20px;
+        height: auto;
+      }
     }
   }
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
 // ==========================================
 // PANTALLA DAÑO AMBIENTAL - ¿QUÉ NOS ESPERA?
 // ==========================================
@@ -1865,40 +1693,11 @@ body {
   min-width: 1440px;
   height: 838px;
   min-height: 838px;
-  background-image: url('./img/Pantalla Daño 02.jpg'); // Asegurate de nombrar o ubicar esta imagen en tu carpeta img
+  background-image: url('./img/Pantalla Daño 02.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden;
 
-  // Botón Volver
-  .btn-volver-circular {
-    position: absolute;
-    top: 28px;
-    left: 20px;
-    width: 96px;
-    height: 96px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    z-index: 10;
-
-    .btn-back-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(127, 174, 221, 0.15);
-      border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    }
-    .btn-back-icon {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
-    }
-  }
-
-  // Tarjeta Oscura con el Título y Descripción
   .card-futuro-texto {
     position: absolute;
     top: 165px;
@@ -1913,7 +1712,7 @@ body {
 
     .titulo-futuro {
       margin: 0 0 15px 0;
-      font-family: 'Roboto', Helvetica, sans-serif;
+      font-family: $font-primary;
       font-weight: bold;
       color: #6dfff7;
       font-size: 38px;
@@ -1921,7 +1720,7 @@ body {
 
     .descripcion-futuro {
       margin: 0;
-      font-family: 'Inter', Helvetica, sans-serif;
+      font-family: $font-secondary;
       font-weight: 300;
       color: #eaeaea;
       font-size: 20px;
@@ -1929,7 +1728,6 @@ body {
     }
   }
 
-  // Botón Inferior "El futuro en cifras"
   .footer-futuro {
     position: absolute;
     bottom: 40px;
@@ -1945,7 +1743,7 @@ body {
       cursor: pointer;
       
       span {
-        font-family: 'Inter', Helvetica, sans-serif;
+        font-family: $font-secondary;
         font-weight: 600;
         color: #ffffff;
         font-size: 18px;
@@ -1958,6 +1756,10 @@ body {
     }
   }
 }
+
+// ==========================================
+// PANTALLA TORRE EIFFEL
+// ==========================================
 .pantalla-torre-eiffel {
   position: relative;
   width: 100%;
@@ -1969,33 +1771,6 @@ body {
   background-position: center;
   overflow: hidden;
 
-  .btn-volver-circular {
-    position: absolute;
-    top: 28px;
-    left: 20px;
-    width: 96px;
-    height: 96px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    z-index: 10;
-
-    .btn-back-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(127, 174, 221, 0.15);
-      border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    }
-    .btn-back-icon {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      img { width: 40px; height: 40px; object-fit: contain; transform: rotate(90deg); }
-    }
-  }
-
   .header-torre {
     position: absolute;
     top: 90px;
@@ -2005,14 +1780,14 @@ body {
 
     .titulo-torre {
       margin: 0 0 10px 0;
-      font-family: 'Roboto Condensed', Helvetica, sans-serif;
+      font-family: $font-primary;
       font-weight: bold;
       color: #8bffff;
       font-size: 40px;
     }
     .subtitulo-torre {
       margin: 0;
-      font-family: 'Inter', Helvetica, sans-serif;
+      font-family: $font-secondary;
       font-weight: 300;
       color: #eaeaea;
       font-size: 22px;
@@ -2043,7 +1818,7 @@ body {
       width: 100%;
 
       .texto-invitacion {
-        font-family: 'Inter', Helvetica, sans-serif;
+        font-family: $font-secondary;
         font-weight: 500;
         color: #ffffff;
         font-size: 24px;
@@ -2055,7 +1830,7 @@ body {
         height: 44px;
         border-radius: 10px;
         background: #8bffff;
-        font-family: 'Inter', Helvetica, sans-serif;
+        font-family: $font-secondary;
         font-weight: 500;
         color: #000000;
         font-size: 22px;
@@ -2067,7 +1842,7 @@ body {
       }
 
       .pregunta-titulo {
-        font-family: 'Inter', Helvetica, sans-serif;
+        font-family: $font-secondary;
         font-weight: 600;
         color: #eaeaea;
         font-size: 24px;
@@ -2087,7 +1862,7 @@ body {
           cursor: pointer;
 
           span {
-            font-family: 'Inter', Helvetica, sans-serif;
+            font-family: $font-secondary;
             color: #eaeaea;
             font-size: 22px;
           }
@@ -2157,7 +1932,7 @@ body {
         flex-direction: column;
 
         .numero-gigante {
-          font-family: 'Inter', Helvetica, sans-serif;
+          font-family: $font-secondary;
           font-weight: normal;
           color: #6dfff7;
           font-size: 64px;
@@ -2165,7 +1940,7 @@ body {
         }
 
         .texto-cada-anio {
-          font-family: 'Inter', Helvetica, sans-serif;
+          font-family: $font-secondary;
           font-weight: 300;
           color: #eaeaea;
           font-size: 22px;
@@ -2178,7 +1953,7 @@ body {
       position: absolute;
       bottom: -45px;
       left: 188px;
-      font-family: 'Inter', Helvetica, sans-serif;
+      font-family: $font-secondary;
       font-weight: 300;
       color: #eaeaea;
       font-size: 20px;
@@ -2195,7 +1970,7 @@ body {
     z-index: 10;
 
     img { width: 32px; height: 32px; object-fit: cover; }
-    span { font-family: 'Inter', Helvetica, sans-serif; font-weight: 600; color: #ffffff; font-size: 20px; }
+    span { font-family: $font-secondary; font-weight: 600; color: #ffffff; font-size: 20px; }
   }
 
   .btn-lupa-flotante {
