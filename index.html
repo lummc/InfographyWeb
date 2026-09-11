@@ -240,31 +240,47 @@
   </button>
 </section>
   <!-- ================= PANTALLA CO2 ================= -->
-   <section class="pantalla-co2" id="carbon-footprint-details">
-  <!-- Video de fondo -->
+   <!-- ================= PANTALLA CO2 (INTRODUCCIÓN) ================= -->
+<section class="pantalla-co2" id="carbon-footprint-details">
+  <!-- Video de fondo en loop a pantalla completa -->
   <video class="video-fondo-co2" autoplay muted loop playsinline>
     <source src="./img/FondoC2-P1.mp4" type="video/mp4" />
   </video>
 
+  <!-- Overlay para asegurar contraste de texto -->
+  <div class="co2-video-overlay"></div>
+
+  <!-- Contenedor con distribución absoluta idéntica al prototipo -->
   <div class="co2-contenido-absoluto">
+    <!-- Card Negra (600px x 388px) -->
     <article class="co2-card-negra">
       <h1 class="titulo-co2">
-        CUAL ES
+        <span>CUAL ES</span>
         <span class="resaltado">EL COSTO AMBIENTAL?</span>
       </h1>
       <p class="descripcion-co2">
-        la generación de videos con ia genera emisiones de carbono debido a la energía necesaria para entrenar y ejecutar sus modelos en centros de datos.
+        La generación de videos con IA genera emisiones de carbono debido a la energía necesaria para entrenar y ejecutar sus modelos en centros de datos.
       </p>
     </article>
 
+    <!-- Ilustración de la fábrica (396px x 396px) -->
     <div class="co2-ilustracion-fabrica">
-      <img src="./img/icono-datacenters.png" alt="Ilustración de una fábrica con emisiones" />
+      <img src="./img/icono-datacenters.png" alt="Ilustración de fábrica con emisiones" />
     </div>
 
-    <button type="button" class="btn-cuanto-genera" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })" aria-label="Ver más información">
-      <img src="./img/downflecha-icon.svg" alt="" />
+    <!-- Botón Inferior Izquierdo "¿Cuánto genera?" -->
+    <button type="button" class="btn-cuanto-genera" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })" aria-label="Ver cuánto genera la inteligencia artificial">
+      <span class="icono-flecha">↓</span>
       <span>¿Cuánto genera?</span>
     </button>
+
+    <!-- Botón Circular Lupa Flotante (Inferior derecho) -->
+    <a class="btn-lupa-circular" href="https://www.biobiochile.cl" target="_blank" rel="noopener noreferrer" aria-label="Ver fuente del informe">
+      <span class="btn-lupa-bg"></span>
+      <span class="btn-lupa-icon">
+        <img src="./img/lupa-icon.svg" alt="Lupa" />
+      </span>
+    </a>
   </div>
 </section>
  <!-- ================= PANTALLA GPT3 INTERACTIVA ================= -->

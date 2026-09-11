@@ -419,13 +419,13 @@ body {
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
       &--left {
-        width: 213px;
-        height: 213px;
+        width: 180px;
+        height: 180px;
       }
 
       &--right {
-        width: 215px;
-        height: 215px;
+        width: 180px;
+        height: 180px;
       }
 
       &__icon {
@@ -455,14 +455,19 @@ body {
 // ==========================================
 // PANTALLA AGUA 1 (INTRODUCCIÓN)
 // ==========================================
+// ==========================================
+// PANTALLA AGUA 1 (INTRODUCCIÓN)
+// ==========================================
 .pantalla-agua-1 {
   position: relative;
   width: 100%;
   min-width: 1440px;
   height: 838px;
   min-height: 838px;
+  background: transparent;
   overflow: hidden;
 
+  // Video de fondo a pantalla completa
   .agua-video-bg {
     position: absolute;
     inset: 0;
@@ -471,35 +476,48 @@ body {
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
+    display: block;
   }
 
+  // Filtro oscuro para contraste idéntico a CO2
   .agua-video-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 8, 25, 0.4);
-    backdrop-filter: blur(1px);
-    z-index: 2;
-  }
-
-  .agua-container-1 {
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(1px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  // Contenedor principal centrado
+  .agua-container-1 {
     position: relative;
     z-index: 3;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
 
+    // Tarjeta negra izquierda
     .texto-header {
       position: absolute;
-      top: 135px;
+      top: 155px;
       left: 118px;
-      width: 610px;
-      background: rgba(0, 0, 0, 0.85);
-      border-radius: 20px;
-      padding: 55px 45px;
       display: flex;
+      width: 600px;
+      height: 388px;
+      padding: 61px 34px 51px 35px;
       flex-direction: column;
-      gap: 20px;
-      z-index: 3;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      align-items: flex-start;
+      gap: 22px;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.88);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 
       .titulo-costo {
         margin: 0;
@@ -507,49 +525,52 @@ body {
         font-weight: 700;
         color: #6DFFF8;
         font-size: 46px;
-        line-height: 1.15;
-        letter-spacing: 1px;
+        line-height: 1.1;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
 
       .descripcion-costo {
         margin: 0;
         font-family: $font-secondary;
-        font-weight: 300;
-        color: #eaeaea;
         font-size: 20px;
-        line-height: 1.5;
+        font-weight: 300;
+        line-height: 1.45;
+        color: #eaeaea;
+        letter-spacing: 0.2px;
       }
     }
 
+    // Ilustraciones a la derecha dentro del lienzo
     .imagenes-decorativas {
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 650px;
-      height: 100%;
+      top: 155px;
+      right: 175px;
+      width: 396px;
+      height: 396px;
       pointer-events: none;
-      z-index: 2;
 
       .icono-grifo {
         position: absolute;
-        top: 260px;
-        left: 80px;
-        width: 200px;
+        top: 20px;
+        left: 30px;
+        width: 180px;
         height: auto;
         object-fit: contain;
       }
 
       .icono-computer {
         position: absolute;
-        top: 540px;
-        left: 230px;
-        width: 240px;
+        bottom: 20px;
+        right: 20px;
+        width: 210px;
         height: auto;
         object-fit: contain;
       }
     }
   }
 
+  // Botón inferior izquierdo
   .btn-descubri-detras {
     position: absolute;
     bottom: 35px;
@@ -569,8 +590,8 @@ body {
     }
 
     .icono-downflecha {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       object-fit: contain;
     }
 
@@ -578,14 +599,15 @@ body {
       font-family: $font-secondary;
       font-weight: 600;
       color: #ffffff;
-      font-size: 20px;
+      font-size: 18px;
       line-height: normal;
     }
   }
 
+  // Botón Circular Lupa (Inferior derecho)
   .btn-lupa-circular {
     position: absolute;
-    bottom: 40px;
+    bottom: 35px;
     right: 90px;
     width: 96px;
     height: 96px;
@@ -602,21 +624,19 @@ body {
 
     .btn-lupa-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: rgba(127, 174, 221, 0.15);
       border-radius: 50%;
-      box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
+      box-shadow: -1.5px -1.5px 1.5px #b7cce0,
+                  -0.75px -0.75px 0px #ffffff,
+                  inset -1.5px -1.5px 1.5px #b8cce0,
+                  inset -0.75px -0.75px 0px #ffffff;
+      backdrop-filter: blur(8px);
     }
 
     .btn-lupa-icon {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1062,104 +1082,190 @@ body {
 // ==========================================
 // PANTALLA CO2
 // ==========================================
-/* 1. Contenedor de la pantalla completa */
+// ==========================================
+// PANTALLA CO2 (INTRODUCCIÓN)
+// ==========================================
 .pantalla-co2 {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-width: 1440px;
+  height: 838px;
+  min-height: 838px;
   overflow: hidden;
-  box-sizing: border-box;
-}
 
-/* 2. Video de fondo que llena la pantalla */
-.video-fondo-co2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-}
+  // Video de fondo a pantalla completa
+  .video-fondo-co2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
 
-/* 3. Contenedor principal que distribuye tarjeta, fábrica y botón */
-.co2-contenido-absoluto {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5rem 6vw 3rem 6vw;
-  box-sizing: border-box;
-}
+  // Filtro oscuro para contraste
+  .co2-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(1px);
+    z-index: 2;
+  }
 
-/* 4. Tarjeta negra redondeada */
-.co2-card-negra {
-  background: rgba(10, 10, 10, 0.92);
-  border-radius: 24px;
-  padding: 2.8rem 2.4rem;
-  max-width: 480px;
-  box-sizing: border-box;
-  backdrop-filter: blur(4px);
-}
+  // Contenedor principal
+  .co2-contenido-absoluto {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
 
-.titulo-co2 {
-  font-family: inherit;
-  font-size: 2rem;
-  font-weight: 800;
-  line-height: 1.15;
-  margin: 0 0 1.5rem 0;
-  color: #ffffff;
-  text-transform: uppercase;
-}
+    // Tarjeta negra según Figma Dev Mode: 600px x 388px
+    .co2-card-negra {
+      position: absolute;
+      top: 155px;
+      left: 118px;
+      display: flex;
+      width: 600px;
+      height: 388px;
+      padding: 61px 34px 51px 35px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.88);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 
-/* Color cian/turquesa del prototipo */
-.titulo-co2 .resaltado {
-  color: #2ce6d6; 
-  display: block;
-}
+      .titulo-co2 {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 46px;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #ffffff;
 
-.descripcion-co2 {
-  color: #d1d5db;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 0;
-}
+        .resaltado {
+          color: #6DFFF8;
+        }
+      }
 
-/* 5. Ilustración de la fábrica a la derecha */
-.co2-ilustracion-fabrica {
-  flex-shrink: 0;
-}
+      .descripcion-co2 {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.45;
+        color: #eaeaea;
+        letter-spacing: 0.2px;
+      }
+    }
 
-.co2-ilustracion-fabrica img {
-  max-width: 240px;
-  height: auto;
-  display: block;
-}
+    // Fábrica según Figma Dev Mode: 396px x 396px
+    .co2-ilustracion-fabrica {
+      position: absolute;
+      top: 175px;
+      right: 175px;
+      width: 396px;
+      height: 396px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
 
-/* 6. Botón inferior "¿Cuánto genera?" */
-.btn-cuanto-genera {
-  position: absolute;
-  bottom: 2rem;
-  left: 6vw;
-  background: transparent;
-  border: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #ffffff;
-  font-size: 0.9rem;
-  cursor: pointer;
-  padding: 0;
-}
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+    }
 
-.btn-cuanto-genera img {
-  width: 14px;
-  height: auto;
+    // Botón inferior izquierdo "¿Cuánto genera?"
+    .btn-cuanto-genera {
+      position: absolute;
+      bottom: 35px;
+      left: 118px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.85;
+      }
+
+      .icono-flecha {
+        color: #6DFFF8;
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      span {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: #ffffff;
+      }
+    }
+
+    // Botón Lupa Flotante (Inferior derecho)
+    .btn-lupa-circular {
+      position: absolute;
+      bottom: 35px;
+      right: 90px;
+      width: 96px;
+      height: 96px;
+      background: transparent;
+      border: none;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .btn-lupa-bg {
+        position: absolute;
+        inset: 0;
+        background: rgba(127, 174, 221, 0.15);
+        border-radius: 50%;
+        box-shadow: -1.5px -1.5px 1.5px #b7cce0,
+                    -0.75px -0.75px 0px #ffffff,
+                    inset -1.5px -1.5px 1.5px #b8cce0,
+                    inset -0.75px -0.75px 0px #ffffff;
+        backdrop-filter: blur(8px);
+      }
+
+      .btn-lupa-icon {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 38px;
+          height: 38px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
 }
 // ==========================================
 // PANTALLA GPT-3 INTERACTIVA
