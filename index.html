@@ -16,7 +16,36 @@
   <link rel="stylesheet" href="./styles/style.css"/>
 </head>
 <body>
+<!-- ================= PANTALLA INTRO: MIRA ESTE VIDEO ================= -->
+<section class="pantalla-intro-video" id="intro-video">
+  <!-- Video de fondo en loop idéntico a la home (con blur aumentado) -->
+  <video class="intro__video-bg" autoplay muted loop playsinline>
+    <source src="./img/WaterFondo.mp4" type="video/mp4" />
+  </video>
 
+  <!-- Capa con blur acentuado y contraste -->
+  <div class="intro__overlay"></div>
+
+  <div class="intro__content">
+    <h2 class="intro__title">MIRA ESTE VIDEO</h2>
+
+    <!-- Reproductor de Video Central (843px x 475px) -->
+    <div class="intro__player-wrapper">
+      <video id="aiGenVideo" class="intro__main-video" playsinline controls>
+        <source src="./img/AI-GENVIDEO.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Botón que aparece al terminar el video (o al hacer clic) -->
+    <div class="intro__action-box" id="introActionBox">
+      <p class="intro__pregunta">¿Es real o fue creado con Inteligencia Artificial?</p>
+      <button type="button" class="btn-descubrir-realidad" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+        <span class="flecha-abajo">↓</span>
+        <span>Descubrí la verdad</span>
+      </button>
+    </div>
+  </div>
+</section>
   <!-- ================= HERO ================= -->
   <section class="hero" id="inicio">
     <video class="hero__video-bg" autoplay muted loop playsinline>
@@ -663,6 +692,24 @@
 </section>
   <!-- ================= SCRIPTS ================= -->
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const videoIntro = document.getElementById('aiGenVideo');
+  const actionBox = document.getElementById('introActionBox');
+
+  if (videoIntro && actionBox) {
+    // Se muestra al terminar el video
+    videoIntro.addEventListener('ended', () => {
+      actionBox.classList.add('visible');
+    });
+
+    // O si el usuario lo adelanta/mira casi hasta el final (últimos 2 segundos)
+    videoIntro.addEventListener('timeupdate', () => {
+      if (videoIntro.duration && (videoIntro.duration - videoIntro.currentTime <= 2)) {
+        actionBox.classList.add('visible');
+      }
+    });
+  }
+});
     // Carrusel Pantalla Agua 2
     const diapositivasAgua = [
       { estado1: './img/Estado1-Texto.png', estado2: './img/Estado2-Texto.svg' },

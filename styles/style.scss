@@ -25,7 +25,143 @@ body {
   background-color: #000000;
   overflow-x: hidden;
 }
+// ==========================================
+// PANTALLA INTRO: MIRA ESTE VIDEO
+// ==========================================
+.pantalla-intro-video {
+  position: relative;
+  width: 100%;
+  min-width: 1440px;
+  height: 100vh;
+  min-height: 838px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  // Video de fondo
+  .intro__video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  // Capa con mayor desenfoque (blur 8px)
+  .intro__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 8, 25, 0.4) 0%, rgba(0, 8, 25, 0.75) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2;
+  }
+
+  .intro__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1440px;
+    padding: 2rem 0;
+  }
+
+  // Título centrado
+  .intro__title {
+    margin: 0 0 28px 0;
+    color: #6DFFF8;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  // Contenedor exacto Dev Mode (843px x 475px)
+  .intro__player-wrapper {
+    position: relative;
+    width: 843px;
+    height: 475px;
+    aspect-ratio: 126 / 71;
+    background: #000000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    .intro__main-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      outline: none;
+    }
+  }
+
+  // Bloque de revelación inferior
+  .intro__action-box {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .intro__pregunta {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 19px;
+      font-weight: 300;
+      color: #EAEAEA;
+      text-align: center;
+    }
+
+    .btn-descubrir-realidad {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 6px 14px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+
+      &:hover {
+        transform: translateY(3px);
+        opacity: 0.85;
+      }
+
+      .flecha-abajo {
+        font-size: 20px;
+        color: #6DFFF8;
+      }
+
+      span {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: #ffffff;
+      }
+    }
+  }
+}
 // ==========================================
 // HERO / LANDING
 // ==========================================
