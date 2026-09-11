@@ -1867,231 +1867,513 @@ body {
 // ==========================================
 .pantalla-torre-eiffel {
   position: relative;
-  width: 100%;
-  min-width: 1440px;
-  height: 861px;
-  min-height: 861px;
-  background-image: url('./img/image-33.png');
-  background-size: cover;
-  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 4rem 6vw 3rem 6vw;
 
+  /* 1. Fondo de video y overlay */
+  .video-fondo-torre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .torre-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 8, 7, 0.45);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* 2. Header superior izquierdo con jerarquía amplia */
   .header-torre {
     position: absolute;
-    top: 90px;
-    left: 118px;
-    width: 600px;
-    z-index: 3;
+    top: 3.5rem;
+    left: 6vw;
+    z-index: 5;
+    max-width: 620px;
 
     .titulo-torre {
-      margin: 0 0 10px 0;
-      font-family: $font-primary;
-      font-weight: bold;
-      color: #8bffff;
-      font-size: 40px;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #2ce6d6;
+      line-height: 1.1;
+      margin: 0 0 0.8rem 0;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
     }
+
     .subtitulo-torre {
+      color: #e2e8f0;
+      font-size: 1.15rem;
+      line-height: 1.45;
       margin: 0;
-      font-family: $font-secondary;
-      font-weight: 300;
-      color: #eaeaea;
-      font-size: 22px;
-      line-height: normal;
     }
   }
 
-  .quiz-torre-card {
-    position: absolute;
-    top: 272px;
-    left: 118px;
-    width: 628px;
-    height: 459px;
-    background: #000823;
-    border-radius: 20px;
-    padding: 40px;
-    z-index: 4;
+  /* 3. Área central: Tarjeta + Revelación derecha alineados al medio */
+  .torre-area-interactiva {
+    position: relative;
+    z-index: 2;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    margin: auto;
+    width: 100%;
+    max-width: 1350px;
+
+    /* Tarjeta principal oscura */
+    .quiz-torre-card {
+  width: 660px; /* Más ancho para contener las 25 columnas sin apretarlas */
+  height: 480px;
+  flex-shrink: 0;
+  background: rgba(8, 14, 22, 0.94);
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: flex;
+  padding: 2rem 2.2rem; /* Padding equilibrado */
+  box-sizing: border-box;
+  overflow: hidden; /* Corta cualquier posible pixel de desborde */
+
+  .estado-quiz {
+    display: none;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    align-items: center;
+    text-align: center;
 
-    .estado-quiz {
+    &.activo {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: 100%;
+    }
+  }
 
-      .texto-invitacion {
-        font-family: $font-secondary;
-        font-weight: 500;
-        color: #ffffff;
-        font-size: 24px;
-        margin-bottom: 25px;
-      }
+      /* Estado 1: Invitación */
+      #estadoInvitacion {
+        .texto-invitacion {
+          color: #ffffff;
+          font-size: 1.3rem;
+          font-weight: 500;
+          margin-bottom: 2rem;
+        }
 
-      .btn-iniciar-quiz {
-        width: 148px;
-        height: 44px;
-        border-radius: 10px;
-        background: #8bffff;
-        font-family: $font-secondary;
-        font-weight: 500;
-        color: #000000;
-        font-size: 22px;
-        border: none;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-
-        &:hover { transform: scale(1.05); }
-      }
-
-      .pregunta-titulo {
-        font-family: $font-secondary;
-        font-weight: 600;
-        color: #eaeaea;
-        font-size: 24px;
-        margin-bottom: 40px;
-      }
-
-      .opciones-grid {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-
-        .opcion-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 15px;
+        .btn-iniciar-quiz {
+          background: #2ce6d6;
+          color: #03141f;
+          border: none;
+          font-weight: 800;
+          font-size: 1.05rem;
+          padding: 0.85rem 3.2rem;
+          border-radius: 24px;
           cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-          span {
-            font-family: $font-secondary;
-            color: #eaeaea;
-            font-size: 22px;
-          }
-
-          .radio-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 2px solid #8bffff;
-            background: transparent;
-            cursor: pointer;
-          }
-
-          &:hover .radio-btn {
-            background: rgba(139, 255, 255, 0.3);
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px rgba(44, 230, 214, 0.65);
           }
         }
       }
 
-      .mensaje-error {
-        color: #ff6b6b;
-        margin-top: 20px;
-        font-size: 16px;
+      /* Estado 2: Pregunta */
+      #estadoPregunta {
+        .pregunta-titulo {
+          color: #ffffff;
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 3.5rem;
+        }
+
+        .opciones-grid {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+
+          .opcion-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            cursor: pointer;
+
+            .numero-opcion {
+              color: #ffffff;
+              font-size: 1.25rem;
+              font-weight: 700;
+            }
+
+            .radio-circulo {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              border: 2px solid rgba(255, 255, 255, 0.45);
+              transition: all 0.2s ease;
+            }
+
+            &:hover .radio-circulo {
+              border-color: #2ce6d6;
+              transform: scale(1.1);
+            }
+
+            &.error {
+              animation: sacudir 0.3s ease;
+              .radio-circulo {
+                border-color: #ff4757;
+                background: rgba(255, 71, 87, 0.3);
+              }
+            }
+          }
+        }
       }
 
-      .grilla-torres-mini {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 8px;
-        max-height: 350px;
-        overflow-y: auto;
-        padding: 10px;
+      /* Estado 3: Matriz ordenada de las 250 torres */
+     #estadoResultado {
+    padding: 0;
+    width: 100%;
+    height: 100%;
 
-        img { width: 25px; height: auto; object-fit: contain; }
+    .grilla-250-torres {
+      display: grid;
+      /* minmax(0, 1fr) obliga a que las 25 columnas respeten el ancho de la tarjeta */
+      grid-template-columns: repeat(25, minmax(0, 1fr));
+      grid-template-rows: repeat(10, 1fr);
+      gap: 6px 3px;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-items: center;
+
+      img {
+        max-width: 100%;
+        max-height: 22px; /* Altura máxima óptima para no desbordar vertical ni horizontalmente */
+        width: auto;
+        height: auto;
+        display: block;
+        opacity: 0.9;
+        filter: brightness(0) invert(1);
       }
     }
   }
+}
 
-  .resultado-derecha-container {
-    position: absolute;
-    top: 271px;
-    left: 786px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    z-index: 5;
-
-    .img-torre-grande {
-      width: 264px;
-      height: 264px;
-      object-fit: contain;
-    }
-
-    .resultado-texto-bloque {
-      display: flex;
+    /* 4. Bloque derecho revelado (Igual, cifras y Torre Grande) */
+    .resultado-derecha-container {
+      display: none;
       align-items: center;
-      gap: 20px;
+      gap: 3rem;
+      animation: aparecerDerecha 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
-      .icono-igual {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
+      &.activo {
+        display: flex;
       }
 
-      .numero-texto-grupo {
+      .simbolo-igual {
+        font-size: 5rem;
+        color: #ffffff;
+        font-weight: 300;
+        line-height: 1;
+      }
+
+      .bloque-datos-torre {
         display: flex;
         flex-direction: column;
 
-        .numero-gigante {
-          font-family: $font-secondary;
-          font-weight: normal;
-          color: #6dfff7;
-          font-size: 64px;
-          line-height: 1;
+        .cifra-torres-bloque {
+          display: flex;
+          flex-direction: column;
+
+          .numero-gigante {
+            font-size: 4.8rem;
+            font-weight: 900;
+            color: #2ce6d6;
+            line-height: 0.9;
+          }
+
+          .texto-cada-anio {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+            letter-spacing: 1.5px;
+          }
         }
 
-        .texto-cada-anio {
-          font-family: $font-secondary;
-          font-weight: 300;
-          color: #eaeaea;
-          font-size: 22px;
-          margin-top: 5px;
+        .sugerencia-onu {
+          color: #9cb0c8;
+          font-size: 1rem;
+          margin-top: 0.8rem;
         }
+      }
+
+      /* Torre Eiffel a escala proporcional de las cifras */
+      .img-torre-grande {
+        height: 220px;
+        width: auto;
+        display: block;
+        filter: brightness(0) invert(1) drop-shadow(0 0 16px rgba(255, 255, 255, 0.25));
+      }
+    }
+  }
+
+  /* 5. Footer inferior */
+  .footer-torre-navegacion {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .btn-escala-global {
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #ffffff;
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0;
+
+      .flecha-down {
+        width: 14px;
+        height: auto;
       }
     }
 
-    .sugerencia-onu {
-      position: absolute;
-      bottom: -45px;
-      left: 188px;
-      font-family: $font-secondary;
-      font-weight: 300;
-      color: #eaeaea;
-      font-size: 20px;
+    .btn-lupa-flotante {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      text-decoration: none;
+
+      .icono-lupa {
+        width: 20px;
+        height: auto;
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes aparecerDerecha {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.pantalla-final-dano {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 4rem 6vw 3rem 6vw;
+  background-color: #0b0907;
+
+  /* 1. Fondo de Video */
+  .video-fondo-final {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .overlay-final-dano {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 8, 6, 0.45);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* 2. Header superior izquierdo */
+  .header-final-dano {
+    position: absolute;
+    top: 3.5rem;
+    left: 6vw;
+    z-index: 5;
+    max-width: 620px;
+
+    .titulo-final {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #2ce6d6;
+      line-height: 1.15;
+      margin: 0 0 0.8rem 0;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitulo-final {
+      color: #e2e8f0;
+      font-size: 1.1rem;
+      line-height: 1.45;
+      margin: 0;
     }
   }
 
-  .footer-escala-global {
-    position: absolute;
-    bottom: 24px;
-    left: 99px;
+  /* 3. Texto Central Gigante Derretido */
+  .contenedor-texto-central {
+    position: relative;
+    z-index: 3;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
-    z-index: 10;
+    margin: auto;
+    text-align: center;
+    pointer-events: none;
 
-    img { width: 32px; height: 32px; object-fit: cover; }
-    span { font-family: $font-secondary; font-weight: 600; color: #ffffff; font-size: 20px; }
+    .texto-derritiendose {
+      font-size: clamp(3.8rem, 6.8vw, 6.5rem);
+      font-weight: 900;
+      color: #5bebe0;
+      line-height: 1.05;
+      margin: 0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      filter: url(#filtroDerretir) drop-shadow(0 0 25px rgba(44, 230, 214, 0.45));
+      animation: animacionDerrite 4.5s ease-in-out infinite alternate;
+    }
   }
 
-  .btn-lupa-flotante {
-    position: absolute;
-    bottom: 50px;
-    right: 138px;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    background: rgba(127, 174, 221, 0.15);
+  /* 4. Footer con controles circulares */
+  .footer-final-controles {
+    position: relative;
+    z-index: 5;
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: -1.5px -1.5px 1.5px #b7cce0, -0.75px -0.75px 0px #ffffff, inset -1.5px -1.5px 1.5px #b8cce0, inset -0.75px -0.75px 0px #ffffff;
-    z-index: 10;
+    align-items: center;
+    width: 100%;
 
-    img { width: 76px; height: 63px; object-fit: contain; }
+    /* Botón Mundo centrado */
+    .btn-circular-mundo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      text-decoration: none;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+
+      .icono-mundo-nav {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+        display: block;
+        filter: brightness(0) invert(1);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        background: rgba(44, 230, 214, 0.2);
+        border-color: #2ce6d6;
+        box-shadow: 0 0 20px rgba(44, 230, 214, 0.6);
+      }
+    }
+
+    /* Botón Lupa anclado abajo a la derecha */
+    .btn-lupa-flotante {
+      position: absolute;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      text-decoration: none;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+
+      .svg-lupa {
+        width: 22px;
+        height: 22px;
+        stroke: #ffffff;
+      }
+
+      &:hover {
+        transform: scale(1.08);
+        border-color: #2ce6d6;
+      }
+    }
+  }
+
+  /* SVG invisible */
+  .svg-filtro-derretido {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+}
+
+/* Animación líquida continua */
+@keyframes animacionDerrite {
+  0% {
+    transform: scaleY(1) translateY(0);
+    letter-spacing: 2px;
+  }
+  50% {
+    letter-spacing: 3.5px;
+  }
+  100% {
+    transform: scaleY(1.06) translateY(6px);
+    letter-spacing: 4px;
+    filter: url(#filtroDerretir) drop-shadow(0 10px 30px rgba(44, 230, 214, 0.6));
   }
 }

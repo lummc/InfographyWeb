@@ -515,71 +515,152 @@
 </section>
 
   <!-- ================= PANTALLA TORRE EIFFEL ================= -->
-  <section class="pantalla-torre-eiffel" id="seccionTorreEiffel">
-    <header class="header-torre">
-      <h1 class="titulo-torre">UNA PREDICCIÓN PREOCUPANTE</h1>
-      <p class="subtitulo-torre">2,5 millones de toneladas de residuos electrónicos podrían generarse anualmente para 2030.</p>
-    </header>
+  <!-- ================= PANTALLA TORRE EIFFEL ================= -->
+<section class="pantalla-torre-eiffel" id="seccionTorreEiffel">
 
-    <div class="quiz-torre-card" id="quizTorreCard">
-      <div class="estado-quiz" id="estadoInvitacion">
+  <!-- Video de fondo Pantalla Daño 2 -->
+  <video class="video-fondo-torre" autoplay muted loop playsinline>
+    <source src="./img/FondoDaño-P2.mp4" type="video/mp4" />
+  </video>
+
+  <div class="torre-video-overlay"></div>
+
+  <!-- Header superior izquierdo -->
+  <header class="header-torre">
+    <h1 class="titulo-torre">UNA PREDICCIÓN<br>PREOCUPANTE</h1>
+    <p class="subtitulo-torre">
+      2,5 millones de toneladas de residuos electrónicos podrían generarse anualmente para 2030.
+    </p>
+  </header>
+
+  <!-- Área principal interactiva -->
+  <div class="torre-area-interactiva">
+    
+    <!-- Tarjeta Quiz (Estados 1, 2 y matriz 250 torres) -->
+    <article class="quiz-torre-card" id="quizTorreCard">
+      
+      <!-- Estado 1: Invitación -->
+      <div class="estado-quiz activo" id="estadoInvitacion">
         <p class="texto-invitacion">Te invitamos a participar de este quiz:</p>
-        <button type="button" class="btn-iniciar-quiz" onclick="cambiarEstadoQuiz('pregunta')">Iniciar</button>
+        <button type="button" class="btn-iniciar-quiz" onclick="cambiarEstadoQuiz('pregunta')">
+          Iniciar
+        </button>
       </div>
 
-      <div class="estado-quiz" id="estadoPregunta" style="display: none;">
+      <!-- Estado 2: Pregunta -->
+      <div class="estado-quiz" id="estadoPregunta">
         <h2 class="pregunta-titulo">¿A cuantas torres Eiffel equivaldria?</h2>
         <div class="opciones-grid">
-          <div class="opcion-item" onclick="verificarTorre(false)">
-            <span>80</span>
-            <button type="button" class="radio-btn"></button>
+          <div class="opcion-item" onclick="verificarTorre(false, this)">
+            <span class="numero-opcion">80</span>
+            <span class="radio-circulo"></span>
           </div>
-          <div class="opcion-item" onclick="verificarTorre(false)">
-            <span>199</span>
-            <button type="button" class="radio-btn"></button>
+          <div class="opcion-item" onclick="verificarTorre(false, this)">
+            <span class="numero-opcion">199</span>
+            <span class="radio-circulo"></span>
           </div>
-          <div class="opcion-item" onclick="verificarTorre(true)">
-            <span>250</span>
-            <button type="button" class="radio-btn"></button>
+          <div class="opcion-item" onclick="verificarTorre(true, this)">
+            <span class="numero-opcion">250</span>
+            <span class="radio-circulo"></span>
           </div>
         </div>
-        <p id="mensajeErrorQuiz" class="mensaje-error" style="display: none;">Incorrecto, intenta de nuevo.</p>
       </div>
 
-      <div class="estado-quiz" id="estadoResultado" style="display: none;">
-        <div class="grilla-torres-mini">
-          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
-          <img src="./img/torreeiffel-icon.svg" alt="Torre" />
+      <!-- Estado 3: Grilla con las 250 torres eiffel -->
+      <div class="estado-quiz" id="estadoResultado">
+        <div class="grilla-250-torres" id="contenedor250Torres">
+          <!-- Inyectadas con JS -->
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="resultado-derecha-container" id="resultadoDerecha" style="display: none;">
-      <img src="./img/torreeiffel-icon.svg" alt="Torre Eiffel Grande" class="img-torre-grande" />
-      <div class="resultado-texto-bloque">
-        <img src="./img/igual-icon.svg" alt="Igual" class="icono-igual" />
-        <div class="numero-texto-grupo">
+    <!-- Estado 3: Revelación derecha (Igual + 250 cada año + Torre Grande) -->
+    <div class="resultado-derecha-container" id="resultadoDerecha">
+      <div class="simbolo-igual">=</div>
+      
+      <div class="bloque-datos-torre">
+        <div class="cifra-torres-bloque">
           <span class="numero-gigante">250</span>
           <span class="texto-cada-anio">CADA AÑO</span>
         </div>
+        <span class="sugerencia-onu">Según la ONU</span>
       </div>
-      <span class="sugerencia-onu">Según la ONU</span>
+
+      <img src="./img/torreeiffel-icon.svg" alt="Torre Eiffel" class="img-torre-grande" />
     </div>
 
-    <div class="footer-escala-global">
-      <img src="./img/PNG-PSD-pngtree-photoroom-5.png" alt="" />
+  </div>
+
+  <!-- Footer con flecha abajo y enlace lupa -->
+  <footer class="footer-torre-navegacion">
+    <button type="button" class="btn-escala-global" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+      <img src="./img/downflecha-icon.svg" alt="" class="flecha-down" />
       <span>A escala global</span>
-    </div>
+    </button>
 
-    <a class="btn-lupa-flotante" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer">
-      <img src="./img/lupa-icon.svg" alt="Lupa" />
+    <a class="btn-lupa-flotante" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer" aria-label="Ver fuente informativa">
+      <img src="./img/lupa-icon.svg" alt="Información" class="icono-lupa" />
     </a>
-  </section>
+  </footer>
 
+</section>
+
+<!-- ================= PANTALLA FINAL DAÑO ================= -->
+<!-- ================= PANTALLA FINAL DAÑO ================= -->
+<section class="pantalla-final-dano" id="seccionFinalDano">
+
+  <!-- Video de fondo -->
+  <video class="video-fondo-final" autoplay muted loop playsinline>
+    <source src="./img/FondoDaño-P3.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Overlay para asegurar contraste con el fondo -->
+  <div class="overlay-final-dano"></div>
+
+  <!-- Encabezado superior izquierdo -->
+  <header class="header-final-dano">
+    <h1 class="titulo-final">NO NECESITAMOS LLEGAR A ESO</h1>
+    <p class="subtitulo-final">
+      En el 2030 a nivel mundial se proyecta que la huella hídrica asociada será de 9,3 billones de litros y la huella de suelo asociada superará los 14.500 kilómetros cuadrados.
+    </p>
+  </header>
+
+  <!-- Texto central con derretido -->
+  <div class="contenedor-texto-central">
+    <h2 class="texto-derritiendose">
+      HAGAMOS<br>
+      USO<br>
+      CONCIENTE!
+    </h2>
+  </div>
+
+  <!-- Footer con botón mundo y botón lupa -->
+  <footer class="footer-final-controles">
+    <a href="#inicio" class="btn-circular-mundo" aria-label="Volver al menú principal">
+      <img src="./img/MundoInterrogario-Icon.png" alt="Inicio" class="icono-mundo-nav" />
+    </a>
+
+    <a class="btn-lupa-flotante" href="https://www.biobiochile.cl/noticias/ciencia-y-tecnologia/medio-ambiente-cyt/2026/06/03/la-onu-advierte-el-costo-ambiental-de-la-ia-generar-un-solo-video-cuesta-41-litros-de-agua.shtml" target="_blank" rel="noopener noreferrer" aria-label="Fuente informativa">
+      <svg viewBox="0 0 24 24" class="svg-lupa" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </a>
+  </footer>
+
+  <!-- Filtro SVG para el derretido -->
+  <svg class="svg-filtro-derretido" aria-hidden="true">
+    <defs>
+      <filter id="filtroDerretir">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015 0.08" numOctaves="2" result="ruido">
+          <animate attributeName="baseFrequency" dur="6s" values="0.015 0.06; 0.02 0.12; 0.015 0.06" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="14" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+</section>
   <!-- ================= SCRIPTS ================= -->
   <script>
     // Carrusel Pantalla Agua 2
@@ -708,25 +789,48 @@ function seleccionarOpcion(esCorrecta, elemento) {
   }
 }
 
-    // Pantalla Torre Eiffel
-    function cambiarEstadoQuiz(estado) {
-      document.getElementById('estadoInvitacion').style.display = 'none';
-      if (estado === 'pregunta') {
-        document.getElementById('estadoPregunta').style.display = 'flex';
-      }
-    }
+    // Cambia entre el estado de bienvenida y el quiz
+function cambiarEstadoQuiz(estado) {
+  document.getElementById('estadoInvitacion').classList.remove('activo');
+  document.getElementById('estadoPregunta').classList.remove('activo');
+  document.getElementById('estadoResultado').classList.remove('activo');
 
-    function verificarTorre(esCorrecta) {
-      if (esCorrecta) {
-        document.getElementById('estadoPregunta').style.display = 'none';
-        document.getElementById('estadoResultado').style.display = 'flex';
-        document.getElementById('resultadoDerecha').style.display = 'flex';
-      } else {
-        const errorMsg = document.getElementById('mensajeErrorQuiz');
-        errorMsg.style.display = 'block';
-        setTimeout(() => { errorMsg.style.display = 'none'; }, 2500);
-      }
+  if (estado === 'pregunta') {
+    document.getElementById('estadoPregunta').classList.add('activo');
+  }
+}
+
+// Verifica la opción seleccionada
+function verificarTorre(esCorrecta, elemento) {
+  if (esCorrecta) {
+    // 1. Mostrar estado de resultado en la tarjeta
+    document.getElementById('estadoPregunta').classList.remove('activo');
+    document.getElementById('estadoResultado').classList.add('activo');
+
+    // 2. Generar las 250 torres Eiffel dinámicamente
+    const contenedor = document.getElementById('contenedor250Torres');
+    contenedor.innerHTML = ''; // Limpiar previo
+
+    const fragmento = document.createDocumentFragment();
+    for (let i = 0; i < 250; i++) {
+      const img = document.createElement('img');
+      img.src = './img/torreeiffel-icon.svg';
+      img.alt = 'Torre';
+      fragmento.appendChild(img);
     }
+    contenedor.appendChild(fragmento);
+
+    // 3. Revelar el bloque lateral derecho (= 250 CADA AÑO + Torre)
+    document.getElementById('resultadoDerecha').classList.add('activo');
+
+  } else {
+    // Opción incorrecta: sacudida de error
+    elemento.classList.add('error');
+    setTimeout(() => {
+      elemento.classList.remove('error');
+    }, 500);
+  }
+}
   </script>
   
 </body>
