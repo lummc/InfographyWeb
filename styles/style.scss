@@ -1194,7 +1194,7 @@ body {
     .btn-cuanto-genera {
       position: absolute;
       bottom: 35px;
-      left: 118px;
+      left: -190px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -1226,7 +1226,7 @@ body {
     .btn-lupa-circular {
       position: absolute;
       bottom: 35px;
-      right: 90px;
+      right: -220px;
       width: 96px;
       height: 96px;
       background: transparent;
@@ -1608,9 +1608,24 @@ body {
       img {
         width: 14px;
       }
+      
+      .icono-flecha {
+        color: #6DFFF8;
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      span {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: #ffffff;
+      }
+    }
+      
     }
   }
-}
+
 
 // ==========================================
 // PANTALLA BALLENAS - QUIZ INTERACTIVO
@@ -1995,7 +2010,7 @@ body {
 
   /* Contenedor central que alinea la card a la izquierda y el mundo a la derecha */
   .dano-contenido-distribucion {
-    position: relative;
+    position:   relative;
     z-index: 2;
     display: flex;
     align-items: center;
@@ -2069,13 +2084,13 @@ body {
       align-items: center;
       gap: 0.6rem;
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size: 1.25rem;
       cursor: pointer;
       padding: 0;
       transition: opacity 0.2s ease;
 
       .flecha-abajo {
-        font-size: 1rem;
+        font-size: 2rem;
       }
 
       &:hover {
@@ -2085,8 +2100,8 @@ body {
 
     /* Botón circular inferior derecho */
     .btn-lupa-inferior {
-      width: 48px;
-      height: 48px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       background: rgba(15, 23, 42, 0.45);
       border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -2097,7 +2112,7 @@ body {
       backdrop-filter: blur(8px);
 
       .icono-lupa {
-        width: 20px;
+        width: 35px;
         height: auto;
         filter: brightness(0) invert(1);
       }
@@ -2391,19 +2406,20 @@ body {
       align-items: center;
       gap: 0.6rem;
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size:  1.00rem;
       cursor: pointer;
       padding: 0;
 
       .flecha-down {
-        width: 14px;
+        width: 24px;
         height: auto;
+        transform: scale(1.5); // Escala el icono un 50% más grande sin tocar la caja
+        transform-origin: left center; // Evita que se mueva de su lugar
       }
-    }
 
     .btn-lupa-flotante {
-      width: 48px;
-      height: 48px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: rgba(15, 23, 42, 0.5);
       border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -2415,7 +2431,7 @@ body {
       text-decoration: none;
 
       .icono-lupa {
-        width: 20px;
+        width: 35px;
         height: auto;
         filter: brightness(0) invert(1);
       }
@@ -2536,8 +2552,8 @@ body {
 
     /* Botón Mundo centrado */
     .btn-circular-mundo {
-      width: 58px;
-      height: 58px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: rgba(15, 23, 42, 0.5);
       border: 1.5px solid rgba(255, 255, 255, 0.4);
@@ -2550,8 +2566,8 @@ body {
       transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 
       .icono-mundo-nav {
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
         object-fit: contain;
         display: block;
         filter: brightness(0) invert(1);
@@ -2569,8 +2585,8 @@ body {
     .btn-lupa-flotante {
       position: absolute;
       right: 0;
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: rgba(15, 23, 42, 0.5);
       border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -2583,8 +2599,8 @@ body {
       transition: transform 0.2s ease, border-color 0.2s ease;
 
       .svg-lupa {
-        width: 22px;
-        height: 22px;
+        width: 30px;
+        height: 30px;
         stroke: #ffffff;
       }
 
@@ -2618,4 +2634,12 @@ body {
     letter-spacing: 4px;
     filter: url(#filtroDerretir) drop-shadow(0 10px 30px rgba(44, 230, 214, 0.6));
   }
+}
+// ==========================================
+// ELIMINAR ÚNICAMENTE EL BOTÓN CIRCULAR DE VOLVER
+// ==========================================
+.btn-volver-circular {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }

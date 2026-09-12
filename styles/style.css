@@ -1023,7 +1023,7 @@ body {
 .pantalla-co2 .co2-contenido-absoluto .btn-cuanto-genera {
   position: absolute;
   bottom: 35px;
-  left: 118px;
+  left: -190px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1050,7 +1050,7 @@ body {
 .pantalla-co2 .co2-contenido-absoluto .btn-lupa-circular {
   position: absolute;
   bottom: 35px;
-  right: 90px;
+  right: -220px;
   width: 96px;
   height: 96px;
   background: transparent;
@@ -1834,13 +1834,13 @@ body {
   align-items: center;
   gap: 0.6rem;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   cursor: pointer;
   padding: 0;
   transition: opacity 0.2s ease;
 }
 .pantalla-dano-futuro .footer-futuro .btn-futuro-cifras .flecha-abajo {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 .pantalla-dano-futuro .footer-futuro .btn-futuro-cifras:hover {
   opacity: 0.8;
@@ -1849,8 +1849,8 @@ body {
   /* Botón circular inferior derecho */
 }
 .pantalla-dano-futuro .footer-futuro .btn-lupa-inferior {
-  width: 48px;
-  height: 48px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.45);
   border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -1861,7 +1861,7 @@ body {
   backdrop-filter: blur(8px);
 }
 .pantalla-dano-futuro .footer-futuro .btn-lupa-inferior .icono-lupa {
-  width: 20px;
+  width: 35px;
   height: auto;
   filter: brightness(0) invert(1);
 }
@@ -2132,17 +2132,18 @@ body {
   align-items: center;
   gap: 0.6rem;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: pointer;
   padding: 0;
 }
 .pantalla-torre-eiffel .footer-torre-navegacion .btn-escala-global .flecha-down {
-  width: 14px;
+  width: 20px;
   height: auto;
+  color: #ffffff;
 }
 .pantalla-torre-eiffel .footer-torre-navegacion .btn-lupa-flotante {
-  width: 48px;
-  height: 48px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.5);
   border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -2154,7 +2155,7 @@ body {
   text-decoration: none;
 }
 .pantalla-torre-eiffel .footer-torre-navegacion .btn-lupa-flotante .icono-lupa {
-  width: 20px;
+  width: 35px;
   height: auto;
   filter: brightness(0) invert(1);
 }
@@ -2277,8 +2278,8 @@ body {
   /* Botón Mundo centrado */
 }
 .pantalla-final-dano .footer-final-controles .btn-circular-mundo {
-  width: 58px;
-  height: 58px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.5);
   border: 1.5px solid rgba(255, 255, 255, 0.4);
@@ -2291,8 +2292,8 @@ body {
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 .pantalla-final-dano .footer-final-controles .btn-circular-mundo .icono-mundo-nav {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   -o-object-fit: contain;
      object-fit: contain;
   display: block;
@@ -2310,8 +2311,8 @@ body {
 .pantalla-final-dano .footer-final-controles .btn-lupa-flotante {
   position: absolute;
   right: 0;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.5);
   border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -2324,8 +2325,8 @@ body {
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .pantalla-final-dano .footer-final-controles .btn-lupa-flotante .svg-lupa {
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   stroke: #ffffff;
 }
 .pantalla-final-dano .footer-final-controles .btn-lupa-flotante:hover {
@@ -2356,4 +2357,9 @@ body {
     letter-spacing: 4px;
     filter: url(#filtroDerretir) drop-shadow(0 10px 30px rgba(44, 230, 214, 0.6));
   }
+}
+.btn-volver-circular {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }/*# sourceMappingURL=style.css.map */
