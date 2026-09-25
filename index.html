@@ -77,37 +77,38 @@
   </section>
 
   <!-- ================= HOME / MENÚ PRINCIPAL ================= -->
-  <section class="pantalla-home" id="home">
-    <video class="home__video-bg" autoplay muted loop playsinline>
-      <source src="./img/WaterFondo.mp4" type="video/mp4" />
-    </video>
-    <div class="home__overlay"></div>
+<section class="pantalla-home" id="home">
+  <video class="home__video-bg" autoplay muted loop playsinline>
+    <source src="./img/WaterFondo.mp4" type="video/mp4" />
+  </video>
+  <div class="home__overlay"></div>
 
-    <div class="home__content">
-      <header class="home__header">
-        <span class="home__pretitle">IA:</span>
-        <h1 class="home__title">
-          EL<br />
-          PRECIO<br />
-          DE CREAR
-        </h1>
-      </header>
+  <div class="home__content">
+    <header class="home__header">
+      <span class="home__pretitle">IA:</span>
+      <h1 class="home__title">
+        EL<br />
+        PRECIO<br />
+        DE CREAR
+      </h1>
+    </header>
 
-      <div class="home__center-graphic">
-        <img src="./img/WorldFondo.png" alt="Esfera del planeta Tierra flotando en agua" />
-      </div>
-
-      <nav class="home__buttons" aria-label="Secciones principales">
-        <a href="#agua-intro" class="glass-btn-circle glass-btn-circle--left" aria-label="Ir a agua">
-          <img src="./img/icono-gota.svg" alt="Icono gota de agua" class="glass-btn-circle__icon" />
-        </a>
-        <a href="#seccionBallenas" class="glass-btn-circle glass-btn-circle--right" aria-label="Ir a CO2">
-          <img src="./img/icono-nube.svg" alt="Icono nube de CO2" class="glass-btn-circle__icon" />
-        </a>
-      </nav>
+    <div class="home__center-graphic">
+      <img src="./img/WorldFondo.png" alt="Esfera del planeta Tierra flotando en agua" />
     </div>
-  </section>
 
+    <nav class="home__buttons" aria-label="Secciones principales">
+      <a href="#agua-intro" class="glass-btn-circle glass-btn-circle--left" aria-label="Ir a agua">
+        <img src="./img/icono-gota.svg" alt="Icono gota de agua" class="glass-btn-circle__icon" />
+        <span class="btn-label">AGUA</span>
+      </a>
+      <a href="#seccionBallenas" class="glass-btn-circle glass-btn-circle--right" aria-label="Ir a CO2">
+        <img src="./img/icono-nube.svg" alt="Icono nube de CO2" class="glass-btn-circle__icon" />
+        <span class="btn-label">CO2</span>
+      </a>
+    </nav>
+  </div>
+</section>
   <!-- ================= PANTALLA AGUA 1 (Introducción) ================= -->
   <section class="pantalla-agua-1" id="agua-intro">
     <video class="agua-video-bg" autoplay muted loop playsinline>
@@ -130,7 +131,7 @@
     </div>
 
     <button type="button" class="btn-descubri-detras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-      <img src="./img/downflecha-icon.svg" alt="" class="icono-downflecha" />
+      <img src="./img/icono-flecha.svg" alt="" class="icono-flecha" />
       <span>Descubrí que hay detrás</span>
     </button>
 
@@ -167,36 +168,44 @@
 
     <!-- ESTADO REVELADO: Contenido desplegado (Oculto inicialmente) -->
     <div class="estado-revelado" style="display: none;">
+      
+      <!-- Bloque Demanda -->
       <div class="bloque-demanda">
-  <p class="texto-demanda-completo">
-    En <span class="anio-cian">2027</span><br />
-    la demanda mundial
-  </p>
-</div>
+        <p class="texto-demanda-completo">
+          En <span class="anio-cian">2027</span><br />
+          la demanda mundial
+        </p>
+      </div>
 
-      <!-- Bloque de la gota con sistema de llenado por escala -->
+      <!-- Bloque de la Gota Interactiva por Frames -->
       <div class="bloque-gota">
-        <div class="gota-llenado-container">
-          <!-- Gota de fondo (que simula el líquido lleno de color cian brillante) -->
-          <img src="./img/GotaAgua-Icon.svg" alt="Líquido" class="gota-liquido" />
-          <!-- Gota de contorno por encima -->
-          <img src="./img/GotaAgua-Icon.svg" alt="Contorno" class="gota-borde" />
+        <div class="gota-frames-container">
+          <!-- Frame 1: Vacia (Estado inicial) -->
+          <img src="./img/GotaAgua-Icon.svg" alt="Gota vacia" class="gota-frame frame-1 activa" id="frameGota1" />
+          <!-- Frame 2: Llenandose con onda -->
+          <img src="./img/GotaAgua2-Icon.svg" alt="Gota llenandose" class="gota-frame frame-2" id="frameGota2" />
+          <!-- Frame 3: Llena con texto de 6,6 mil millones de m3 al año -->
+          <img src="./img/GotaAgua3-Icon.svg" alt="Gota llena con texto" class="gota-frame frame-3" id="frameGota3" />
         </div>
       </div>
 
+      <!-- Bloque Igual (SVG provisto) -->
       <div class="bloque-igual">
-        <span class="simbolo-igual">=</span>
+        <img src="./img/igual-icon.svg" alt="Igual" class="simbolo-igual-img" />
       </div>
 
+      <!-- Bloque Piscina -->
       <div class="bloque-piscina">
         <img src="./img/Piscina-Icon.png" alt="Piscina olímpica" class="icono-piscina" />
         <p class="detalle-piscina">Llenar 2.640.000<br />piletas olimpicas</p>
       </div>
+
     </div>
 
   </div>
 </section>
-<!-- Script para activar la interacción -->
+
+<!-- Script para la secuencia de animación por frames de la gota -->
 <script>
   document.getElementById('btnDescubrirAgua').addEventListener('click', function() {
     const caja = document.getElementById('cajaInteractivaAgua');
@@ -204,13 +213,31 @@
     const revelado = caja.querySelector('.estado-revelado');
     revelado.style.display = 'flex';
     
-    // Forzamos un pequeño respiro para que el navegador aplique el display antes de animar
+    // Agregamos la clase global para desatar la transición de aparición de la caja
     setTimeout(() => {
       caja.classList.add('revelado');
     }, 50);
+
+    // Secuencia de animación de los frames de la gota
+    const f1 = document.getElementById('frameGota1');
+    const f2 = document.getElementById('frameGota2');
+    const f3 = document.getElementById('frameGota3');
+
+    // Al iniciar, pasamos brevemente al Frame 2 (llenandose)
+    setTimeout(() => {
+      f1.classList.remove('activa');
+      f2.classList.add('activa');
+    }, 400);
+
+    // Luego de un momento, pasamos al Frame 3 (llena con texto final)
+    setTimeout(() => {
+      f2.classList.remove('activa');
+      f3.classList.add('activa');
+      // Activamos la clase de flotación suave en el contenedor final
+      document.querySelector('.gota-frames-container').classList.add('flotar-final');
+    }, 1200);
   });
 </script>
-</section>
   <!-- ================= PANTALLA CO2 ================= -->
    <!-- ================= PANTALLA CO2 (INTRODUCCIÓN) ================= -->
 <section class="pantalla-co2" id="carbon-footprint-details">
@@ -335,7 +362,7 @@
   <!-- Botón inferior -->
   <footer class="footer-gpt3-transicion">
     <button type="button" class="btn-detras-numeros" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-      <img src="./img/downflecha-icon.svg" alt="" />
+      <img src="./img/icono-flecha.svg" alt="" />
       <span>Detrás de los números</span>
     </button>
   </footer>
@@ -595,7 +622,7 @@
   <!-- Botón Inferior "El futuro en cifras" -->
   <div class="footer-futuro">
     <button type="button" class="btn-futuro-cifras" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-      <span class="flecha-abajo">↓</span>
+      <img src="./img/icono-flecha.svg" alt="" class="icono-flecha" />
       <span>El futuro en cifras</span>
     </button>
   </div>
@@ -603,8 +630,8 @@
 
 </section>
 
-  <!-- ================= PANTALLA TORRE EIFFEL ================= -->
-  <!-- ================= PANTALLA TORRE EIFFEL ================= -->
+ <!-- ================= PANTALLA TORRE EIFFEL ================= -->
+<!-- ================= PANTALLA TORRE EIFFEL ================= -->
 <section class="pantalla-torre-eiffel" id="seccionTorreEiffel">
 
   <!-- Video de fondo Pantalla Daño 2 -->
@@ -625,20 +652,39 @@
   <!-- Área principal interactiva -->
   <div class="torre-area-interactiva">
     
-    <!-- Tarjeta Quiz (Estados 1, 2 y matriz 250 torres) -->
+    <!-- Tarjeta Quiz -->
     <article class="quiz-torre-card" id="quizTorreCard">
       
       <!-- Estado 1: Invitación -->
       <div class="estado-quiz activo" id="estadoInvitacion">
         <p class="texto-invitacion">Te invitamos a participar de este quiz:</p>
-        <button type="button" class="btn-iniciar-quiz" onclick="cambiarEstadoQuiz('pregunta')">
+        <button type="button" class="btn-iniciar-quiz" onclick="cambiarEstadoQuiz('preguntaPeso')">
           Iniciar
         </button>
       </div>
 
-      <!-- Estado 2: Pregunta -->
+      <!-- Estado 2: Pregunta sobre el Peso -->
+      <div class="estado-quiz" id="estadoPreguntaPeso">
+        <h2 class="pregunta-titulo">¿Cuántas toneladas pesa una torre Eiffel?</h2>
+        <div class="opciones-grid">
+          <div class="opcion-item" onclick="verificarPreguntaPeso(false, this)">
+            <span class="numero-opcion">7.000</span>
+            <span class="radio-circulo"></span>
+          </div>
+          <div class="opcion-item" onclick="verificarPreguntaPeso(true, this)">
+            <span class="numero-opcion">10.100</span>
+            <span class="radio-circulo"></span>
+          </div>
+          <div class="opcion-item" onclick="verificarPreguntaPeso(false, this)">
+            <span class="numero-opcion">11.500</span>
+            <span class="radio-circulo"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estado 3: Pregunta Principal (Torres en 2030) -->
       <div class="estado-quiz" id="estadoPregunta">
-        <h2 class="pregunta-titulo">¿A cuantas torres Eiffel equivaldria?</h2>
+        <h2 class="pregunta-titulo">¿A cuántas torres Eiffel equivaldrían los residuos electrónicos en 2030?</h2>
         <div class="opciones-grid">
           <div class="opcion-item" onclick="verificarTorre(false, this)">
             <span class="numero-opcion">80</span>
@@ -655,43 +701,84 @@
         </div>
       </div>
 
-      <!-- Estado 3: Grilla con las 250 torres eiffel -->
+      <!-- Estado 4: Resultado (Grilla de 250 torres) -->
       <div class="estado-quiz" id="estadoResultado">
-        <div class="grilla-250-torres" id="contenedor250Torres">
-          <!-- Inyectadas con JS -->
-        </div>
+        <div class="grilla-250-torres" id="contenedor250Torres"></div>
       </div>
     </article>
 
-    <!-- Estado 3: Revelación derecha (Igual + 250 cada año + Torre Grande) -->
-    <!-- Estado 3: Revelación derecha (Igual + 250 cada año + Torre Grande) -->
-  <div class="resultado-derecha-container" id="resultadoDerecha">
-    <img src="./img/igual-icon.svg" alt="Igual" class="simbolo-igual-img" />
-    
-    <div class="bloque-datos-torre">
-      <div class="cifra-torres-bloque">
-        <span class="numero-gigante">250</span>
-        <span class="texto-cada-anio">CADA AÑO</span>
+    <!-- Revelación derecha (Igual + 250 cada año + Torre Grande) -->
+    <div class="resultado-derecha-container" id="resultadoDerecha">
+      <img src="./img/igual-icon.svg" alt="Igual" class="simbolo-igual-img" />
+      
+      <div class="bloque-datos-torre">
+        <div class="cifra-torres-bloque">
+          <span class="numero-gigante">250</span>
+          <span class="texto-cada-anio">CADA AÑO</span>
+        </div>
+        <span class="sugerencia-onu">Según la ONU</span>
       </div>
-      <span class="sugerencia-onu">Según la ONU</span>
+
+      <img src="./img/torreeiffel-icon.svg" alt="Torre Eiffel" class="img-torre-grande" />
     </div>
 
-    <img src="./img/torreeiffel-icon.svg" alt="Torre Eiffel" class="img-torre-grande" />
   </div>
 
-  </div>
-
-  <!-- Footer con flecha abajo y enlace lupa -->
+  <!-- Footer con flecha abajo -->
   <footer class="footer-torre-navegacion">
     <button type="button" class="btn-escala-global" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-      <img src="./img/downflecha-icon.svg" alt="" class="flecha-down" />
+      <img src="./img/icono-flecha.svg" alt="" class="flecha-down" />
       <span>A escala global</span>
     </button>
-
   </footer>
 
 </section>
 
+<!-- Script de Transición -->
+<script>
+  function cambiarEstadoQuiz(estadoDestino) {
+    document.querySelectorAll('.estado-quiz').forEach(el => el.classList.remove('activo'));
+    if (estadoDestino === 'preguntaPeso') {
+      document.getElementById('estadoPreguntaPeso').classList.add('activo');
+    } else if (estadoDestino === 'preguntaPrincipal') {
+      document.getElementById('estadoPregunta').classList.add('activo');
+    }
+  }
+
+  function verificarPreguntaPeso(esCorrecta, elemento) {
+    if (esCorrecta) {
+      elemento.style.borderColor = '#2ce6d6';
+      elemento.querySelector('.radio-circulo').style.background = '#2ce6d6';
+      setTimeout(() => {
+        cambiarEstadoQuiz('preguntaPrincipal');
+      }, 400);
+    } else {
+      elemento.classList.add('error');
+      setTimeout(() => elemento.classList.remove('error'), 400);
+    }
+  }
+
+  function verificarTorre(esCorrecta, elemento) {
+    if (esCorrecta) {
+      document.querySelectorAll('.estado-quiz').forEach(el => el.classList.remove('activo'));
+      document.getElementById('estadoResultado').classList.add('activo');
+      document.getElementById('resultadoDerecha').classList.add('activo');
+
+      const contenedor = document.getElementById('contenedor250Torres');
+      if (contenedor.children.length === 0) {
+        for (let i = 0; i < 250; i++) {
+          const img = document.createElement('img');
+          img.src = './img/torreeiffel-icon.svg';
+          img.alt = 'Torre Eiffel miniatura';
+          contenedor.appendChild(img);
+        }
+      }
+    } else {
+      elemento.classList.add('error');
+      setTimeout(() => elemento.classList.remove('error'), 400);
+    }
+  }
+</script>
 <!-- ================= PANTALLA FINAL DAÑO ================= -->
 <!-- ================= PANTALLA FINAL DAÑO ================= -->
 <section class="pantalla-final-dano" id="seccionFinalDano">
@@ -704,6 +791,11 @@
   <!-- Overlay para asegurar contraste con el fondo -->
   <div class="overlay-final-dano"></div>
 
+  <!-- Botón de búsqueda (lupa) superior derecho -->
+  <button class="btn-lupa-flotante" aria-label="Buscar o explorar">
+    <img src="./img/lupa-icon.svg" alt="Icono lupa" />
+  </button>
+
   <!-- Encabezado superior izquierdo -->
   <header class="header-final-dano">
     <h1 class="titulo-final">NO NECESITAMOS LLEGAR A ESO</h1>
@@ -712,7 +804,7 @@
     </p>
   </header>
 
-  <!-- Texto central con derretido -->
+  <!-- Texto central con derretido (achicado para que respire mejor) -->
   <div class="contenedor-texto-central">
     <h2 class="texto-derritiendose">
       HAGAMOS<br>
@@ -721,13 +813,11 @@
     </h2>
   </div>
 
-  <!-- Footer con botón mundo y botón lupa -->
+  <!-- Footer con botón mundo centrado -->
   <footer class="footer-final-controles">
     <a href="#inicio" class="btn-circular-mundo" aria-label="Volver al menú principal">
       <img src="./img/world-icon.png" alt="Inicio" class="icono-mundo-nav" />
     </a>
-
-    <
   </footer>
 
   <!-- Filtro SVG para el derretido -->
@@ -743,7 +833,7 @@
   </svg>
 
 </section>
-  <!-- ================= SCRIPTS ================= -->
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
   const videoIntro = document.getElementById('aiGenVideo');
@@ -795,142 +885,7 @@
       actualizarVistaCarrusel();
     }
 
-    // Pantalla GPT3
-    function alternarVistaGrafico() {
-      const estadoTexto = document.getElementById('estadoTexto');
-      const estadoGrafico = document.getElementById('estadoGrafico');
-      const textoBoton = document.getElementById('textoBotonInferior');
 
-      if (estadoGrafico.style.display === 'block') {
-        estadoGrafico.style.display = 'none';
-        estadoTexto.style.opacity = '1';
-        textoBoton.textContent = 'Detrás de los números';
-      } else {
-        estadoTexto.style.opacity = '0';
-        setTimeout(() => {
-          estadoGrafico.style.display = 'block';
-          textoBoton.textContent = 'Volver al resumen';
-          document.querySelectorAll('.btn-opcion').forEach(btn => btn.classList.remove('active'));
-          apagarTodosLosPuntos();
-        }, 300);
-      }
-    }
-
-    function apagarTodosLosPuntos() {
-      const puntos = document.querySelectorAll('.nube-puntos-container .punto');
-      puntos.forEach(p => {
-        p.classList.remove('activo-naranja', 'activo-amarillo', 'activo-celeste');
-        p.style.background = 'rgba(255, 255, 255, 0.25)';
-        p.style.boxShadow = 'none';
-        p.style.opacity = '0.4';
-        p.style.transform = 'translate(-50%, 50%) scale(1)';
-      });
-    }
-
-    function filtrarImpacto(tipo, boton) {
-  // 1. Manejo del botón activo en el menú lateral
-  document.querySelectorAll('.btn-opcion').forEach(b => b.classList.remove('active'));
-  boton.classList.add('active');
-
-  // 2. Apagar todos los puntos primero (vuelven a gris apagado)
-  const puntos = document.querySelectorAll('#nubePuntos .punto');
-  puntos.forEach(p => {
-    p.classList.remove('activo-naranja', 'activo-amarillo', 'activo-celeste');
-  });
-
-  // 3. Encendido según la selección
-  if (tipo === 'texto') {
-    // Activa solo un punto en color naranja
-    if (puntos[0]) puntos[0].classList.add('activo-naranja');
-
-  } else if (tipo === 'imagen') {
-    // Activa un grupo representativo en amarillo
-    puntos.forEach((p, index) => {
-      if (index < 12) p.classList.add('activo-amarillo');
-    });
-
-  } else if (tipo === 'video') {
-    // Prende las 3 variantes de color a lo largo de toda la nube
-    puntos.forEach((p, index) => {
-      if (index < 10) {
-        p.classList.add('activo-celeste');
-      } else if (index < 22) {
-        p.classList.add('activo-amarillo');
-      } else {
-        p.classList.add('activo-naranja');
-      }
-    });
-  }
-}
-
-    // Pantalla Ballenas
-    // 1. Pasa del Estado 1 (Intro) al Estado 2 (Quiz de opciones)
-function avanzarAQuiz() {
-  document.getElementById('vistaIntro').classList.remove('activa');
-  document.getElementById('vistaOpciones').classList.add('activa');
-}
-
-// 2. Comprueba la opción elegida
-function seleccionarOpcion(esCorrecta, elemento) {
-  if (esCorrecta) {
-    // Éxito: pasar al Estado 3
-    document.getElementById('vistaOpciones').classList.remove('activa');
-    document.getElementById('vistaResultado').classList.add('activa');
-
-    // Actualizar el subtítulo de la tarjeta
-    document.getElementById('quizPregunta').textContent = 
-      "¡Es correcto! La huella de CO₂ equivale, en masa, a más de un millón de ballenas azules.";
-  } else {
-    // Opción incorrecta: feedback visual (sacudida roja)
-    elemento.classList.add('error');
-    setTimeout(() => {
-      elemento.classList.remove('error');
-    }, 600);
-  }
-}
-
-    // Cambia entre el estado de bienvenida y el quiz
-function cambiarEstadoQuiz(estado) {
-  document.getElementById('estadoInvitacion').classList.remove('activo');
-  document.getElementById('estadoPregunta').classList.remove('activo');
-  document.getElementById('estadoResultado').classList.remove('activo');
-
-  if (estado === 'pregunta') {
-    document.getElementById('estadoPregunta').classList.add('activo');
-  }
-}
-
-// Verifica la opción seleccionada
-function verificarTorre(esCorrecta, elemento) {
-  if (esCorrecta) {
-    // 1. Mostrar estado de resultado en la tarjeta
-    document.getElementById('estadoPregunta').classList.remove('activo');
-    document.getElementById('estadoResultado').classList.add('activo');
-
-    // 2. Generar las 250 torres Eiffel dinámicamente
-    const contenedor = document.getElementById('contenedor250Torres');
-    contenedor.innerHTML = ''; // Limpiar previo
-
-    const fragmento = document.createDocumentFragment();
-    for (let i = 0; i < 250; i++) {
-      const img = document.createElement('img');
-      img.src = './img/torreeiffel-icon.svg';
-      img.alt = 'Torre';
-      fragmento.appendChild(img);
-    }
-    contenedor.appendChild(fragmento);
-
-    // 3. Revelar el bloque lateral derecho (= 250 CADA AÑO + Torre)
-    document.getElementById('resultadoDerecha').classList.add('activo');
-
-  } else {
-    // Opción incorrecta: sacudida de error
-    elemento.classList.add('error');
-    setTimeout(() => {
-      elemento.classList.remove('error');
-    }, 500);
-  }
-}
   </script>
   
 </body>
