@@ -17,8 +17,9 @@
 </head>
 <body>
 <!-- ================= PANTALLA INTRO: MIRA ESTE VIDEO ================= -->
+<!-- ================= PANTALLA INTRO: MIRA ESTE VIDEO ================= -->
 <section class="pantalla-intro-video" id="intro-video">
-  <!-- Video de fondo en loop idéntico a la home (con blur aumentado) -->
+  <!-- Video de fondo en loop -->
   <video class="intro__video-bg" autoplay muted loop playsinline>
     <source src="./img/WaterFondo.mp4" type="video/mp4" />
   </video>
@@ -29,52 +30,37 @@
   <div class="intro__content">
     <h2 class="intro__title">MIRA ESTE VIDEO</h2>
 
-    <!-- Reproductor de Video Central (843px x 475px) -->
-    <div class="intro__player-wrapper">
-      <video id="aiGenVideo" class="intro__main-video" playsinline controls>
-        <source src="./img/AI-GENVIDEO.mp4" type="video/mp4" />
-      </video>
+    <!-- Área central: Video y botón de pregunta lateral (oculto al inicio) -->
+    <div class="intro__center-area">
+      <div class="intro__player-wrapper">
+        <video id="aiGenVideo" class="intro__main-video" playsinline controls>
+          <source src="./img/AI-GENVIDEO.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- Botón flotante con signo de pregunta (Aparece brillando tras terminar el video) -->
+      <button type="button" class="btn-pregunta-flotante" id="btnPreguntaFlotante" aria-label="Ver respuesta">
+        <img src="./img/pregunta-icon.svg" alt="Signo de pregunta" />
+      </button>
     </div>
 
-    <!-- Botón que aparece al terminar el video (o al hacer clic) -->
+    <!-- Bloque inferior de revelación -->
     <div class="intro__action-box" id="introActionBox">
       <p class="intro__pregunta">¿Es real o fue creado con Inteligencia Artificial?</p>
-      <button type="button" class="btn-descubrir-realidad" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+      
+      <!-- Respuesta que se revela al hacer clic en el botón ? -->
+      <div class="intro__respuesta-ia" id="respuestaIA">
+        <span>¡Fue creado con Inteligencia Artificial!</span>
+      </div>
+
+      <!-- Botón final para descubrir qué hay detrás de ello -->
+      <button type="button" class="btn-descubrir-realidad" id="btnDescubrirRealidad" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
         <span class="flecha-abajo">↓</span>
-        <span>Descubrí la verdad</span>
+        <span>Descubrí qué hay detrás de ello</span>
       </button>
     </div>
   </div>
 </section>
-  <!-- ================= HERO ================= -->
-  <section class="hero" id="inicio">
-    <video class="hero__video-bg" autoplay muted loop playsinline>
-      <source src="./img/WaterFondo.mp4" type="video/mp4" />
-    </video>
-    <div class="hero__overlay"></div>
-
-    <div class="hero__content">
-      <div class="hero__intro">
-        <h1 class="hero__title">
-          DETRÁS DE UN<br />
-          VIDEO DIGITAL HAY<br />
-          UNA<br />
-          INFRAESTRUCTURA<br />
-          FÍSICA.
-        </h1>
-        <p class="hero__subtitle">
-          ¿Qué costo tiene generar todo esto?
-        </p>
-        <button type="button" class="btn-glass" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
-          <span class="btn-glass__label">DESCUBRELO</span>
-        </button>
-      </div>
-
-      <div class="hero__card">
-        <img src="./img/grafico-gastoagua.png" alt="Esquema infraestructura, gasto de agua y CO2" class="hero__card-img" />
-      </div>
-    </div>
-  </section>
 
   <!-- ================= HOME / MENÚ PRINCIPAL ================= -->
 <section class="pantalla-home" id="home">
@@ -137,6 +123,45 @@
 
   
   </section>
+  <!-- ================= PANTALLA LITROS DE AGUA / QUIZ ================= -->
+<!-- ================= PANTALLA LITROS DE AGUA / QUIZ ================= -->
+<!-- Script para el funcionamiento automático del botón y estados -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnIniciar = document.getElementById('btnIniciarQuizAgua');
+    const estadoInvitacion = document.getElementById('estadoInvitacionAgua');
+    const estadoPregunta = document.getElementById('estadoPreguntaAgua');
+
+    if (btnIniciar && estadoInvitacion && estadoPregunta) {
+      btnIniciar.addEventListener('click', () => {
+        estadoInvitacion.classList.remove('activo');
+        estadoInvitacion.style.display = 'none';
+        estadoPregunta.classList.add('activo');
+        estadoPregunta.style.display = 'flex';
+      });
+    }
+
+    const opciones = document.querySelectorAll('.opcion-item');
+    const estadoResultado = document.getElementById('estadoResultadoAgua');
+    const resultadoDerecha = document.getElementById('resultadoDerechaAgua');
+
+    opciones.forEach(opcion => {
+      opcion.addEventListener('click', () => {
+        estadoPregunta.classList.remove('activo');
+        estadoPregunta.style.display = 'none';
+
+        if (estadoResultado) {
+          estadoResultado.classList.add('activo');
+          estadoResultado.style.display = 'flex';
+        }
+        if (resultadoDerecha) {
+          resultadoDerecha.classList.add('activo');
+          resultadoDerecha.style.display = 'flex';
+        }
+      });
+    });
+  });
+</script>
 <!-- ================= PANTALLA 3: CENTRALES DE DATOS ================= -->
 <section class="pantalla-centrales-datos" id="centrales-datos">
   <!-- Video de fondo en loop -->
@@ -837,21 +862,32 @@
 </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-  const videoIntro = document.getElementById('aiGenVideo');
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('aiGenVideo');
   const actionBox = document.getElementById('introActionBox');
+  const btnPregunta = document.getElementById('btnPreguntaFlotante');
+  const respuestaIA = document.getElementById('respuestaIA');
+  const btnDescubrir = document.getElementById('btnDescubrirRealidad');
 
-  if (videoIntro && actionBox) {
-    // Se muestra al terminar el video
-    videoIntro.addEventListener('ended', () => {
-      actionBox.classList.add('visible');
+  // Paso 1: Al terminar el video, aparece la pregunta abajo y el botón de pregunta al costado con brillo
+  if (video) {
+    video.addEventListener('ended', () => {
+      if (actionBox) actionBox.classList.add('visible-pregunta');
+      if (btnPregunta) btnPregunta.classList.add('visible');
     });
+  }
 
-    // O si el usuario lo adelanta/mira casi hasta el final (últimos 2 segundos)
-    videoIntro.addEventListener('timeupdate', () => {
-      if (videoIntro.duration && (videoIntro.duration - videoIntro.currentTime <= 2)) {
-        actionBox.classList.add('visible');
-      }
+  // Paso 2: Al hacer clic en el botón de pregunta flotante (?), se revela la respuesta y el botón de avanzar
+  if (btnPregunta) {
+    btnPregunta.addEventListener('click', () => {
+      // Oculta el botón de pregunta con una animación suave o scale out
+      btnPregunta.style.transform = 'scale(0)';
+      btnPregunta.style.opacity = '0';
+      setTimeout(() => { btnPregunta.style.display = 'none'; }, 300);
+
+      // Muestra la respuesta de IA y el botón para descubrir qué hay detrás
+      if (respuestaIA) respuestaIA.classList.add('visible-respuesta');
+      if (btnDescubrir) btnDescubrir.classList.add('visible-btn');
     });
   }
 });

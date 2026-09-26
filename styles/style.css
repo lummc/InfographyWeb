@@ -48,22 +48,28 @@ body {
   justify-content: center;
   width: 100%;
   max-width: clamp(58.5rem, 100vw, 90rem);
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 }
 .pantalla-intro-video .intro__title {
-  margin: 0 0 1.75rem 0;
+  margin: 0 0 1.5rem 0;
   color: #6DFFF8;
   font-family: "Roboto Condensed", sans-serif;
   font-size: clamp(1.71rem, 2.6389vw, 2.375rem);
   font-weight: 700;
-  line-height: normal;
   letter-spacing: 0.3125rem;
   text-transform: uppercase;
   text-align: center;
 }
+.pantalla-intro-video .intro__center-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 .pantalla-intro-video .intro__player-wrapper {
   position: relative;
-  width: min(52.6875rem, 88vw);
+  width: min(52.6875rem, 82vw);
   aspect-ratio: 843/475;
   background: #000000;
   border-radius: 1rem;
@@ -79,8 +85,53 @@ body {
   display: block;
   outline: none;
 }
+.pantalla-intro-video {
+  /* Botón flotante con signo de pregunta (Oculto inicialmente, con animación de brillo) */
+}
+.pantalla-intro-video .btn-pregunta-flotante {
+  position: absolute;
+  right: max(2rem, 50% - 32rem);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(127, 174, 221, 0.12);
+  border: 0.0938rem solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(0.625rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  /* Estado inicial oculto */
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.25s ease;
+}
+.pantalla-intro-video .btn-pregunta-flotante.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  animation: pulsoBrillo 2s infinite ease-in-out;
+}
+.pantalla-intro-video .btn-pregunta-flotante img {
+  width: 1.5rem;
+  height: 1.5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+.pantalla-intro-video .btn-pregunta-flotante:hover {
+  transform: scale(1.1) !important;
+  border-color: #2ce6d6;
+  box-shadow: 0 0 1.5rem rgba(44, 230, 214, 0.8);
+  animation: none;
+}
+.pantalla-intro-video {
+  /* Bloque inferior de revelación */
+}
 .pantalla-intro-video .intro__action-box {
-  margin-top: 1.5625rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +141,7 @@ body {
   pointer-events: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.pantalla-intro-video .intro__action-box.visible {
+.pantalla-intro-video .intro__action-box.visible-pregunta {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -103,21 +154,46 @@ body {
   color: #EAEAEA;
   text-align: center;
 }
+.pantalla-intro-video .intro__action-box {
+  /* Respuesta oculta hasta que presionan el botón de pregunta */
+}
+.pantalla-intro-video .intro__action-box .intro__respuesta-ia {
+  display: none;
+  margin-top: 0.25rem;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #6DFFF8;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  animation: aparecerSuave 0.5s ease forwards;
+}
+.pantalla-intro-video .intro__action-box .intro__respuesta-ia.visible-respuesta {
+  display: block;
+}
+.pantalla-intro-video .intro__action-box {
+  /* Botón final oculto hasta que se revela la respuesta */
+}
 .pantalla-intro-video .intro__action-box .btn-descubrir-realidad {
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 0.625rem;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0.375rem 0.875rem;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  margin-top: 0.5rem;
+  animation: aparecerSuave 0.5s ease forwards;
+}
+.pantalla-intro-video .intro__action-box .btn-descubrir-realidad.visible-btn {
+  display: inline-flex;
 }
 .pantalla-intro-video .intro__action-box .btn-descubrir-realidad:hover {
   transform: translateY(0.1875rem);
   opacity: 0.85;
 }
-.pantalla-intro-video .intro__action-box .btn-descubrir-realidad .flecha-abajo {
+.pantalla-intro-video .intro__action-box .btn-descubrir-realidad .flecha-down {
   font-size: clamp(0.9rem, 1.3889vw, 1.25rem);
   color: #6DFFF8;
 }
@@ -128,6 +204,31 @@ body {
   color: #ffffff;
 }
 
+/* Animaciones de pulso y aparición */
+@keyframes pulsoBrillo {
+  0% {
+    box-shadow: 0 0 0 0 rgba(109, 255, 248, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 1rem rgba(109, 255, 248, 0);
+    border-color: #6DFFF8;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(109, 255, 248, 0);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+@keyframes aparecerSuave {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .hero {
   position: relative;
   width: 100%;
@@ -541,233 +642,6 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: #FFFFFF;
-}
-
-.pantalla-agua-2 {
-  position: relative;
-  width: 100%;
-  min-width: clamp(58.5rem, 100vw, 90rem);
-  height: clamp(34.0438rem, 58.1944vw, 52.375rem);
-  min-height: clamp(34.0438rem, 58.1944vw, 52.375rem);
-  overflow: hidden;
-}
-.pantalla-agua-2 .agua-video-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  z-index: 1;
-  pointer-events: none;
-}
-.pantalla-agua-2 .agua-video-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 8, 25, 0.45);
-  backdrop-filter: blur(0.0625rem);
-  z-index: 2;
-}
-.pantalla-agua-2 .agua-container-2 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-}
-.pantalla-agua-2 .agua-container-2 .header-datos {
-  position: absolute;
-  top: 7.5rem;
-  left: 8.625rem;
-  z-index: 3;
-}
-.pantalla-agua-2 .agua-container-2 .header-datos .cifra-gigante {
-  width: clamp(15.6rem, 26.6667vw, 24rem);
-  height: clamp(3.4125rem, 5.8333vw, 5.25rem);
-  margin: 0 0 0.625rem 0;
-  color: #8BFFFF;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: clamp(1.89rem, 2.9167vw, 2.625rem);
-  font-weight: 700;
-  line-height: normal;
-  text-transform: uppercase;
-}
-.pantalla-agua-2 .agua-container-2 .header-datos .texto-consumo {
-  width: clamp(14.8281rem, 25.3472vw, 22.8125rem);
-  height: clamp(3.25rem, 5.5556vw, 5rem);
-  margin: 0;
-  color: #EAEAEA;
-  font-family: "Inter", sans-serif;
-  font-size: clamp(1.26rem, 1.9444vw, 1.75rem);
-  font-weight: 300;
-  line-height: normal;
-}
-.pantalla-agua-2 .agua-container-2 .datos-laterales {
-  position: absolute;
-  top: 50%;
-  left: 31.25rem;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  z-index: 3;
-}
-.pantalla-agua-2 .agua-container-2 .datos-laterales .pregunta-agua {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  color: #eaeaea;
-  font-size: clamp(0.9rem, 1.3889vw, 1.25rem);
-  line-height: 1.4;
-  text-align: right;
-  letter-spacing: 0.0312rem;
-}
-.pantalla-agua-2 .agua-container-2 .datos-laterales .divisor-vertical {
-  width: 0.1875rem;
-  height: clamp(4.0625rem, 6.9444vw, 6.25rem);
-  background: rgba(255, 255, 255, 0.4);
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 62%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.25rem;
-  z-index: 4;
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .btn-carrusel-nav {
-  width: clamp(2.925rem, 5vw, 4.5rem);
-  height: clamp(2.925rem, 5vw, 4.5rem);
-  border-radius: 50%;
-  background: rgba(127, 174, 221, 0.15);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: -0.0938rem -0.0938rem 0.0938rem #b7cce0, -0.0469rem -0.0469rem 0rem #ffffff, inset -0.0938rem -0.0938rem 0.0938rem #b8cce0, inset -0.0469rem -0.0469rem 0rem #ffffff;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .btn-carrusel-nav:hover {
-  transform: scale(1.08);
-  background: rgba(127, 174, 221, 0.28);
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .btn-carrusel-nav .flecha {
-  color: #ffffff;
-  font-size: clamp(1.26rem, 1.9444vw, 1.75rem);
-  line-height: 1;
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .carrusel-columna-central {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .carrusel-columna-central .carrusel-marco {
-  display: flex;
-  width: clamp(24.7rem, 42.2222vw, 38rem);
-  height: clamp(16.6562rem, 28.4722vw, 25.625rem);
-  justify-content: center;
-  align-items: center;
-  gap: 0.1875rem;
-  background: #000000;
-  border-radius: 1.25rem;
-  overflow: hidden;
-  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.7);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .carrusel-columna-central .carrusel-marco:hover {
-  transform: scale(1.01);
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .carrusel-columna-central .carrusel-marco .img-carrusel {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: opacity 0.2s ease;
-}
-.pantalla-agua-2 .agua-container-2 .carrusel-agua-wrapper .carrusel-columna-central .hint-interaccion {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: clamp(0.585rem, 0.9028vw, 0.8125rem);
-  color: #8BFFFF;
-  letter-spacing: 0.05rem;
-  opacity: 0.9;
-  text-align: center;
-}
-.pantalla-agua-2 .btn-conoce-impacto {
-  position: absolute;
-  bottom: 2.1875rem;
-  left: 7.375rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 10;
-  transition: opacity 0.2s ease;
-}
-.pantalla-agua-2 .btn-conoce-impacto:hover {
-  opacity: 0.85;
-}
-.pantalla-agua-2 .btn-conoce-impacto .flecha-abajo {
-  font-size: clamp(0.9rem, 1.3889vw, 1.25rem);
-  color: #8BFFFF;
-}
-.pantalla-agua-2 .btn-conoce-impacto span {
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  color: #ffffff;
-  font-size: clamp(0.81rem, 1.25vw, 1.125rem);
-}
-.pantalla-agua-2 .btn-lupa-circular {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 5.625rem;
-  width: clamp(3.9rem, 6.6667vw, 6rem);
-  height: clamp(3.9rem, 6.6667vw, 6rem);
-  background: transparent;
-  border: none;
-  display: block;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform 0.2s ease;
-}
-.pantalla-agua-2 .btn-lupa-circular:hover {
-  transform: scale(1.05);
-}
-.pantalla-agua-2 .btn-lupa-circular .btn-lupa-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(127, 174, 221, 0.15);
-  border-radius: 50%;
-  box-shadow: -0.0938rem -0.0938rem 0.0938rem #b7cce0, -0.0469rem -0.0469rem 0rem #ffffff, inset -0.0938rem -0.0938rem 0.0938rem #b8cce0, inset -0.0469rem -0.0469rem 0rem #ffffff;
-}
-.pantalla-agua-2 .btn-lupa-circular .btn-lupa-icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pantalla-agua-2 .btn-lupa-circular .btn-lupa-icon img {
-  width: 2.375rem;
-  height: 2.375rem;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
 .pantalla-centrales-datos {
