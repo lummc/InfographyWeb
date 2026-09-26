@@ -2185,7 +2185,7 @@ body {
   pointer-events: none;
 }
 .pantalla-final-dano {
-  /* Botón de lupa ubicado arriba a la derecha */
+  /* Botón de lupa (Fuentes) arriba a la derecha */
 }
 .pantalla-final-dano .btn-lupa-flotante {
   position: absolute;
@@ -2205,16 +2205,45 @@ body {
   text-decoration: none;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.pantalla-final-dano .btn-lupa-flotante .svg-lupa {
-  width: -1rem;
-  height: -1rem;
+.pantalla-final-dano .btn-lupa-flotante img, .pantalla-final-dano .btn-lupa-flotante .svg-lupa {
+  width: 1.5rem;
+  height: 1.5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
   stroke: #ffffff;
   fill: none;
+  transition: transform 0.3s ease;
+}
+.pantalla-final-dano .btn-lupa-flotante {
+  /* Texto flotante unificado con .btn-label */
+}
+.pantalla-final-dano .btn-lupa-flotante .btn-label {
+  position: absolute;
+  bottom: -2.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #8BFFFF;
+  letter-spacing: 0.1rem;
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 .pantalla-final-dano .btn-lupa-flotante:hover {
-  transform: scale(1.08);
+  transform: scale(1.08) translateY(-0.25rem);
   border-color: #2ce6d6;
-  box-shadow: 0 0 1rem rgba(44, 230, 214, 0.4);
+  box-shadow: 0 1.25rem 2.8125rem rgba(44, 230, 214, 0.35);
+}
+.pantalla-final-dano .btn-lupa-flotante:hover img, .pantalla-final-dano .btn-lupa-flotante:hover .svg-lupa {
+  transform: scale(1.1);
+}
+.pantalla-final-dano .btn-lupa-flotante:hover .btn-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 .pantalla-final-dano .header-final-dano {
   position: absolute;
@@ -2249,7 +2278,6 @@ body {
   pointer-events: none;
 }
 .pantalla-final-dano .contenedor-texto-central .texto-derritiendose {
-  /* Texto central achicado para mayor armonía visual */
   font-size: clamp(3rem, 5.5vw, 5.2rem);
   font-weight: 900;
   color: #5bebe0;
@@ -2267,9 +2295,10 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* Botón de mundo más transparente (estilo cristal) y con icono más grande */
+  /* Botón de mundo (Home) inferior */
 }
 .pantalla-final-dano .footer-final-controles .btn-circular-mundo {
+  position: relative;
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
@@ -2290,11 +2319,36 @@ body {
      object-fit: contain;
   display: block;
   filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+.pantalla-final-dano .footer-final-controles .btn-circular-mundo {
+  /* Texto flotante unificado con .btn-label */
+}
+.pantalla-final-dano .footer-final-controles .btn-circular-mundo .btn-label {
+  position: absolute;
+  top: -2.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #8BFFFF;
+  letter-spacing: 0.1rem;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 .pantalla-final-dano .footer-final-controles .btn-circular-mundo:hover {
-  transform: scale(1.1);
+  transform: scale(1.08) translateY(-0.25rem);
   border-color: #2ce6d6;
-  box-shadow: 0 0 1.25rem rgba(44, 230, 214, 0.6);
+  box-shadow: 0 1.25rem 2.8125rem rgba(44, 230, 214, 0.35);
+}
+.pantalla-final-dano .footer-final-controles .btn-circular-mundo:hover .icono-mundo-nav {
+  transform: scale(1.1);
+}
+.pantalla-final-dano .footer-final-controles .btn-circular-mundo:hover .btn-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 .pantalla-final-dano .svg-filtro-derretido {
   position: absolute;
