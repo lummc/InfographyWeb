@@ -714,6 +714,203 @@ body {
 // | 2 (CARRUSEL INTERACTIVO)
 // ==========================================
 // ==========================================
+// PANTALLA AGUA 2 (CARRUSEL INTERACTIVO)
+// ==========================================
+.pantalla-agua-2 {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .agua-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .agua-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 8, 25, 0.45);
+    backdrop-filter: blur(0.0625rem);
+    z-index: 2;
+  }
+
+  .agua-container-2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .header-datos {
+      position: absolute;
+      top: 7rem;
+      left: 8vw;
+      z-index: 3;
+      max-width: 28rem;
+
+      .cifra-gigante {
+        margin: 0 0 0.625rem 0;
+        color: #8BFFFF;
+        font-family: $font-primary;
+        font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+        font-weight: 700;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+
+      .texto-consumo {
+        margin: 0;
+        color: #EAEAEA;
+        font-family: $font-secondary;
+        font-size: clamp(1rem, 1.5vw, 1.375rem);
+        font-weight: 300;
+        line-height: 1.4;
+      }
+    }
+
+    .datos-laterales {
+      position: absolute;
+      top: 50%;
+      left: 14.5vw;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 3;
+
+      .pregunta-agua {
+        margin: 0;
+        font-family: $font-secondary;
+        font-weight: 300;
+        color: #eaeaea;
+        font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+        line-height: 1.4;
+        text-align: right;
+        letter-spacing: 0.0313rem;
+      }
+
+      .divisor-vertical {
+        width: 0.0625rem;
+        height: 5rem;
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    .carrusel-agua-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 4;
+      margin-left: 15vw; // Centrado compensando los elementos laterales
+
+      .btn-carrusel-nav {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+        background: rgba(127, 174, 221, 0.15);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: -0.0938rem -0.0938rem 0.0938rem #b7cce0, -0.0469rem -0.0469rem 0rem #ffffff, inset -0.0938rem -0.0938rem 0.0938rem #b8cce0, inset -0.0469rem -0.0469rem 0rem #ffffff;
+        transition: transform 0.2s ease, background 0.2s ease;
+
+        &:hover {
+          transform: scale(1.08);
+          background: rgba(127, 174, 221, 0.28);
+        }
+
+        .flecha {
+          color: #ffffff;
+          font-size: 1.75rem;
+          line-height: 1;
+        }
+      }
+
+      .carrusel-columna-central {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+
+        .carrusel-marco {
+          display: flex;
+          width: min(38rem, 42vw);
+          aspect-ratio: 608 / 410;
+          justify-content: center;
+          align-items: center;
+          background: #000000;
+          border-radius: 1.25rem;
+          overflow: hidden;
+          border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.7);
+          cursor: pointer;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.01);
+          }
+
+          .img-carrusel {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; // <-- Cambiado de 'cover' a 'contain' para que se vea completa
+            transition: opacity 0.2s ease;
+          }
+        }
+
+        .hint-interaccion {
+          margin: 0;
+          font-family: $font-secondary;
+          font-weight: 400;
+          font-size: 0.8125rem;
+          color: #8BFFFF;
+          letter-spacing: 0.05rem;
+          opacity: 0.9;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .btn-conoce-impacto {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 8vw;
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    span {
+      font-family: $font-secondary;
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 1.125rem;
+    }
+  }
+}
+// ==========================================
 // PANTALLA LITROS DE AGUA
 // ==========================================
 // ==========================================

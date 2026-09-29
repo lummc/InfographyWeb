@@ -61,6 +61,35 @@
     </div>
   </div>
 </section>
+<!-- ================= PANTALLA LANDING / TRANSICIÓN INTERMEDIA ================= -->
+<section class="hero" id="inicio">
+    <video class="hero__video-bg" autoplay muted loop playsinline>
+      <source src="./img/WaterFondo.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <div class="hero__intro">
+        <h1 class="hero__title">
+          DETRÁS DE UN<br />
+          VIDEO DIGITAL HAY<br />
+          UNA<br />
+          INFRAESTRUCTURA<br />
+          FÍSICA.
+        </h1>
+        <p class="hero__subtitle">
+          ¿Qué costo tiene generar todo esto?
+        </p>
+        <button type="button" class="btn-glass" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+          <span class="btn-glass__label">DESCUBRELO</span>
+        </button>
+      </div>
+
+      <div class="hero__card">
+        <img src="./img/grafico-gastoagua.png" alt="Esquema infraestructura, gasto de agua y CO2" class="hero__card-img" />
+      </div>
+    </div>
+  </section>
 
   <!-- ================= HOME / MENÚ PRINCIPAL ================= -->
 <section class="pantalla-home" id="home">
@@ -88,7 +117,7 @@
         <img src="./img/icono-gota.svg" alt="Icono gota de agua" class="glass-btn-circle__icon" />
         <span class="btn-label">AGUA</span>
       </a>
-      <a href="#seccionBallenas" class="glass-btn-circle glass-btn-circle--right" aria-label="Ir a CO2">
+      <a href="#carbon-footprint-details" class="glass-btn-circle glass-btn-circle--right" aria-label="Ir a CO2">
         <img src="./img/icono-nube.svg" alt="Icono nube de CO2" class="glass-btn-circle__icon" />
         <span class="btn-label">CO2</span>
       </a>
@@ -124,9 +153,54 @@
   
   </section>
   <!-- ================= PANTALLA LITROS DE AGUA / QUIZ ================= -->
+   <!-- ================= PANTALLA AGUA 2 (Carrusel Interactivo) ================= -->
+<section class="pantalla-agua-2" id="agua-carrusel">
+  <video class="agua-video-bg" autoplay muted loop playsinline>
+    <source src="./img/WaterFondo2.mp4" type="video/mp4" />
+  </video>
+  <div class="agua-video-overlay"></div>
+
+  <div class="agua-container-2">
+    <!-- Encabezado superior izquierdo -->
+    <header class="header-datos">
+      <h2 class="cifra-gigante">220.000 MILLONES DE<br />LITROS DE AGUA</h2>
+      <p class="texto-consumo">Fueron consumidos<br />para la generación en data centers</p>
+    </header>
+
+    <!-- Datos laterales -->
+    <aside class="datos-laterales">
+      <p class="pregunta-agua">¿CUÁNTOS LITROS DE AGUA<br />SE CONSUMEN<br />CON GEN IA?</p>
+      <div class="divisor-vertical"></div>
+    </aside>
+
+    <!-- Carrusel / Contenedor central -->
+    <div class="carrusel-agua-wrapper">
+      <button type="button" class="btn-carrusel-nav prev" onclick="moverCarrusel(-1)" aria-label="Anterior">
+        <span class="flecha">←</span>
+      </button>
+
+      <div class="carrusel-columna-central">
+        <div class="carrusel-marco" onclick="alternarSubEstado()" title="Hacé clic para interactuar">
+          <img id="carruselImg" src="./img/Estado1-Texto.png" alt="Generación interactiva" class="img-carrusel" />
+        </div>
+        <p class="hint-interaccion">Hacé clic en la imagen para interactuar</p>
+      </div>
+
+      <button type="button" class="btn-carrusel-nav next" onclick="moverCarrusel(1)" aria-label="Siguiente">
+        <span class="flecha">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Botón inferior para continuar -->
+  <button type="button" class="btn-conoce-impacto" onclick="window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })">
+    <img src="./img/icono-flecha.svg" alt="" class="icono-flecha" />
+    <span>Conoce el impacto</span>
+  </button>
+</section>
 <!-- ================= PANTALLA LITROS DE AGUA / QUIZ ================= -->
 <!-- Script para el funcionamiento automático del botón y estados -->
-<script>
+<!--<script>
   document.addEventListener('DOMContentLoaded', () => {
     const btnIniciar = document.getElementById('btnIniciarQuizAgua');
     const estadoInvitacion = document.getElementById('estadoInvitacionAgua');
@@ -550,15 +624,18 @@
 
   </div>
 
-  <!-- Botones inferiores de navegación (Alerta y Agua) seguros sin chocar -->
-  <div class="footer-navegacion-inferior">
-    <button type="button" class="btn-nav-icono" onclick="location.href='#daño'" aria-label="Alerta">
-      <img src="./img/danger-icon.svg" alt="Alerta" />
-    </button>
-    <button type="button" class="btn-nav-icono" onclick="location.href='#agua'" aria-label="Agua">
-      <img src="./img/icono-gota.svg" alt="Agua" />
-    </button>
-  </div>
+  <!-- Botones inferiores de navegación (Alerta y Agua) corregidos -->
+<div class="footer-navegacion-inferior">
+  <!-- Botón de Alerta / Daño -> Lleva a la pantalla final de daño (#futuro-cifras) -->
+  <a href="#futuro-cifras" class="btn-nav-icono" aria-label="Alerta">
+    <img src="./img/danger-icon.svg" alt="Alerta" />
+  </a>
+
+  <!-- Botón de Agua -> Lleva a la pantalla de agua/carrusel (#agua-intro) -->
+  <a href="#agua-intro" class="btn-nav-icono" aria-label="Agua">
+    <img src="./img/icono-gota.svg" alt="Agua" />
+  </a>
+</div>
 
 </section>
 
@@ -816,12 +893,12 @@
   <!-- Overlay para asegurar contraste con el fondo -->
   <div class="overlay-final-dano"></div>
 
-  <!-- Botón de búsqueda (lupa) superior derecho -->
-  <!-- Botón de Fuentes (Lupa) superior derecho -->
-<a href="#" class="btn-lupa-flotante" aria-label="Fuentes">
-  <img src="./img/lupa-icon.svg" alt="Fuentes" />
-  <span class="btn-label">Fuentes</span>
-</a>
+  <!-- Botón de Fuentes (Lupa) superior derecho -> Lleva al Google Docs -->
+  <a href="https://docs.google.com/document/d/10hfIJJ8LEWjLaFNlQx6o4dgVEfQdLGRoxu0xi-LgI0A/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-lupa-flotante" aria-label="Fuentes">
+    <img src="./img/lupa-icon.svg" alt="Fuentes" />
+    <span class="btn-label">Fuentes</span>
+  </a>
+
   <!-- Encabezado superior izquierdo -->
   <header class="header-final-dano">
     <h1 class="titulo-final">NO NECESITAMOS LLEGAR A ESO</h1>
@@ -830,7 +907,7 @@
     </p>
   </header>
 
-  <!-- Texto central con derretido (achicado para que respire mejor) -->
+  <!-- Texto central con derretido -->
   <div class="contenedor-texto-central">
     <h2 class="texto-derritiendose">
       HAGAMOS<br>
@@ -839,13 +916,13 @@
     </h2>
   </div>
 
-  <!-- Footer con botón mundo centrado -->
+  <!-- Footer con botón mundo centrado -> Lleva de regreso al inicio / home -->
   <footer class="footer-final-controles">
-  <a href="#inicio" class="btn-circular-mundo" aria-label="Home">
-    <img src="./img/world-icon.png" alt="Home" class="icono-mundo-nav" />
-    <span class="btn-label">Home</span>
-  </a>
-</footer>
+    <a href="#home" class="btn-circular-mundo" aria-label="Home">
+      <img src="./img/world-icon.png" alt="Home" class="icono-mundo-nav" />
+      <span class="btn-label">Home</span>
+    </a>
+  </footer>
 
   <!-- Filtro SVG para el derretido -->
   <svg class="svg-filtro-derretido" aria-hidden="true">
